@@ -4,12 +4,16 @@ angular.module('taxnumptyApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'ngAnimate'
 ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      }).when('/about', {
+        templateUrl: 'views/about.html',
         controller: 'MainCtrl'
       })
       .otherwise({
