@@ -2,19 +2,20 @@
   <form role="form">
     <div class="form-group">
       <label for="salaryInput">Salary</label>
-      <input type="text" class="form-control" id="salaryInput" placeholder="Enter salary">
+      <input type="text" class="form-control" id="salaryInput" placeholder="Enter salary" ng-model="salary">
     </div>
     <div class="checkbox">
       <label>
         <input type="checkbox"> Student Loan
       </label>
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="submit" class="btn btn-default" ng-click="total()">Submit</button>
   </form>
 </div>
 
 <div class="row marketing">
-  <h4>Find out how much tax you will pay</h4>
+  <h4>Salary: {{salary}}</h4>
+  <h4>Tax: {{totalTax}}</h4>
   <p>
     Find out how much tax you will pay taking into account your salary, your age, your pension and your outstanding student loan.
   </p>

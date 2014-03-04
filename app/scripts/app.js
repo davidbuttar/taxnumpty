@@ -5,16 +5,17 @@ angular.module('taxnumptyApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'ngAnimate'
+  'ngAnimate',
+  'taxCalculator'
 ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'Calculator'
       }).when('/about', {
         templateUrl: 'views/about.html',
-        controller: 'MainCtrl'
+        controller: 'Calculator'
       })
       .otherwise({
         redirectTo: '/'
