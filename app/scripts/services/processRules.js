@@ -12,7 +12,7 @@ angular.module('taxCalculator', []).factory('processRules', function() {
     var taxable = maxTaxable - band.from;
     // salary not taxable at this band
     if (taxable < 0){
-     return 0;
+      return 0;
     }
     // apply rate to salary
     return taxable * band.rate/100;
@@ -20,10 +20,9 @@ angular.module('taxCalculator', []).factory('processRules', function() {
 
   // Apply several taxation bands.
   that.applyBands = function(salary, bands, allowance){
-    var total = 0
-    var band1From = bands[0].from;
+    var total = 0;
     if(allowance){
-      salary = salary - allowance();
+      salary = salary - allowance;
     }
     for(var i =0, ii=bands.length; i<ii; i++){
       total += that.applyBand(salary, bands[i]);

@@ -15,9 +15,16 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
-  it('should have a starting salary of 43000', function () {
-    expect(scope.salary).toBe(43000);
+  it('should have a starting salary of 0', function () {
+    expect(scope.salary).toBe(0);
   });
 
+
+  it('should apply multiple types of tax', function () {
+    scope.salary = 40000;
+    scope.$digest();
+    expect(scope.nationalInsurance).not.toBe(0);
+    expect(scope.incomeTax).not.toBe(0);
+  });
 
 });

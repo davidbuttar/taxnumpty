@@ -6,7 +6,8 @@ angular.module('taxnumptyApp', [
   'ngSanitize',
   'ngRoute',
   'ngAnimate',
-  'taxCalculator'
+  'taxCalculator',
+  'taxCalculatorRules'
 ])
   .config(function ($routeProvider) {
     $routeProvider
