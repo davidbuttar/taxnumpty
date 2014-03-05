@@ -61,25 +61,23 @@ describe('Service: taxCalculator', function () {
   });
 
 
-  it('should be able to have a custom allowance function', function () {
+  it('should be able to have a custom allowance value', function () {
 
     var bands = [{
-        from : 0,
-        to : 32010,
-        rate : 20
+      from : 0,
+      to : 32010,
+      rate : 20
     }, {
-        from : 32010,
-        to : 150000,
-        rate : 40
+      from : 32010,
+      to : 150000,
+      rate : 40
     }, {
-        from : 150001,
-        to : Infinity,
-        rate : 45
+      from : 150001,
+      to : Infinity,
+      rate : 45
     }];
 
-    expect(processTaxRules.applyBands(43000, bands, function(){
-      return 9440;
-    })).toBe(7022.00);
+    expect(processTaxRules.applyBands(43000, bands, 9440)).toBe(7022.00);
 
   });
 
