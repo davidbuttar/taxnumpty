@@ -13,6 +13,8 @@ describe('Controller: Calculator', function () {
     MainCtrl = $controller('Calculator', {
       $scope: scope
     });
+    // Tests assume this year for calculations
+    scope.ruleSet = scope.availableRules.uk201314.rules;
   }));
 
   it('should have a starting salary of 0', function () {
@@ -90,5 +92,33 @@ describe('Controller: Calculator', function () {
     scope.$digest();
     expect(scope.incomeTax).toBe(276.5);
   });
+
+  it('should allow you to specify allowances', function () {
+    scope.salary = 40000;
+    scope.married = true;
+    scope.addAllowance = 1000;
+    scope.$digest();
+    expect(scope.incomeTax).toBe(5912);
+    scope.salary = 120000;
+    scope.$digest();
+    expect(scope.incomeTax).toBe(41422);
+    scope.blind = true;
+    scope.$digest();
+    expect(scope.incomeTax).toBe(40558);
+  });
+
+  it('should calculate the pension contribution of the HMRC', function () {
+
+    scope.salary = 41500;
+    scope.pension = 1000;
+    scope.$digest();
+    expect(scope.pensionHMRC).toBe(210);
+
+    scope.pension = 6000;
+    scope.$digest();
+    expect(scope.pensionHMRC).toBe(1210);
+
+  });
+
 
 });
