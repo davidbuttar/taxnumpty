@@ -8,15 +8,18 @@ angular.module('taxCalculatorRules', []).factory('rulesCollection', function() {
     rules:[{
       name : 'Income Tax',
       id:'Tax',
+      taxAllowance : 9440,
+      maxPensionRelief : 50000,
       allowance : function(opts, subtractPension) { // should just be getAllowance
-        var salary = parseInt(opts.salary);
-        var addAllowance = parseInt(opts.addAllowance);
-        var pension = parseInt(opts.pension);
+        var salary = opts.salary ? parseInt(opts.salary) : 0;
+        var addAllowance = opts.addAllowance ? parseInt(opts.addAllowance) : 0;
+        var pension = opts.pension ? parseInt(opts.pension) : 0;
         var ageOpts = opts.age;
-        var allowance = 9440 + addAllowance;
+        var allowance = this.taxAllowance + addAllowance;
 
         if (subtractPension){
-          allowance = allowance + pension;
+          var curPension = Math.min(pension, this.maxPensionRelief);
+          allowance = allowance + curPension;
         }
 
         if(ageOpts == 2 || ageOpts == 3){

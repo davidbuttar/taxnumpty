@@ -17,8 +17,8 @@ describe('Controller: Calculator', function () {
     scope.ruleSet = scope.availableRules.uk201314.rules;
   }));
 
-  it('should have a starting salary of 0', function () {
-    expect(scope.salary).toBe(0);
+  it('should have a null starting salary', function () {
+    expect(scope.salary).toBe(null);
   });
 
   it('should alter depending on age', function () {
@@ -48,26 +48,26 @@ describe('Controller: Calculator', function () {
     scope.salary = 40000;
     scope.student = false;
     scope.$digest();
-    expect(scope.studentTax).toBe(0);
+    expect(scope.studentLoan).toBe(0);
     scope.student = true;
     scope.$digest();
-    expect(scope.studentTax).not.toBe(0);
+    expect(scope.studentLoan).toBe(2127);
   });
 
   it('should have student apply 9% student loan', function () {
     scope.salary = 17000;
     scope.student = false;
     scope.$digest();
-    expect(scope.studentTax).toBe(0);
+    expect(scope.studentLoan).toBe(0);
     scope.student = true;
     scope.$digest();
-    expect(scope.studentTax).toBe(57);
+    expect(scope.studentLoan).toBe(57);
     scope.salary = 30000;
     scope.$digest();
-    expect(scope.studentTax).toBe(1227);
+    expect(scope.studentLoan).toBe(1227);
     scope.salary = 16365;
     scope.$digest();
-    expect(scope.studentTax).toBe(0);
+    expect(scope.studentLoan).toBe(0);
   });
 
   it('over 65s dont pay student loan', function () {
@@ -75,7 +75,7 @@ describe('Controller: Calculator', function () {
     scope.student = true;
     scope.selectedAge = scope.ages[2];
     scope.$digest();
-    expect(scope.studentTax).toBe(0);
+    expect(scope.studentLoan).toBe(0);
   });
 
   it('should increase your allowance correctly if you are blind', function () {
@@ -117,6 +117,26 @@ describe('Controller: Calculator', function () {
     scope.pension = 6000;
     scope.$digest();
     expect(scope.pensionHMRC).toBe(1210);
+
+    scope.salary = 43000;
+    scope.pension = 43000;
+    scope.$digest();
+    expect(scope.pensionHMRC).toBe(7022);
+
+  });
+
+
+  it('should give no pensions tax relief over 50000', function () {
+
+    scope.salary = 100000;
+    scope.pension = 50000;
+    scope.$digest();
+    expect(scope.pensionHMRC).toBe(20000);
+
+    scope.salary = 100000;
+    scope.pension = 60000;
+    scope.$digest();
+    expect(scope.pensionHMRC).toBe(20000);
 
   });
 

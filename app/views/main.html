@@ -1,60 +1,65 @@
-<div class="bs-example">
-  <form role="form">
-    <div class="form-group">
-      <label for="salaryInput">Salary</label>
-      <input type="text" class="form-control" id="salaryInput" placeholder="Enter salary" ng-model="salary">
-    </div>
-    <div class="form-group">
-      <select ng-model="selectedAge" ng-options="c.name for c in ages"></select>
-    </div>
-    <div class="form-group">
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" ng-model="student"> Include Student Loan
-        </label>
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" ng-model="married"> Married
-        </label>
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" ng-model="blind"> Blind
-        </label>
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" ng-model="noNI"> No N.I.
-        </label>
-      </div>
-    </div>
 
+<div class="salary-settings">
+  <div class="salary-settings-inner">
+    <form role="form">
+      <div class="form-group">
+        <label for="salaryInput">Salary</label>
+        <input type="text" class="form-control" id="salaryInput" placeholder="Enter salary" ng-model="salary">
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <select ng-model="selectedAge" class="form-control" ng-options="c.name for c in ages"></select>
+      </div>
+      <div class="form-group">
+        <div class="checkbox">
+          <label>
+            Include Student Loan <input type="checkbox" ng-model="student">
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            Married <input type="checkbox" ng-model="married">
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            Blind <input type="checkbox" ng-model="blind">
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            No N.I. <input type="checkbox" ng-model="noNI">
+          </label>
+        </div>
+      </div>
       <div class="form-group">
         <label for="salaryInput">Pension Contribution</label>
         <input type="text" class="form-control" id="pensionInput" placeholder="Enter pension" ng-model="pension">
       </div>
-
       <div class="form-group">
         <label for="salaryInput">Added Allowance</label>
-        <input type="text" class="form-control" id="addAllowanceInput" placeholder="Enter addtion allowance or subtraction" ng-model="addAllowance">
+        <input type="text" class="form-control" id="addAllowanceInput" placeholder="Enter Allowance or subtraction" ng-model="addAllowance">
       </div>
-
-  </form>
+    </form>
+  </div>
 </div>
 
-<div class="row marketing">
-  <h4>Salary: {{salary}}</h4>
-  <h4>Taxable Income: {{taxableIncome}}</h4>
-  <h4>National Insurance: {{nationalInsurance}}</h4>
-  <h4>Income Tax: {{incomeTax}}</h4>
-  <h4>Personal Allowance: {{incomeTaxAllowance}}</h4>
-  <h4>Student Loan: {{studentTax}}</h4>
-  <h4>Pension: {{pension}}</h4>
-  <h4>Pension Tax Relief: {{pensionHMRC}}</h4>
-  <h4>Total Tax: {{totalTax}}</h4>
-  <h4>Take Home Pay: {{totalTakeHome}}</h4>
-  <p>
-    Find out how much tax you will pay taking into account your salary, your age, your pension and your outstanding student loan.
-  </p>
-</div>
+    <div class="row marketing">
+      <p>From a salary of &pound;{{salary | number:2}} your take home pay is &pound;{{totalTakeHome | number:2}} a year (&pound;{{totalTakeHome/12 | number:2}} a month)</p>
+
+      <p>The total deducted from your wages is &pound;{{totalDeductions | number:2}} (&pound;{{totalDeductions/12 | number:2}} a month).</p>
+
+      <h4>Salary: &pound;{{salary | number:2}}</h4>
+      <h4>Taxable Income: &pound;{{taxableIncome | number:2}}</h4>
+      <h4>National Insurance: &pound;{{nationalInsurance | number:2}}</h4>
+      <h4>Income Tax: &pound;{{incomeTax | number:2}}</h4>
+      <h4>Personal Allowance: &pound;{{incomeTaxAllowance | number:2}}</h4>
+      <h4>Student Loan: &pound;{{studentLoan | number:2}}</h4>
+      <h4>Pension: &pound;{{pension | number:2}}</h4>
+      <h4>Pension Tax Relief: &pound;{{pensionHMRC | number:2}}</h4>
+      <h4>Total Deductions: &pound;{{totalDeductions | number:2}}</h4>
+      <h4>Take Home Pay: &pound;{{totalTakeHome | number:2}}</h4>
+      <h4>Monthly Pay : &pound;{{totalTakeHome/12 | number:2}}</h4>
+      <h4>Weekly Pay : &pound;{{totalTakeHome/52 | number:2}}</h4>
+    </div>
+

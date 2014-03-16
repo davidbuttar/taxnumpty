@@ -1,29 +1,34 @@
 /* Space out content a bit */
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  background:#E8E8E8;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
 .footer {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
-  max-width: 730px;
-  margin: 0 auto;
+  background: #666;
+  color:#fff;
+  position: absolute;
+  top:16px;
+  right:16px;
+  padding: 8px 15px;
+  text-transform: uppercase;
 }
+
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
+  font-size:16px;
   margin-top: 0;
   margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
+  line-height: 18px;
+  font-family: 'Carrois Gothic SC', sans-serif;
 }
 
 /* Custom page footer */
@@ -33,6 +38,49 @@ body {
   border-top: 1px solid #e5e5e5;
   max-width: 730px;
   margin: 0 auto;
+}
+
+.salary-settings{
+  position: absolute;
+  left:0px;
+  top:0px;
+  bottom:0px;
+  width:286px;
+  border-right:1px solid #ccc;
+  background: #F6F6F6;
+}
+
+.salary-settings-inner{
+  width:224px;
+  margin:52px auto 0;
+  height:auto;
+}
+
+label{
+  color:#666;
+  font-family: 'Carrois Gothic SC', sans-serif;
+  text-transform: uppercase;
+  font-size:12px;
+  magrin-bottom:8px;
+}
+
+.form-control{
+  border-radius: 0;
+  border:none;
+  box-shadow: none;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.checkbox {
+  padding-left: 0;
+  margin-bottom:20px;
+}
+
+.checkbox input[type="checkbox"]{
+  float:right;
 }
 
 /* Customize container */
@@ -69,12 +117,9 @@ body {
   .header,
   .marketing,
   .footer {
-    padding-left: 0;
-    padding-right: 0;
   }
   /* Space out the masthead */
   .header {
-    margin-bottom: 30px;
   }
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
