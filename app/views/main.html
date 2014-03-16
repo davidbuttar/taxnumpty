@@ -44,22 +44,104 @@
   </div>
 </div>
 
-    <div class="row marketing">
-      <p>From a salary of &pound;{{salary | number:2}} your take home pay is &pound;{{totalTakeHome | number:2}} a year (&pound;{{totalTakeHome/12 | number:2}} a month)</p>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="result-block">
+          <p class="result-summary">From a salary of <span class="result-highlight">&pound;{{salary | number:2}}</span> your take home pay is <span class="result-highlight">&pound;{{totalTakeHome | number:2}}</span> a year (<span class="result-highlight">&pound;{{totalTakeHome/12 | number:2}}</span> a month)</p>
 
-      <p>The total deducted from your wages is &pound;{{totalDeductions | number:2}} (&pound;{{totalDeductions/12 | number:2}} a month).</p>
-
-      <h4>Salary: &pound;{{salary | number:2}}</h4>
-      <h4>Taxable Income: &pound;{{taxableIncome | number:2}}</h4>
-      <h4>National Insurance: &pound;{{nationalInsurance | number:2}}</h4>
-      <h4>Income Tax: &pound;{{incomeTax | number:2}}</h4>
-      <h4>Personal Allowance: &pound;{{incomeTaxAllowance | number:2}}</h4>
-      <h4>Student Loan: &pound;{{studentLoan | number:2}}</h4>
-      <h4>Pension: &pound;{{pension | number:2}}</h4>
-      <h4>Pension Tax Relief: &pound;{{pensionHMRC | number:2}}</h4>
-      <h4>Total Deductions: &pound;{{totalDeductions | number:2}}</h4>
-      <h4>Take Home Pay: &pound;{{totalTakeHome | number:2}}</h4>
-      <h4>Monthly Pay : &pound;{{totalTakeHome/12 | number:2}}</h4>
-      <h4>Weekly Pay : &pound;{{totalTakeHome/52 | number:2}}</h4>
+          <p class="result-summary">The total deducted from your wages is <span class="result-highlight">&pound;{{totalDeductions | number:2}}</span> (<span class="result-highlight">&pound;{{totalDeductions/12 | number:2}}</span> a month).</p>
+        </div>
+        <div class="result-block">
+          <h4>Details</h4>
+<table class="table table-bordered">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Yearly</th>
+          <th>Monthly</th>
+          <th>Weekly</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td >Salary</td>
+          <td>{{salary | number:2}}</td>
+          <td>{{salary/12 | number:2}}</td>
+          <td>{{salary/52 | number:2}}</td>
+        </tr>
+        <tr class="danger">
+          <td >Taxable</td>
+          <td>{{taxableIncome | number:2}}</td>
+          <td>{{taxableIncome/12 | number:2}}</td>
+          <td>{{taxableIncome/52 | number:2}}</td>
+        </tr>
+        <tr>
+          <td>Allowance</td>
+          <td>{{incomeTaxAllowance | number:2}}</td>
+          <td>{{incomeTaxAllowance/12 | number:2}}</td>
+          <td>{{incomeTaxAllowance/15 | number:2}}</td>
+        </tr>
+        <tr>
+          <td>Income Tax</td>
+          <td>{{incomeTax | number:2}}</td>
+          <td>{{incomeTax/12 | number:2}}</td>
+          <td>{{incomeTax/15 | number:2}}</td>
+        </tr>
+        <tr>
+          <td>N.I.</td>
+          <td>{{nationalInsurance | number:2}}</td>
+          <td>{{nationalInsurance/12 | number:2}}</td>
+          <td>{{nationalInsurance/15 | number:2}}</td>
+        </tr>
+        <tr>
+          <td>Student Loan</td>
+          <td>{{studentLoan | number:2}}</td>
+          <td>{{studentLoan/12 | number:2}}</td>
+          <td>{{studentLoan/15 | number:2}}</td>
+        </tr>
+        <tr>
+          <td>Pension</td>
+          <td>{{pension | number:2}}</td>
+          <td>{{pension/12 | number:2}}</td>
+          <td>{{pension/15 | number:2}}</td>
+        </tr>
+        <tr>
+          <td>Pension HMRC</td>
+          <td>{{pensionHMRC | number:2}}</td>
+          <td>{{pensionHMRC/12 | number:2}}</td>
+          <td>{{pensionHMRC/15 | number:2}}</td>
+        </tr>
+        <tr class="danger">
+          <td>Total Deductions</td>
+          <td>{{totalDeductions | number:2}}</td>
+          <td>{{totalDeductions/12 | number:2}}</td>
+          <td>{{totalDeductions/15 | number:2}}</td>
+        </tr>
+        <tr class="success">
+          <td>Take Home Pay</td>
+          <td>{{totalTakeHome | number:2}}</td>
+          <td>{{totalTakeHome/12 | number:2}}</td>
+          <td>{{totalTakeHome/15 | number:2}}</td>
+        </tr>
+      </tbody>
+    </table>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="result-block">
+          <h4>Salary: &pound;{{salary | number:2}}</h4>
+          <h4>Taxable Income: &pound;{{taxableIncome | number:2}}</h4>
+          <h4>National Insurance: &pound;{{nationalInsurance | number:2}}</h4>
+          <h4>Income Tax: &pound;{{incomeTax | number:2}}</h4>
+          <h4>Personal Allowance: &pound;{{incomeTaxAllowance | number:2}}</h4>
+          <h4>Student Loan: &pound;{{studentLoan | number:2}}</h4>
+          <h4>Pension: &pound;{{pension | number:2}}</h4>
+          <h4>Pension Tax Relief: &pound;{{pensionHMRC | number:2}}</h4>
+          <h4>Total Deductions: &pound;{{totalDeductions | number:2}}</h4>
+          <h4>Take Home Pay: &pound;{{totalTakeHome | number:2}}</h4>
+          <h4>Monthly Pay : &pound;{{totalTakeHome/12 | number:2}}</h4>
+          <h4>Weekly Pay : &pound;{{totalTakeHome/52 | number:2}}</h4>
+        </div>
+      </div>
     </div>
 
