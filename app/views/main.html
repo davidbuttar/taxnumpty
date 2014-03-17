@@ -130,19 +130,10 @@
       </div>
       <div class="col-md-6">
         <div class="result-block">
-          <h4>Salary: &pound;{{salary | number:2}}</h4>
-          <h4>Taxable Income: &pound;{{taxableIncome | number:2}}</h4>
-          <h4>National Insurance: &pound;{{nationalInsurance | number:2}}</h4>
-          <h4>Income Tax: &pound;{{incomeTax | number:2}}</h4>
-          <h4>Personal Allowance: &pound;{{incomeTaxAllowance | number:2}}</h4>
-          <h4>Student Loan: &pound;{{studentLoan | number:2}}</h4>
-          <h4>Pension: &pound;{{pension | number:2}}</h4>
-          <h4>Pension Tax Relief: &pound;{{pensionHMRC | number:2}}</h4>
-          <h4>Total Deductions: &pound;{{totalDeductions | number:2}}</h4>
-          <h4>Take Home Pay: &pound;{{totalTakeHome | number:2}}</h4>
-          <h4>Monthly Pay : &pound;{{totalTakeHome/12 | number:2}}</h4>
-          <h4>Weekly Pay : &pound;{{totalTakeHome/52 | number:2}}</h4>
+          <p p class="result-summary">Based on these numbers over a working lifetime at the current salary you will take home <span class="result-highlight">&pound;{{totalTakeHome*45 | number:2}}</span> and pay <span class="result-highlight">&pound;{{(incomeTax+nationalInsurance)*45 | number:2}}</span> in tax.</p>
         </div>
       </div>
     </div>
+
+    <img src="images/taxplanet-bg.png" alt="" id="taxed-bg"/>
 
