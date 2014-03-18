@@ -65,7 +65,7 @@
       </thead>
       <tbody>
         <tr>
-          <td >Salary</td>
+          <td class="success">Salary</td>
           <td>{{salary | number:2}}</td>
           <td>{{salary/12 | number:2}}</td>
           <td>{{salary/52 | number:2}}</td>
@@ -80,49 +80,49 @@
           <td>Allowance</td>
           <td>{{incomeTaxAllowance | number:2}}</td>
           <td>{{incomeTaxAllowance/12 | number:2}}</td>
-          <td>{{incomeTaxAllowance/15 | number:2}}</td>
+          <td>{{incomeTaxAllowance/52 | number:2}}</td>
         </tr>
         <tr>
           <td>Income Tax</td>
           <td>{{incomeTax | number:2}}</td>
           <td>{{incomeTax/12 | number:2}}</td>
-          <td>{{incomeTax/15 | number:2}}</td>
+          <td>{{incomeTax/52 | number:2}}</td>
         </tr>
         <tr>
           <td>N.I.</td>
           <td>{{nationalInsurance | number:2}}</td>
           <td>{{nationalInsurance/12 | number:2}}</td>
-          <td>{{nationalInsurance/15 | number:2}}</td>
+          <td>{{nationalInsurance/52 | number:2}}</td>
         </tr>
         <tr>
           <td>Student Loan</td>
           <td>{{studentLoan | number:2}}</td>
           <td>{{studentLoan/12 | number:2}}</td>
-          <td>{{studentLoan/15 | number:2}}</td>
+          <td>{{studentLoan/52 | number:2}}</td>
         </tr>
         <tr>
           <td>Pension</td>
           <td>{{pension | number:2}}</td>
           <td>{{pension/12 | number:2}}</td>
-          <td>{{pension/15 | number:2}}</td>
+          <td>{{pension/52 | number:2}}</td>
         </tr>
         <tr>
           <td>Pension HMRC</td>
           <td>{{pensionHMRC | number:2}}</td>
           <td>{{pensionHMRC/12 | number:2}}</td>
-          <td>{{pensionHMRC/15 | number:2}}</td>
+          <td>{{pensionHMRC/52 | number:2}}</td>
         </tr>
         <tr class="danger">
           <td>Total Deductions</td>
           <td>{{totalDeductions | number:2}}</td>
           <td>{{totalDeductions/12 | number:2}}</td>
-          <td>{{totalDeductions/15 | number:2}}</td>
+          <td>{{totalDeductions/52 | number:2}}</td>
         </tr>
         <tr class="success">
           <td>Take Home Pay</td>
           <td>{{totalTakeHome | number:2}}</td>
           <td>{{totalTakeHome/12 | number:2}}</td>
-          <td>{{totalTakeHome/15 | number:2}}</td>
+          <td>{{totalTakeHome/52 | number:2}}</td>
         </tr>
       </tbody>
     </table>
