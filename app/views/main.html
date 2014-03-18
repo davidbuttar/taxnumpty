@@ -7,39 +7,43 @@
         <label for="salaryInput">Salary</label>
         <input type="text" class="form-control" id="salaryInput" placeholder="Enter salary" ng-model="salary">
       </div>
-      <div class="form-group">
-        <label for="age">Age</label>
-        <select ng-model="selectedAge" class="form-control" ng-options="c.name for c in ages"></select>
-      </div>
-      <div class="form-group">
-        <div class="checkbox">
-          <label>
-            Include Student Loan <input type="checkbox" ng-model="student">
-          </label>
+      <h4 class="hide-toggle" ng-click="setViewSettings()">
+        More Options <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down':showMoreSettings, 'glyphicon-chevron-left':!showMoreSettings}"></i></h4>
+      <div class="more-settings" ng-class="{'selected':showMoreSettings}">
+        <div class="form-group">
+          <label for="age">Age</label>
+          <select ng-model="selectedAge" class="form-control" ng-options="c.name for c in ages"></select>
         </div>
-        <div class="checkbox">
-          <label>
-            Married <input type="checkbox" ng-model="married">
-          </label>
+        <div class="form-group">
+          <div class="checkbox">
+            <label>
+              Include Student Loan <input type="checkbox" ng-model="student">
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              Married <input type="checkbox" ng-model="married">
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              Blind <input type="checkbox" ng-model="blind">
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              No N.I. <input type="checkbox" ng-model="noNI">
+            </label>
+          </div>
         </div>
-        <div class="checkbox">
-          <label>
-            Blind <input type="checkbox" ng-model="blind">
-          </label>
+        <div class="form-group">
+          <label for="salaryInput">Pension Contribution</label>
+          <input type="text" class="form-control" id="pensionInput" placeholder="Enter pension" ng-model="pension">
         </div>
-        <div class="checkbox">
-          <label>
-            No N.I. <input type="checkbox" ng-model="noNI">
-          </label>
+        <div class="form-group">
+          <label for="salaryInput">Added Allowance</label>
+          <input type="text" class="form-control" id="addAllowanceInput" placeholder="Enter Allowance or subtraction" ng-model="addAllowance">
         </div>
-      </div>
-      <div class="form-group">
-        <label for="salaryInput">Pension Contribution</label>
-        <input type="text" class="form-control" id="pensionInput" placeholder="Enter pension" ng-model="pension">
-      </div>
-      <div class="form-group">
-        <label for="salaryInput">Added Allowance</label>
-        <input type="text" class="form-control" id="addAllowanceInput" placeholder="Enter Allowance or subtraction" ng-model="addAllowance">
       </div>
     </form>
   </div>
@@ -135,5 +139,5 @@
       </div>
     </div>
 
-    <img src="images/taxplanet-bg.png" alt="" id="taxed-bg"/>
+    <!--img src="images/taxplanet-bg.png" alt="" id="taxed-bg"/-->
 

@@ -1,3 +1,4 @@
+/*global $:false */
 'use strict';
 
 angular.module('taxnumptyApp')
@@ -30,6 +31,7 @@ angular.module('taxnumptyApp')
     $scope.pension = null;
     $scope.pensionHMRC = 0;
     $scope.totalTakeHome = 0;
+    $scope.showMoreSettings = false;
 
     function setIncomeTaxValues(){
       $scope.incomeTaxAllowance = $scope.ruleSet[0].allowance($scope);
@@ -89,6 +91,10 @@ angular.module('taxnumptyApp')
       }
     }
 
+    $scope.setViewSettings = function(){
+      $scope.showMoreSettings = !$scope.showMoreSettings;
+    };
+
 
     $scope.$watchCollection('[salary, selectedAge, student, blind, noNI, married, addAllowance, pension]', function() {
       $scope.age = $scope.selectedAge.id;
@@ -100,5 +106,26 @@ angular.module('taxnumptyApp')
       calculateTotalDeductions();
       calculateTakeHome();
     });
+
+    /*
+     *  Some jQuery to handle making divs full browser height
+     *  @todo : something about this hackyness!
+     */
+    if(typeof $ !== 'undefined'){
+      $(function() {
+        function sizeElements(){
+          var $settings = $('.salary-settings');
+          $settings.height('auto');
+          if($(document).width() > 960){
+            var docH = $(document).height();
+            $settings.height(docH);
+          }
+        }
+        setTimeout(sizeElements, 10);
+        $(window).resize(function(){
+          sizeElements();
+        });
+      });
+    }
 
   }]);

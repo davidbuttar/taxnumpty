@@ -1,6 +1,6 @@
 /* Space out content a bit */
 body {
-  background:#E8E8E8;
+  background:#E8E8E8 url(../images/taxplanet-bg.png) no-repeat center center;
   color:#555;
 }
 
@@ -29,8 +29,8 @@ img {
 
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
-  color:#aaa;
-  font-size:12px;
+  color: #888;
+  font-size: 12px;
   margin-top: 0;
   margin-bottom: 0;
   line-height: 18px;
@@ -49,12 +49,20 @@ img {
 .salary-settings{
   border:1px solid #ccc;
   background: #F6F6F6;
-  margin: 0 15px 37px;
+  margin: 0 15px 20px;
 }
 
 .salary-settings-inner{
   padding: 22px;
   height:auto;
+}
+
+.more-settings{
+  display:none;
+}
+
+.more-settings.selected{
+  display:block;
 }
 
 .salary-hd{
@@ -72,6 +80,23 @@ label{
   text-transform: uppercase;
   font-size:12px;
   margin-bottom:8px;
+}
+
+.hide-toggle{
+  background: #fff;
+  color:#666;
+  display:block;
+  font-family: 'Carrois Gothic SC', sans-serif;
+  text-transform: uppercase;
+  font-size:12px;
+  padding:6px;
+  margin-bottom:10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hide-toggle:hover{
+  background: #fff;
 }
 
 .form-control{
@@ -106,7 +131,7 @@ label{
   border: 1px solid #dedede;
   padding:22px;
   background: rgba(255,255,255,0.75);
-  margin-bottom:37px;
+  margin-bottom:20px;
 }
 
 .result-block h4{
@@ -121,6 +146,7 @@ label{
 .result-block table{
   margin-bottom: 0;
   font-family: 'Carrois Gothic SC', sans-serif;
+  font-size: 12px;
 }
 
 .result-summary{
@@ -139,47 +165,6 @@ label{
 .row {
   margin-right: 0;
   margin-left: 0;
-}
-
-/* Customize container */
-@media (min-width: 960px) {
-
-  .salary-settings{
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    bottom: 0px;
-    width: 286px;
-    border: none;
-    border-right: 1px solid #ccc;
-    margin:0;
-  }
-
-  .salary-settings-inner{
-    width:224px;
-    margin:60px auto 0;
-    padding: 0;
-  }
-
-  .results{
-    margin: 40px 30px 0 326px;
-  }
-
-  .header {
-    position: absolute;
-    top:10px;
-    left:16px;
-    padding: 8px 15px;
-  }
-
-  #taxed-bg {
-    position: absolute;
-    top: 50%;
-    left: 60%;
-    transform: translateY(-50%) translateX(-50%);
-    z-index: -1;
-  }
-
 }
 
 .container-narrow > hr {
@@ -220,6 +205,70 @@ label{
   }
 }
 
+/* Customize container */
+@media (min-width: 960px) {
+
+  .salary-settings{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 286px;
+    border: none;
+    border-right: 1px solid #ccc;
+    margin:0;
+  }
+
+  .salary-settings-inner{
+    width:224px;
+    margin:60px auto 0;
+    padding: 0;
+  }
+
+  .more-settings{
+    display:block;
+  }
+
+  .results{
+    margin: 40px 10px 0 306px;
+  }
+
+  .result-block{
+    margin-bottom:37px;
+  }
+
+  .header {
+    position: absolute;
+    top:10px;
+    left:16px;
+    padding: 8px 15px;
+  }
+
+  #taxed-bg {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translateY(-50%) translateX(-50%);
+    z-index: -1;
+  }
+
+  .hide-toggle{
+    display:none;
+  }
+
+}
+
+
+@media (min-width: 1360px){
+
+  .results {
+    margin: 40px 30px 0 326px;
+  }
+
+  .result-block table{
+    font-size:14px;
+  }
+
+}
 
 @media (max-width: 1100px){
   .col-md-6 {
