@@ -5,7 +5,17 @@
     <form role="form">
       <div class="form-group">
         <label for="salaryInput">Salary</label>
-        <input type="text" class="form-control" id="salaryInput" placeholder="Enter salary" ng-model="salary">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Enter salary" ng-model="visSalary">
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">{{payPeriod}} <span class="caret"></span></button>
+            <ul class="dropdown-menu pull-right">
+              <li><a ng-click="setPayPeriod('Yearly')">Yearly</a></li>
+              <li><a ng-click="setPayPeriod('Monthly')">Monthly</a></li>
+              <li><a ng-click="setPayPeriod('Weekly')">Weekly</a></li>
+            </ul>
+          </div><!-- /btn-group -->
+        </div><!-- /input-group -->
       </div>
       <h4 class="hide-toggle" ng-click="setViewSettings()">
         More Options <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down':showMoreSettings, 'glyphicon-chevron-left':!showMoreSettings}"></i></h4>
@@ -52,9 +62,10 @@
     <div class="row">
       <div class="col-md-6">
         <div class="result-block">
+          <h4>Summary</h4>
           <p class="result-summary">From a salary of <span class="result-highlight">&pound;{{salary | number:2}}</span> your take home pay is <span class="result-highlight">&pound;{{totalTakeHome | number:2}}</span> a year (<span class="result-highlight">&pound;{{totalTakeHome/12 | number:2}}</span> a month)</p>
 
-          <p class="result-summary">The total deducted from your wages is <span class="result-highlight">&pound;{{totalDeductions | number:2}}</span> (<span class="result-highlight">&pound;{{totalDeductions/12 | number:2}}</span> a month).</p>
+          <p class="result-summary">The total deducted from your wages is <span class="result-highlight-red">&pound;{{totalDeductions | number:2}}</span> (<span class="result-highlight-red">&pound;{{totalDeductions/12 | number:2}}</span> a month).</p>
         </div>
         <div class="result-block">
           <h4>Details</h4>
@@ -98,19 +109,19 @@
           <td>{{nationalInsurance/12 | number:2}}</td>
           <td>{{nationalInsurance/52 | number:2}}</td>
         </tr>
-        <tr>
+        <tr ng-show='studentLoan > 0'>
           <td>Student Loan</td>
           <td>{{studentLoan | number:2}}</td>
           <td>{{studentLoan/12 | number:2}}</td>
           <td>{{studentLoan/52 | number:2}}</td>
         </tr>
-        <tr>
+        <tr ng-show='pension > 0'>
           <td>Pension</td>
           <td>{{pension | number:2}}</td>
           <td>{{pension/12 | number:2}}</td>
           <td>{{pension/52 | number:2}}</td>
         </tr>
-        <tr>
+        <tr ng-show='pension > 0'>
           <td>Pension HMRC</td>
           <td>{{pensionHMRC | number:2}}</td>
           <td>{{pensionHMRC/12 | number:2}}</td>
@@ -134,7 +145,8 @@
       </div>
       <div class="col-md-6">
         <div class="result-block">
-          <p p class="result-summary">Over a working lifetime at the current salary you will take home <span class="result-highlight">&pound;{{totalTakeHome*45 | number:2}}</span> and pay <span class="result-highlight">&pound;{{(incomeTax+nationalInsurance)*45 | number:2}}</span> in tax.</p>
+          <h4>Analysis</h4>
+          <p p class="result-summary">Over a working lifetime at the current salary you will take home <span class="result-highlight">&pound;{{totalTakeHome*45 | number:2}}</span> and pay <span class="result-highlight-red">&pound;{{(incomeTax+nationalInsurance)*45 | number:2}}</span> in tax.</p>
         </div>
       </div>
     </div>

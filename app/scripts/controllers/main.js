@@ -16,6 +16,7 @@ angular.module('taxnumptyApp')
     $scope.ruleSet = $scope.availableRules.uk201314.rules;
 
     $scope.salary = null;
+    $scope.visSalary = null;
     $scope.incomeTax = 0;
     $scope.taxableIncome = 0;
     $scope.nationalInsurance = 0;
@@ -32,6 +33,7 @@ angular.module('taxnumptyApp')
     $scope.pensionHMRC = 0;
     $scope.totalTakeHome = 0;
     $scope.showMoreSettings = false;
+    $scope.payPeriod = 'Yearly';
 
     function setIncomeTaxValues(){
       $scope.incomeTaxAllowance = $scope.ruleSet[0].allowance($scope);
@@ -95,9 +97,18 @@ angular.module('taxnumptyApp')
       $scope.showMoreSettings = !$scope.showMoreSettings;
     };
 
+    $scope.setPayPeriod = function(period){
+      $scope.payPeriod = period;
+    };
 
-    $scope.$watchCollection('[salary, selectedAge, student, blind, noNI, married, addAllowance, pension]', function() {
+    $scope.$watchCollection('[visSalary, selectedAge, student, blind, noNI, married, addAllowance, pension, payPeriod]', function() {
       $scope.age = $scope.selectedAge.id;
+      $scope.salary = $scope.visSalary;
+      if($scope.payPeriod === 'Monthly'){
+        $scope.salary = $scope.salary * 12;
+      }else if ($scope.payPeriod === 'Weekly'){
+        $scope.salary = $scope.salary * 52;
+      }
       setIncomeTaxValues();
       calculateTaxableIncome();
       calculateStudentLoan();

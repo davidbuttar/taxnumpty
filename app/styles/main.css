@@ -1,7 +1,15 @@
 /* Space out content a bit */
+html{
+  height:100%;
+  margin: 0;
+position: relative;
+}
+
 body {
-  background:#E8E8E8 url(../images/taxplanet-bg.png) no-repeat center center;
+  background:#E8E8E8 url(images/taxplanet-bg.png) no-repeat center center;
   color:#555;
+  overflow: auto;
+  min-height: 100%;
 }
 
 img {
@@ -29,7 +37,7 @@ img {
 
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
-  color: #888;
+  color: #444;
   font-size: 12px;
   margin-top: 0;
   margin-bottom: 0;
@@ -49,12 +57,19 @@ img {
 .salary-settings{
   border:1px solid #ccc;
   background: #F6F6F6;
-  margin: 0 15px 20px;
+  margin: 0 10px 20px;
 }
 
 .salary-settings-inner{
   padding: 22px;
   height:auto;
+}
+
+.salary-settings-inner .btn-default {
+  color: #333333;
+  background-color: #eee;
+  border: none;
+  border-radius: 0;
 }
 
 .more-settings{
@@ -89,7 +104,7 @@ label{
   font-family: 'Carrois Gothic SC', sans-serif;
   text-transform: uppercase;
   font-size:12px;
-  padding:6px;
+  padding:10px;
   margin-bottom:10px;
   font-weight: bold;
   cursor: pointer;
@@ -122,9 +137,9 @@ label{
 /* Results */
 
 .results{
-
   margin: 40px 0 0 0;
   font-family: 'Carrois Gothic SC', sans-serif;
+  display: inline-block;
 }
 
 .result-block{
@@ -157,9 +172,13 @@ label{
   margin:0;
 }
 
-.result-highlight{
+.result-highlight, .result-highlight-red{
   color:#067DC5;
   font-size: 16px;
+}
+
+.result-highlight-red{
+  color:#D83500;
 }
 
 .row {
@@ -243,6 +262,10 @@ label{
     padding: 8px 15px;
   }
 
+  .header h3{
+    color:#666;
+  }
+
   #taxed-bg {
     position: absolute;
     top: 50%;
@@ -274,5 +297,14 @@ label{
   .col-md-6 {
     width: auto;
     float: none;
+    padding-left: 10px;
+    padding-right: 10px;
   }
+}
+
+
+/* --- Bootstap Skin --- */
+
+.dropdown-menu {
+  border-radius: 0;
 }
