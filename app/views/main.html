@@ -63,7 +63,7 @@
       <div class="col-md-6">
         <div class="result-block">
           <h4>Summary</h4>
-          <p class="result-summary">From a salary of <span class="result-highlight">&pound;{{salary | number:2}}</span> your take home pay is <span class="result-highlight">&pound;{{totalTakeHome | number:2}}</span> a year (<span class="result-highlight">&pound;{{totalTakeHome/12 | number:2}}</span> a month)</p>
+          <p class="result-summary">Your take home pay is <span class="result-highlight">&pound;{{totalTakeHome | number:2}}</span> a year (<span class="result-highlight">&pound;{{totalTakeHome/12 | number:2}}</span> a month)</p>
 
           <p class="result-summary">The total deducted from your wages is <span class="result-highlight-red">&pound;{{totalDeductions | number:2}}</span> (<span class="result-highlight-red">&pound;{{totalDeductions/12 | number:2}}</span> a month).</p>
         </div>
@@ -109,7 +109,7 @@
           <td>{{nationalInsurance/12 | number:2}}</td>
           <td>{{nationalInsurance/52 | number:2}}</td>
         </tr>
-        <tr ng-show='studentLoan > 0'>
+        <tr class="active" ng-show='studentLoan > 0'>
           <td>Student Loan</td>
           <td>{{studentLoan | number:2}}</td>
           <td>{{studentLoan/12 | number:2}}</td>

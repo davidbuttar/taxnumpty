@@ -29,11 +29,171 @@
 
     <!-- Add your site or application content here -->
     <div class="header">
-      <h3>Taxplanet.com | UK Tax Calculator</h3>
+      <h3>Taxedplanet.com | UK Tax Calculator</h3>
+    </div>
+    <div class="results-container">
+        <div class="results" ng-view="">
+
+          <!-- SEO output overwitten by angular -->
+
+<div class="salary-settings ng-scope">
+  <div class="salary-settings-inner">
+    <!--h2 class="salary-hd">Taxedplanet.com | Uk Tax Calculator</h2-->
+    <form role="form" class="ng-pristine ng-valid">
+      <div class="form-group">
+        <label for="salaryInput">Salary</label>
+        <div class="input-group">
+          <input type="text" class="form-control ng-pristine ng-valid" placeholder="Enter salary" ng-model="visSalary">
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-default dropdown-toggle ng-binding" data-toggle="dropdown">Yearly <span class="caret"></span></button>
+            <ul class="dropdown-menu pull-right">
+              <li><a ng-click="setPayPeriod('Yearly')">Yearly</a></li>
+              <li><a ng-click="setPayPeriod('Monthly')">Monthly</a></li>
+              <li><a ng-click="setPayPeriod('Weekly')">Weekly</a></li>
+            </ul>
+          </div><!-- /btn-group -->
+        </div><!-- /input-group -->
+      </div>
+      <h4 class="hide-toggle" ng-click="setViewSettings()">
+        More Options <i class="pull-right glyphicon glyphicon-chevron-left" ng-class="{'glyphicon-chevron-down':showMoreSettings, 'glyphicon-chevron-left':!showMoreSettings}"></i></h4>
+      <div class="more-settings" ng-class="{'selected':showMoreSettings}">
+        <div class="form-group">
+          <label for="age">Age</label>
+          <select ng-model="selectedAge" class="form-control ng-pristine ng-valid" ng-options="c.name for c in ages"><option value="0" selected="selected">Under 65</option><option value="1">65 - 74</option><option value="2">Over 75</option></select>
+        </div>
+        <div class="form-group">
+          <div class="checkbox">
+            <label>
+              Include Student Loan <input type="checkbox" ng-model="student" class="ng-pristine ng-valid">
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              Married <input type="checkbox" ng-model="married" class="ng-pristine ng-valid">
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              Blind <input type="checkbox" ng-model="blind" class="ng-pristine ng-valid">
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              No N.I. <input type="checkbox" ng-model="noNI" class="ng-pristine ng-valid">
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="salaryInput">Pension Contribution</label>
+          <input type="text" class="form-control ng-pristine ng-valid" id="pensionInput" placeholder="Enter pension" ng-model="pension">
+        </div>
+        <div class="form-group">
+          <label for="salaryInput">Added Allowance</label>
+          <input type="text" class="form-control ng-pristine ng-valid" id="addAllowanceInput" placeholder="Enter Allowance or subtraction" ng-model="addAllowance">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+    <div class="row ng-scope">
+      <div class="col-md-6">
+        <div class="result-block">
+          <h4>Summary</h4>
+          <p class="result-summary">Your take home pay is <span class="result-highlight ng-binding">£0.00</span> a year (<span class="result-highlight ng-binding">£0.00</span> a month)</p>
+
+          <p class="result-summary">The total deducted from your wages is <span class="result-highlight-red ng-binding">£0.00</span> (<span class="result-highlight-red ng-binding">£0.00</span> a month).</p>
+        </div>
+        <div class="result-block">
+          <h4>Details</h4>
+<table class="table table-bordered">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Yearly</th>
+          <th>Monthly</th>
+          <th>Weekly</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="warning">
+          <td>Salary</td>
+          <td class="ng-binding">0.00</td>
+          <td class="ng-binding">0.00</td>
+          <td class="ng-binding">0.00</td>
+        </tr>
+        <tr class="danger">
+          <td>Taxable</td>
+          <td class="ng-binding">0.00</td>
+          <td class="ng-binding">0.00</td>
+          <td class="ng-binding">0.00</td>
+        </tr>
+        <tr>
+          <td>Allowance</td>
+          <td class="ng-binding">9,440.00</td>
+          <td class="ng-binding">786.67</td>
+          <td class="ng-binding">181.54</td>
+        </tr>
+        <tr>
+          <td>Income Tax</td>
+          <td class="ng-binding">0.00</td>
+          <td class="ng-binding">0.00</td>
+          <td class="ng-binding">0.00</td>
+        </tr>
+        <tr>
+          <td>N.I.</td>
+          <td class="ng-binding">0.00</td>
+          <td class="ng-binding">0.00</td>
+          <td class="ng-binding">0.00</td>
+        </tr>
+        <tr ng-show="studentLoan &gt; 0" class="ng-hide">
+          <td>Student Loan</td>
+          <td class="ng-binding">0.00</td>
+          <td class="ng-binding">0.00</td>
+          <td class="ng-binding">0.00</td>
+        </tr>
+        <tr ng-show="pension &gt; 0" class="ng-hide">
+          <td>Pension</td>
+          <td class="ng-binding">0.00</td>
+          <td class="ng-binding">0.00</td>
+          <td class="ng-binding">0.00</td>
+        </tr>
+        <tr ng-show="pension &gt; 0" class="ng-hide">
+          <td>Pension HMRC</td>
+          <td class="ng-binding">0.00</td>
+          <td class="ng-binding">0.00</td>
+          <td class="ng-binding">0.00</td>
+        </tr>
+        <tr class="danger">
+          <td>Total Deductions</td>
+          <td class="ng-binding">0.00</td>
+          <td class="ng-binding">0.00</td>
+          <td class="ng-binding">0.00</td>
+        </tr>
+        <tr class="success">
+          <td>Take Home Pay</td>
+          <td class="ng-binding">0.00</td>
+          <td class="ng-binding">0.00</td>
+          <td class="ng-binding">0.00</td>
+        </tr>
+      </tbody>
+    </table>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="result-block">
+          <h4>Analysis</h4>
+          <p p="" class="result-summary">Over a working lifetime at the current salary you will take home <span class="result-highlight ng-binding">£0.00</span> and pay <span class="result-highlight-red ng-binding">£0.00</span> in tax.</p>
+        </div>
+      </div>
     </div>
 
-    <div class="results" ng-view=""></div>
+    <!-- SEO output overwitten by angular -->
 
+        </div>
+        <a href="https://plus.google.com/+davidbuttar?
+       rel=author" style="display:none">Google</a>
+    </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
