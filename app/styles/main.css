@@ -6,7 +6,7 @@ html{
 }
 
 body {
-  background:#E8E8E8 url(../images/taxplanet-bg.png) no-repeat center center;
+  background:#E8E8E8 url(../images/taxplanet-bg-2.png) no-repeat center center;
   color:#555;
   overflow: auto;
   min-height: 100%;
@@ -246,6 +246,7 @@ label{
     border: none;
     border-right: 1px solid #ccc;
     margin:0;
+    height: 100wh;
   }
 
   .salary-settings-inner{
