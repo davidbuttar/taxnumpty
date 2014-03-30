@@ -108,6 +108,10 @@ angular.module('taxnumptyApp')
         $scope.salary = $scope.salary * 12;
       }else if ($scope.payPeriod === 'Weekly'){
         $scope.salary = $scope.salary * 52;
+      }else if ($scope.payPeriod === 'Daily'){
+        $scope.salary = $scope.salary * 5 * 52;
+      }else if ($scope.payPeriod === 'Hourly'){
+        $scope.salary = $scope.salary * 37.5 * 52;
       }
       setIncomeTaxValues();
       calculateTaxableIncome();
@@ -133,26 +137,31 @@ angular.module('taxnumptyApp')
           }
         }
         setTimeout(sizeElements, 10);
+
+        $scope.ruleSet[0].calculateIncomeByPerc();
+
         $(window).resize(function(){
           sizeElements();
         });
-
+        console.log($scope.ruleSet[0].incomeDistByPerc);
         chart('#wealth-dis-chart',{
           title:'UK Wealth Distribution',
-          unit:'£',
+          unit:'%',
           prefixUnit:true,
           animate:true,
           yaxis:[
             {
-              label:'Revenue',
               showUnit:true
             }
           ],
+          labels:{
+            values:[8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,42,43,44,45,47,49,51,54,57,61,67,75,86,104,147]
+          },
           series:[
             {
-              type:'line',
+              type:'bar',
               name:'2013',
-              data:[7740, 8000, 8280, 8560, 8840, 9150, 9450, 9740, 10000, 10200, 10400, 10700, 10900, 11100, 11300, 11500, 11700, 12000, 12200, 12400, 12600, 12900, 13100, 13300, 13500, 13800, 14000, 14300, 14500, 14700, 15000, 15200, 15500, 15800, 16000, 16300, 16600, 16800, 17100, 17400, 17600, 17900, 18200, 18500, 18800, 19100, 19400, 19700, 20000, 20300, 20700, 21000, 21300, 21700, 22100, 22400, 22800, 23200, 23600, 24000, 24400, 24900, 25300, 25800, 26300, 26800, 27300, 27800, 28400, 29000, 29500, 30100, 30800, 31400, 32100, 32800, 33600, 34400, 35200, 36000, 36900, 37900, 39000, 40000, 41100, 42200, 43400, 44800, 46400, 48300, 50500, 53200, 56500, 60700, 66200, 74100, 85500, 104000, 147000],
+              data:$scope.ruleSet[0].incomeDistByPerc,
               className:'series1'
             }
           ]
