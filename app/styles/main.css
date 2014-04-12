@@ -157,8 +157,12 @@ label{
 
 .result-block{
   padding:22px;
-  background: rgba(255,255,255,0.75);
+  background: rgba(239,240,240,.95);
   margin-bottom:20px;
+}
+
+.result-block:nth-child(even){
+  background: rgba(249,249,249,0.95);
 }
 
 .result-block h4{
@@ -238,6 +242,7 @@ label{
 }
 
 /* Customize container */
+
 @media (min-width: 960px) {
 
   .salary-settings{
@@ -273,7 +278,7 @@ label{
   }
 
   .result-block{
-    margin-bottom:37px;
+    margin-bottom:0;
   }
 
   .header {
@@ -301,7 +306,7 @@ label{
 @media (min-width: 1360px){
 
   .results {
-    margin: 40px 0 0 286px;
+    margin: 0 0 0 286px;
   }
 
   .result-block table{
