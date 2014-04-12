@@ -49,8 +49,9 @@ color: #000; display: none; white-space: nowrap; background: #fff; position: abs
 
 
 .series1 {
-	width: 2px;
-	background: #FFCC00;
+	width: 1px;
+	background: #43919D;
+  border-color: #fff;
 }
 
 .series1-hover {

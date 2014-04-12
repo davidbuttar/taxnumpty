@@ -11,7 +11,7 @@ angular.module('taxCalculatorRules', []).factory('rulesCollection', function () 
         taxAllowance: 9440,
         maxPensionRelief: 50000,
         incomeDistribution: [7740, 8000, 8280, 8560, 8840, 9150, 9450, 9740, 10000, 10200, 10400, 10700, 10900, 11100, 11300, 11500, 11700, 12000, 12200, 12400, 12600, 12900, 13100, 13300, 13500, 13800, 14000, 14300, 14500, 14700, 15000, 15200, 15500, 15800, 16000, 16300, 16600, 16800, 17100, 17400, 17600, 17900, 18200, 18500, 18800, 19100, 19400, 19700, 20000, 20300, 20700, 21000, 21300, 21700, 22100, 22400, 22800, 23200, 23600, 24000, 24400, 24900, 25300, 25800, 26300, 26800, 27300, 27800, 28400, 29000, 29500, 30100, 30800, 31400, 32100, 32800, 33600, 34400, 35200, 36000, 36900, 37900, 39000, 40000, 41100, 42200, 43400, 44800, 46400, 48300, 50500, 53200, 56500, 60700, 66200, 74100, 85500, 104000, 147000],
-        incomeDistByPerc: [{"x":0,"y":2},{"x":1,"y":3},{"x":2,"y":4},{"x":3,"y":4},{"x":4,"y":5},{"x":5,"y":4},{"x":6,"y":5},{"x":7,"y":4},{"x":8,"y":4},{"x":9,"y":3},{"x":10,"y":4},{"x":11,"y":3},{"x":12,"y":4},{"x":13,"y":3},{"x":14,"y":2},{"x":15,"y":3},{"x":16,"y":3},{"x":17,"y":2},{"x":18,"y":2},{"x":19,"y":2},{"x":20,"y":2},{"x":21,"y":2},{"x":22,"y":1},{"x":23,"y":2},{"x":24,"y":1},{"x":25,"y":2},{"x":26,"y":1},{"x":27,"y":1},{"x":28,"y":2},{"x":29,"y":1},{"x":30,"y":1},{"x":31,"y":1},{"x":32,"y":1},{"x":33,"y":1},{"x":34,"y":1},{"x":35,"y":1},{"x":36,"y":1},{"x":37,"y":1},{"x":38,"y":1},{"x":39,"y":1},{"x":40,"y":1},{"x":41,"y":1},{"x":42,"y":1},{"x":43,"y":1},{"x":44,"y":1},{"x":45,"y":1},{"x":46,"y":1},{"x":47,"y":1},{"x":48,"y":1}],
+        incomeDistByPerc: [{'x':0,'y':2},{'x':1,'y':3},{'x':2,'y':4},{'x':3,'y':4},{'x':4,'y':5},{'x':5,'y':4},{'x':6,'y':5},{'x':7,'y':4},{'x':8,'y':4},{'x':9,'y':3},{'x':10,'y':4},{'x':11,'y':3},{'x':12,'y':4},{'x':13,'y':3},{'x':14,'y':2},{'x':15,'y':3},{'x':16,'y':3},{'x':17,'y':2},{'x':18,'y':2},{'x':19,'y':2},{'x':20,'y':2},{'x':21,'y':2},{'x':22,'y':1},{'x':23,'y':2},{'x':24,'y':1},{'x':25,'y':2},{'x':26,'y':1},{'x':27,'y':1},{'x':28,'y':2},{'x':29,'y':1},{'x':30,'y':1},{'x':31,'y':1},{'x':32,'y':1},{'x':33,'y':1},{'x':34,'y':1},{'x':35,'y':1},{'x':36,'y':1},{'x':37,'y':1},{'x':38,'y':1},{'x':39,'y':1},{'x':40,'y':1},{'x':41,'y':1},{'x':42,'y':1},{'x':43,'y':1},{'x':44,'y':1},{'x':45,'y':1},{'x':46,'y':1},{'x':47,'y':1},{'x':48,'y':1}],
         calculateIncomeByPerc:function() {
           // Keep filling current bucket until it is more than current value.
           var startBucket = 8000;
@@ -32,7 +32,6 @@ angular.module('taxCalculatorRules', []).factory('rulesCollection', function () 
             chartValues.push(parseInt(j.replace('_',''))/1000);
             count++;
           }
-          console.log(JSON.stringify(chartValues));
         },
         allowance: function (opts, subtractPension) { // should just be getAllowance
           var salary = opts.salary ? parseInt(opts.salary) : 0;
@@ -151,7 +150,7 @@ angular.module('taxCalculatorRules', []).factory('rulesCollection', function () 
           allowance: function (opts, subtractPension) { // should just be getAllowance
             var salary = opts.salary;
             var ageOpts = parseInt(opts.age);
-            var allowance = 9440 + opts.addAllowance;
+            var allowance = 10000 + opts.addAllowance;
             if (subtractPension){ allowance = allowance + opts.pension; }
             if (ageOpts === 2 || ageOpts === 3) {
               var localAllowance = ageOpts === 2 ? 10500 : 10660;

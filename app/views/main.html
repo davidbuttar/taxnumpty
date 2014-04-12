@@ -1,7 +1,6 @@
 
 <div class="salary-settings">
   <div class="salary-settings-inner">
-    <!--h2 class="salary-hd">Taxedplanet.com | Uk Tax Calculator</h2-->
     <form role="form">
       <div class="form-group">
         <label for="salaryInput">Salary</label>
@@ -62,7 +61,7 @@
 </div>
 
     <div class="row">
-      <div class="col-md-6">
+      <div>
         <div class="result-block">
           <h4>Summary</h4>
           <p class="result-summary">Your take home pay is <span class="result-highlight">&pound;{{totalTakeHome | number:2}}</span> a year (<span class="result-highlight">&pound;{{totalTakeHome/12 | number:2}}</span> a month)</p>
@@ -145,7 +144,7 @@
     </table>
         </div>
       </div>
-      <div class="col-md-6">
+      <div>
         <div class="result-block">
           <h4>Analysis</h4>
           <p class="result-summary">Over a working lifetime at the current salary you will take home <span class="result-highlight">&pound;{{totalTakeHome*45 | number:2}}</span> and pay <span class="result-highlight-red">&pound;{{(incomeTax+nationalInsurance)*45 | number:2}}</span> in tax.</p>
@@ -153,6 +152,11 @@
             <div id="wealth-dis-chart" class="cbc-chart">
             </div>
           </div>
+          <div class="wealth-dis-chart-container">
+            <div id="pieChart" class="cbc-chart">
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

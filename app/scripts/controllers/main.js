@@ -1,4 +1,4 @@
-/*global $:false */
+/*global $:false, chart */
 'use strict';
 
 angular.module('taxnumptyApp')
@@ -13,7 +13,7 @@ angular.module('taxnumptyApp')
     $scope.selectedAge = $scope.ages[0];
 
     $scope.availableRules = rules;
-    $scope.ruleSet = $scope.availableRules.uk201314.rules;
+    $scope.ruleSet = $scope.availableRules.uk201415.rules;
 
     $scope.salary = null;
     $scope.visSalary = null;
@@ -138,16 +138,20 @@ angular.module('taxnumptyApp')
         }
         setTimeout(sizeElements, 10);
 
-        $scope.ruleSet[0].calculateIncomeByPerc();
+
 
         $(window).resize(function(){
           sizeElements();
         });
-        console.log($scope.ruleSet[0].incomeDistByPerc);
-        chart('#wealth-dis-chart',{
+
+        //$scope.ruleSet[0].calculateIncomeByPerc();
+        /*chart('#wealth-dis-chart',{
           title:'UK Wealth Distribution',
           unit:'%',
           prefixUnit:true,
+          dataMarkers:{
+            show:false
+          },
           animate:true,
           yaxis:[
             {
@@ -159,10 +163,31 @@ angular.module('taxnumptyApp')
           },
           series:[
             {
-              type:'bar',
+              type:'splineArea',
               name:'2013',
               data:$scope.ruleSet[0].incomeDistByPerc,
               className:'series1'
+            }
+          ]
+        });*/
+
+        window.charInst = chart('#pieChart',{
+          unit:'&#36;',
+          prefixUnit:true,
+          series:[
+            {
+              type:'donut',
+              name:'donut',
+              donutWidth:10,
+              data:[{
+                value:84,
+                label:'income tax',
+                className:'donutActive'
+              }, {
+                value:16,
+                label:'take  home',
+                className:'donutInactive'
+              }]
             }
           ]
         });

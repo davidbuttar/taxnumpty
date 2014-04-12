@@ -30,7 +30,7 @@
 
     <!-- Add your site or application content here -->
     <div class="header">
-      <h3>Taxedplanet | UK Tax Calculator</h3>
+      <h3 class="info1">Taxed <span>planet</span></h3>
     </div>
     <div class="results-container">
         <div class="results" ng-view="">
@@ -90,6 +90,7 @@
     <script type="text/javascript" src="scripts/pl/types/cbv.bar.js"></script>
     <script type="text/javascript" src="scripts/pl/types/cbv.barStacked.js"></script>
     <script type="text/javascript" src="scripts/pl/types/cbv.pie.js"></script>
+    <script type="text/javascript" src="scripts/pl/types/cbv.donut.js"></script>
     <script type="text/javascript" src="scripts/pl/cbv.collisionDetection.js"></script>
     <script type="text/javascript" src="scripts/pl/cbv.dataAxes.js"></script>
     <script type="text/javascript" src="scripts/pl/cbv.dataPoint.js"></script>
