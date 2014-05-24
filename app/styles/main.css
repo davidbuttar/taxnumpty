@@ -221,22 +221,66 @@ label{
   font-size: 12px;
 }
 
+
+.summary-hd{
+  overflow: hidden;
+}
+
+.summary-hd h4{
+  float:left;
+}
+
+.summary-options{
+  float:right;
+}
+
+.summary-options ul{
+  list-style: none;
+}
+
+.summary-options ul li{
+  float:left;
+  display: block;
+  padding:0 8px;
+  color:#666;
+  cursor: pointer;
+}
+
+.summary-options ul .selected{
+  text-decoration: underline;
+  color:#222;
+}
+
+.result-summary-ctr{
+  width:300px;
+}
+
 .result-summary{
   margin:0 0 20px;
+  text-transform: uppercase;
+  overflow:hidden
 }
 
 .result-summary:last-child{
   margin:0;
 }
 
+.result-label{
+  min-width: 180px;
+  float:left;
+  color:#268A9A;
+}
+
 .result-highlight, .result-highlight-red{
-  color:#067DC5;
+  color:#000;
   font-size: 16px;
   letter-spacing: 1px;
+  font-weight: bold;
+  float:right;
 }
 
 .result-highlight-red{
-  color:#D83500;
+  color:#930000;
 }
 
 .row {

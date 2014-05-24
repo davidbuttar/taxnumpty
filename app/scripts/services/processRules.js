@@ -4,7 +4,6 @@
 angular.module('taxCalculator', []).factory('processRules', function() {
   var that = {};
 
-
   // Apply taxation band to salary, band will have
   // from, to and rate to apply.
   that.applyBand = function(salary, band){

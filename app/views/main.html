@@ -1,11 +1,10 @@
-
 <div class="salary-settings">
   <div class="salary-settings-inner">
     <form role="form">
       <div class="form-group">
         <label for="salaryInput">Salary</label>
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Enter salary" ng-model="visSalary">
+          <input type="text" class="form-control" placeholder="Enter salary" id="salaryInput" ng-model="visSalary">
           <div class="input-group-btn">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">{{payPeriod}} <span class="caret"></span></button>
             <ul class="dropdown-menu pull-right">
@@ -23,7 +22,7 @@
       <div class="more-settings" ng-class="{'selected':showMoreSettings}">
         <div class="form-group">
           <label for="age">Age</label>
-          <select ng-model="selectedAge" class="form-control" ng-options="c.name for c in ages"></select>
+          <select ng-model="selectedAge" id="age" class="form-control" ng-options="c.name for c in ages"></select>
         </div>
         <div class="form-group">
           <div class="checkbox">
@@ -48,118 +47,127 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="salaryInput">Pension Contribution</label>
+          <label for="pensionInput">Pension Contribution</label>
           <input type="text" class="form-control" id="pensionInput" placeholder="Enter pension" ng-model="pension">
         </div>
         <div class="form-group">
-          <label for="salaryInput">Added Allowance</label>
+          <label for="addAllowanceInput">Added Allowance</label>
           <input type="text" class="form-control" id="addAllowanceInput" placeholder="Enter Allowance or subtraction" ng-model="addAllowance">
         </div>
       </div>
     </form>
   </div>
 </div>
-
-    <div class="row">
-      <div>
-        <div class="result-block">
-          <h4>Summary</h4>
-          <p class="result-summary">Your take home pay is <span class="result-highlight">&pound;{{totalTakeHome | number:2}}</span> a year (<span class="result-highlight">&pound;{{totalTakeHome/12 | number:2}}</span> a month)</p>
-
-          <p class="result-summary">The total deducted from your wages is <span class="result-highlight-red">&pound;{{totalDeductions | number:2}}</span> (<span class="result-highlight-red">&pound;{{totalDeductions/12 | number:2}}</span> a month).</p>
-        </div>
-        <div class="result-block">
-          <h4>Details</h4>
-<table class="table table-bordered">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Yearly</th>
-          <th>Monthly</th>
-          <th>Weekly</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="warning">
-          <td>Salary</td>
-          <td>{{salary | number:2}}</td>
-          <td>{{salary/12 | number:2}}</td>
-          <td>{{salary/52 | number:2}}</td>
-        </tr>
-        <tr class="danger">
-          <td >Taxable</td>
-          <td>{{taxableIncome | number:2}}</td>
-          <td>{{taxableIncome/12 | number:2}}</td>
-          <td>{{taxableIncome/52 | number:2}}</td>
-        </tr>
-        <tr>
-          <td>Allowance</td>
-          <td>{{incomeTaxAllowance | number:2}}</td>
-          <td>{{incomeTaxAllowance/12 | number:2}}</td>
-          <td>{{incomeTaxAllowance/52 | number:2}}</td>
-        </tr>
-        <tr>
-          <td>Income Tax</td>
-          <td>{{incomeTax | number:2}}</td>
-          <td>{{incomeTax/12 | number:2}}</td>
-          <td>{{incomeTax/52 | number:2}}</td>
-        </tr>
-        <tr>
-          <td>N.I.</td>
-          <td>{{nationalInsurance | number:2}}</td>
-          <td>{{nationalInsurance/12 | number:2}}</td>
-          <td>{{nationalInsurance/52 | number:2}}</td>
-        </tr>
-        <tr class="active" ng-show='student'>
-          <td>Student Loan</td>
-          <td>{{studentLoan | number:2}}</td>
-          <td>{{studentLoan/12 | number:2}}</td>
-          <td>{{studentLoan/52 | number:2}}</td>
-        </tr>
-        <tr ng-show='pension > 0'>
-          <td>Pension</td>
-          <td>{{pension | number:2}}</td>
-          <td>{{pension/12 | number:2}}</td>
-          <td>{{pension/52 | number:2}}</td>
-        </tr>
-        <tr ng-show='pension > 0'>
-          <td>Pension HMRC</td>
-          <td>{{pensionHMRC | number:2}}</td>
-          <td>{{pensionHMRC/12 | number:2}}</td>
-          <td>{{pensionHMRC/52 | number:2}}</td>
-        </tr>
-        <tr class="danger">
-          <td>Total Deductions</td>
-          <td>{{totalDeductions | number:2}}</td>
-          <td>{{totalDeductions/12 | number:2}}</td>
-          <td>{{totalDeductions/52 | number:2}}</td>
-        </tr>
-        <tr class="success">
-          <td>Take Home Pay</td>
-          <td>{{totalTakeHome | number:2}}</td>
-          <td>{{totalTakeHome/12 | number:2}}</td>
-          <td>{{totalTakeHome/52 | number:2}}</td>
-        </tr>
-      </tbody>
-    </table>
-        </div>
-      </div>
-      <div>
-        <div class="result-block">
-          <h4>Analysis</h4>
-          <p class="result-summary">Over a working lifetime at the current salary you will take home <span class="result-highlight">&pound;{{totalTakeHome*45 | number:2}}</span> and pay <span class="result-highlight-red">&pound;{{(incomeTax+nationalInsurance)*45 | number:2}}</span> in tax.</p>
-          <div class="wealth-dis-chart-container">
-            <div id="wealth-dis-chart" class="cbc-chart">
-            </div>
-          </div>
-          <div class="wealth-dis-chart-container">
-            <div id="pieChart" class="cbc-chart">
-            </div>
-          </div>
-
-        </div>
-      </div>
+<div class="row result-block">
+  <div class="summary-hd">
+    <h4>Summary</h4>
+    <div class="summary-options">
+      <ul>
+        <li ng-class="{selected: summaryPeriods.yearly}" ng-click="toggleSummaryPeriod('yearly')">YR</li>
+        <li ng-class="{selected: summaryPeriods.monthly}" ng-click="toggleSummaryPeriod('monthly')">MN</li>
+        <li ng-class="{selected: summaryPeriods.weekly}" ng-click="toggleSummaryPeriod('weekly')">WK</li>
+        <li ng-class="{selected: summaryPeriods.daily}" ng-click="toggleSummaryPeriod('daily')">DY</li>
+        <li ng-class="{selected: summaryPeriods.hourly}" ng-click="toggleSummaryPeriod('hourly')">HR</li>
+      </ul>
     </div>
-
-    <!--img src="images/taxplanet-bg.png" alt="" id="taxed-bg"/-->
-
+  </div>
+  <div class="result-summary-ctr">
+    <p class="result-summary" ng-show="summaryPeriods.hourly"><span class="result-label">Hourly take home pay</span> <span class="result-highlight">&pound;{{((totalTakeHome/52)/37.5) | number:2}}</span></p>
+    <p class="result-summary" ng-show="summaryPeriods.hourly"><span class="result-label">Hourly Deductions</span> <span class="result-highlight-red">&pound;{{((totalDeductions/52)/37.5) | number:2}}</span></p>
+    <p class="result-summary" ng-show="summaryPeriods.daily"><span class="result-label">Daily take home pay</span> <span class="result-highlight">&pound;{{(totalTakeHome/52)/5 | number:2}}</span></p>
+    <p class="result-summary" ng-show="summaryPeriods.daily"><span class="result-label">Daily Deductions</span> <span class="result-highlight-red">&pound;{{(totalDeductions/52)/5 | number:2}}</span></p>
+    <p class="result-summary" ng-show="summaryPeriods.weekly"><span class="result-label">Weekly take home pay</span> <span class="result-highlight">&pound;{{totalTakeHome/52 | number:2}}</span></p>
+    <p class="result-summary" ng-show="summaryPeriods.weekly"><span class="result-label">Weekly Deductions</span> <span class="result-highlight-red">&pound;{{totalDeductions/52 | number:2}}</span></p>
+    <p class="result-summary" ng-show="summaryPeriods.monthly"><span class="result-label">Monthly take home pay</span> <span class="result-highlight">&pound;{{totalTakeHome/12 | number:2}}</span></p>
+    <p class="result-summary" ng-show="summaryPeriods.monthly"><span class="result-label">Monthly Deductions</span> <span class="result-highlight-red">&pound;{{totalDeductions/12 | number:2}}</span></p>
+    <p class="result-summary" ng-show="summaryPeriods.yearly"><span class="result-label">Yearly take home pay</span> <span class="result-highlight">&pound;{{totalTakeHome | number:2}}</span><span class="result-highlight"></span></p>
+    <p class="result-summary" ng-show="summaryPeriods.yearly"><span class="result-label">Yearly Deductions</span> <span class="result-highlight-red">&pound;{{totalDeductions | number:2}}</span></p>
+  </div>
+</div>
+<div class="row result-block">
+  <h4>Details</h4>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Yearly</th>
+        <th>Monthly</th>
+        <th>Weekly</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="warning">
+        <td>Salary</td>
+        <td>{{salary | number:2}}</td>
+        <td>{{salary/12 | number:2}}</td>
+        <td>{{salary/52 | number:2}}</td>
+      </tr>
+      <tr class="danger">
+        <td >Taxable</td>
+        <td>{{taxableIncome | number:2}}</td>
+        <td>{{taxableIncome/12 | number:2}}</td>
+        <td>{{taxableIncome/52 | number:2}}</td>
+      </tr>
+      <tr>
+        <td>Allowance</td>
+        <td>{{incomeTaxAllowance | number:2}}</td>
+        <td>{{incomeTaxAllowance/12 | number:2}}</td>
+        <td>{{incomeTaxAllowance/52 | number:2}}</td>
+      </tr>
+      <tr>
+        <td>Income Tax</td>
+        <td>{{incomeTax | number:2}}</td>
+        <td>{{incomeTax/12 | number:2}}</td>
+        <td>{{incomeTax/52 | number:2}}</td>
+      </tr>
+      <tr>
+        <td>N.I.</td>
+        <td>{{nationalInsurance | number:2}}</td>
+        <td>{{nationalInsurance/12 | number:2}}</td>
+        <td>{{nationalInsurance/52 | number:2}}</td>
+      </tr>
+      <tr class="active" ng-show='student'>
+        <td>Student Loan</td>
+        <td>{{studentLoan | number:2}}</td>
+        <td>{{studentLoan/12 | number:2}}</td>
+        <td>{{studentLoan/52 | number:2}}</td>
+      </tr>
+      <tr ng-show='pension > 0'>
+        <td>Pension</td>
+        <td>{{pension | number:2}}</td>
+        <td>{{pension/12 | number:2}}</td>
+        <td>{{pension/52 | number:2}}</td>
+      </tr>
+      <tr ng-show='pension > 0'>
+        <td>Pension HMRC</td>
+        <td>{{pensionHMRC | number:2}}</td>
+        <td>{{pensionHMRC/12 | number:2}}</td>
+        <td>{{pensionHMRC/52 | number:2}}</td>
+      </tr>
+      <tr class="danger">
+        <td>Total Deductions</td>
+        <td>{{totalDeductions | number:2}}</td>
+        <td>{{totalDeductions/12 | number:2}}</td>
+        <td>{{totalDeductions/52 | number:2}}</td>
+      </tr>
+      <tr class="success">
+        <td>Take Home Pay</td>
+        <td>{{totalTakeHome | number:2}}</td>
+        <td>{{totalTakeHome/12 | number:2}}</td>
+        <td>{{totalTakeHome/52 | number:2}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!--div class="row result-block">
+  <h4>Analysis</h4>
+  <p class="result-summary">Over a working lifetime at the current salary you will take home <span class="result-highlight">&pound;{{totalTakeHome*45 | number:2}}</span> and pay <span class="result-highlight-red">&pound;{{(incomeTax+nationalInsurance)*45 | number:2}}</span> in tax.</p>
+  <div class="wealth-dis-chart-container">
+    <div id="wealth-dis-chart" class="cbc-chart">
+    </div>
+  </div>
+  <div class="wealth-dis-chart-container">
+    <div id="pieChart" class="cbc-chart">
+    </div>
+  </div>
+</div-->

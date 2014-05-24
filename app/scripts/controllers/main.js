@@ -11,10 +11,8 @@ angular.module('taxnumptyApp')
     ];
 
     $scope.selectedAge = $scope.ages[0];
-
     $scope.availableRules = rules;
     $scope.ruleSet = $scope.availableRules.uk201415.rules;
-
     $scope.salary = null;
     $scope.visSalary = null;
     $scope.incomeTax = 0;
@@ -34,6 +32,13 @@ angular.module('taxnumptyApp')
     $scope.totalTakeHome = 0;
     $scope.showMoreSettings = false;
     $scope.payPeriod = 'Yearly';
+    $scope.summaryPeriods ={
+      yearly:true,
+      monthly:true,
+      weekly:false,
+      daily:false,
+      hourly:false
+    };
 
     function setIncomeTaxValues(){
       $scope.incomeTaxAllowance = $scope.ruleSet[0].allowance($scope);
@@ -101,6 +106,10 @@ angular.module('taxnumptyApp')
       $scope.payPeriod = period;
     };
 
+    $scope.toggleSummaryPeriod = function(peroid){
+      $scope.summaryPeriods[peroid] = !$scope.summaryPeriods[peroid];
+    };
+
     $scope.$watchCollection('[visSalary, selectedAge, student, blind, noNI, married, addAllowance, pension, payPeriod]', function() {
       $scope.age = $scope.selectedAge.id;
       $scope.salary = $scope.visSalary;
@@ -137,9 +146,6 @@ angular.module('taxnumptyApp')
           }
         }
         setTimeout(sizeElements, 10);
-
-
-
         $(window).resize(function(){
           sizeElements();
         });
@@ -171,7 +177,7 @@ angular.module('taxnumptyApp')
           ]
         });*/
 
-        window.charInst = chart('#pieChart',{
+        /*window.charInst = chart('#pieChart',{
           unit:'&#36;',
           prefixUnit:true,
           series:[
@@ -190,7 +196,7 @@ angular.module('taxnumptyApp')
               }]
             }
           ]
-        });
+        });*/
 
       });
     }
