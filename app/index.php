@@ -26,11 +26,11 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-
-
     <!-- Add your site or application content here -->
     <div class="header">
       <h3 class="info1">Taxed <span>planet</span></h3>
+      <div class="page-title">Calculations</div>
+      <div class="selected-calculator"><div class="selected">UK 2014/15</div><div class="world"></div></div>
     </div>
     <div class="results-container">
         <div class="results" ng-view="">

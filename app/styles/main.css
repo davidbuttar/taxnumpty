@@ -23,6 +23,7 @@ img {
   text-transform: uppercase;
   z-index: 2;
   overflow: hidden;
+  letter-spacing: 3px;
 }
 
 .header .info1{
@@ -31,13 +32,53 @@ img {
   width: 286px;
   text-align: center;
   overflow: auto;
+  float:left;
+}
+
+.header .page-title{
+  color:#fff;
+  float:left;
+  padding-top: 25px;
+  padding-left: 32px;
+}
+
+.header .selected-calculator{
+  float:right;
+  height:70px;
+  min-width: 100px;
+  margin-right: 10px;
+  padding:0 10px;
+  position: relative;
+  cursor:pointer;
+}
+
+.header .selected{
+  float:left;
+  margin-right: 59px;
+  padding-top: 18px;
+  padding-bottom: 12px;
+  background: url(images/downArrow.png) no-repeat bottom center;
+  font-weight: bold;
+}
+
+.header .selected-calculator .world{
+  background: url(images/taxselection-bg.png) no-repeat center right;
+  position: absolute;
+  top:10px;
+  right:10px;
+  width:47px;
+  height: 46px;
+}
+
+.header .selected-calculator:hover{
+  background-color: #64ADB7;
 }
 
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
   color: #fff;
   font-size: 15px;
-  margin-top: 0px;
+  margin-top: 0;
   padding-top:25px;
   margin-bottom: 0;
   line-height: 18px;
@@ -156,7 +197,7 @@ label{
 }
 
 .result-block{
-  padding:22px;
+  padding:23px 32px 34px;
   background: rgba(239,240,240,.95);
   margin-bottom:20px;
 }
@@ -167,11 +208,11 @@ label{
 
 .result-block h4{
   text-transform: uppercase;
-  font-size: 12px;
-  margin-top: -4px;
+  font-size: 14px;
   margin-bottom: 16px;
-  color: #999;
-  font-family: 'Carrois Gothic SC', sans-serif;
+  color: #222;
+  letter-spacing: 1px;
+  margin-top: 0;
 }
 
 .result-block table{
@@ -247,8 +288,8 @@ label{
 
   .salary-settings{
     position: absolute;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
     width: 286px;
     border: none;
     margin:0;
