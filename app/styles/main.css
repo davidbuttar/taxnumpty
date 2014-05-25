@@ -20,6 +20,7 @@ img {
 
 /* Custom page header */
 .header {
+  background: #4DA5B3;
   text-transform: uppercase;
   z-index: 2;
   overflow: hidden;
@@ -29,7 +30,7 @@ img {
 .header .info1{
   background: #43919D;
   height:70px;
-  width: 286px;
+  width: 160px;
   text-align: center;
   overflow: auto;
   float:left;
@@ -40,13 +41,13 @@ img {
   float:left;
   padding-top: 25px;
   padding-left: 32px;
+  display:none;
 }
 
 .header .selected-calculator{
   float:right;
   height:70px;
   min-width: 100px;
-  margin-right: 10px;
   padding:0 10px;
   position: relative;
   cursor:pointer;
@@ -99,9 +100,7 @@ img {
 }
 
 .salary-settings{
-  border:1px solid #ccc;
   background: #171717;
-  margin: 0 10px 20px;
   color:#aaa;
 }
 
@@ -192,14 +191,12 @@ label{
 }
 
 .results{
-  margin: 40px 0 0 0;
   font-family: 'Carrois Gothic SC', sans-serif;
 }
 
 .result-block{
   padding:23px 32px 34px;
   background: rgba(239,240,240,.8);
-  margin-bottom:20px;
 }
 
 .result-block:nth-child(even){
@@ -316,17 +313,16 @@ label{
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
+  .header .info1{
+    width:286px;
   }
-  /* Space out the masthead */
-  .header {
+
+  .header .selected-calculator{
+    margin-right: 10px;
   }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
+
+  .header .page-title{
+    display:block;
   }
 }
 
@@ -362,19 +358,18 @@ label{
     border: none;
   }
 
-  .results{
-    margin: 40px 10px 0 306px;
-  }
-
   .result-block{
     margin-bottom:0;
+  }
+
+  .results{
+    margin: 0 0 0 286px;
   }
 
   .header {
     position: relative;
     z-index: 2;
     height: 70px;
-    background: #4DA5B3;
   }
 
   #taxed-bg {
@@ -393,10 +388,6 @@ label{
 
 
 @media (min-width: 1360px){
-
-  .results {
-    margin: 0 0 0 286px;
-  }
 
   .result-block table{
     font-size:14px;
