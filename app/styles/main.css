@@ -57,12 +57,12 @@ img {
   margin-right: 59px;
   padding-top: 18px;
   padding-bottom: 12px;
-  background: url(images/downArrow.png) no-repeat bottom center;
+  background: url(../images/downArrow.png) no-repeat bottom center;
   font-weight: bold;
 }
 
 .header .selected-calculator .world{
-  background: url(images/taxselection-bg.png) no-repeat center right;
+  background: url(../images/taxselection-bg.png) no-repeat center right;
   position: absolute;
   top:10px;
   right:10px;
@@ -198,12 +198,12 @@ label{
 
 .result-block{
   padding:23px 32px 34px;
-  background: rgba(239,240,240,.95);
+  background: rgba(239,240,240,.8);
   margin-bottom:20px;
 }
 
 .result-block:nth-child(even){
-  background: rgba(249,249,249,0.95);
+  background: rgba(249,249,249,0.8);
 }
 
 .result-block h4{
@@ -255,7 +255,7 @@ label{
   width:300px;
 }
 
-.result-summary{
+.result-summary, .result-summary-2{
   margin:0 0 20px;
   text-transform: uppercase;
   overflow:hidden
@@ -281,6 +281,10 @@ label{
 
 .result-highlight-red{
   color:#930000;
+}
+
+.result-summary-2 span{
+  float:none
 }
 
 .row {

@@ -1,4 +1,4 @@
-/*global $:false, chart */
+/*global $:false */
 'use strict';
 
 angular.module('taxnumptyApp')
@@ -30,6 +30,7 @@ angular.module('taxnumptyApp')
     $scope.pension = null;
     $scope.pensionHMRC = 0;
     $scope.totalTakeHome = 0;
+
     $scope.showMoreSettings = false;
     $scope.payPeriod = 'Yearly';
     $scope.summaryPeriods ={
