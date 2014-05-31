@@ -13,115 +13,112 @@ describe('Controller: Calculator', function () {
     MainCtrl = $controller('Calculator', {
       $scope: scope
     });
-    // Tests assume this year for calculations
-    scope.ruleSet = scope.availableRules.uk201314.rules;
-  }));
 
-  it('should have a null starting salary', function () {
-    expect(scope.visSalary).toBe(null);
-  });
+    // Tests assume this year for calculations
+    scope.selectYear({name:'UK 2013/14'});
+  }));
 
   it('should alter depending on age', function () {
     scope.visSalary = 20000;
     scope.$digest();
-    var prevIncomeTax = scope.incomeTax;
+    var prevIncomeTax = scope.calculatorState.incomeTax;
     scope.selectedAge = scope.ages[2];
     scope.$digest();
-    expect(scope.incomeTax).not.toBe(prevIncomeTax);
+    expect(scope.calculatorState.incomeTax).not.toBe(prevIncomeTax);
   });
 
   it('Over 65s should not pay nationalInsurance', function () {
     scope.visSalary = 20000;
     scope.selectedAge = scope.ages[2];
     scope.$digest();
-    expect(scope.nationalInsurance).toBe(0);
+    expect(scope.calculatorState.nationalInsurance).toBe(0);
   });
 
   it('should make national insurance optional', function () {
     scope.visSalary = 20000;
-    scope.noNI = true;
+    scope.calculatorState.noNI = true;
     scope.$digest();
-    expect(scope.nationalInsurance).toBe(0);
+    expect(scope.calculatorState.nationalInsurance).toBe(0);
   });
 
   it('should have student loan payment if selected and over the threshold', function () {
     scope.visSalary = 40000;
-    scope.student = false;
+    scope.calculatorState.student = false;
     scope.$digest();
-    expect(scope.studentLoan).toBe(0);
-    scope.student = true;
+    expect(scope.calculatorState.studentLoan).toBe(0);
+    scope.calculatorState.student = true;
     scope.$digest();
-    expect(scope.studentLoan).toBe(2127);
+    expect(scope.calculatorState.studentLoan).toBe(2127);
   });
 
   it('should have student apply 9% student loan', function () {
     scope.visSalary = 17000;
-    scope.student = false;
+    scope.calculatorState.student = false;
     scope.$digest();
-    expect(scope.studentLoan).toBe(0);
-    scope.student = true;
+    expect(scope.calculatorState.studentLoan).toBe(0);
+    scope.calculatorState.student = true;
     scope.$digest();
-    expect(scope.studentLoan).toBe(57);
+    expect(scope.calculatorState.studentLoan).toBe(57);
     scope.visSalary = 30000;
     scope.$digest();
-    expect(scope.studentLoan).toBe(1227);
+    expect(scope.calculatorState.studentLoan).toBe(1227);
     scope.visSalary = 16365;
     scope.$digest();
-    expect(scope.studentLoan).toBe(0);
+    expect(scope.calculatorState.studentLoan).toBe(0);
   });
 
   it('over 65s dont pay student loan', function () {
     scope.visSalary = 40000;
-    scope.student = true;
+    scope.calculatorState.student = true;
     scope.selectedAge = scope.ages[2];
     scope.$digest();
-    expect(scope.studentLoan).toBe(0);
+    expect(scope.calculatorState.studentLoan).toBe(0);
   });
 
   it('should increase your allowance correctly if you are blind', function () {
     scope.visSalary = 16375;
-    scope.blind = true;
+    scope.calculatorState.blind = true;
     scope.$digest();
-    expect(scope.incomeTax).toBe(955);
+    expect(scope.calculatorState.incomeTax).toBe(955);
   });
 
   it('should increase your allowance correctly if you over 75 and married', function () {
     scope.visSalary = 16000;
-    scope.married = true;
+    scope.calculatorState.married = true;
     scope.selectedAge = scope.ages[2];
     scope.$digest();
-    expect(scope.incomeTax).toBe(276.5);
+    expect(scope.calculatorState.incomeTax).toBe(276.5);
   });
 
   it('should allow you to specify allowances', function () {
     scope.visSalary = 40000;
-    scope.married = true;
-    scope.addAllowance = 1000;
+    scope.calculatorState.married = true;
+    scope.calculatorState.addAllowance = 1000;
     scope.$digest();
-    expect(scope.incomeTax).toBe(5912);
+    expect(scope.calculatorState.incomeTax).toBe(5912);
     scope.visSalary = 120000;
     scope.$digest();
-    expect(scope.incomeTax).toBe(41422);
-    scope.blind = true;
+    expect(scope.calculatorState.incomeTax).toBe(41422);
+    scope.calculatorState.blind = true;
     scope.$digest();
-    expect(scope.incomeTax).toBe(40558);
+    expect(scope.calculatorState.incomeTax).toBe(40558);
   });
 
   it('should calculate the pension contribution of the HMRC', function () {
 
     scope.visSalary = 41500;
-    scope.pension = 1000;
+    scope.calculatorState.pension = 1000;
     scope.$digest();
-    expect(scope.pensionHMRC).toBe(210);
+    expect(scope.calculatorState.pensionHMRC).toBe(210);
 
-    scope.pension = 6000;
+    scope.calculatorState.pension = 6000;
     scope.$digest();
-    expect(scope.pensionHMRC).toBe(1210);
+    expect(scope.calculatorState.pensionHMRC).toBe(1210);
 
     scope.visSalary = 43000;
-    scope.pension = 43000;
+    scope.calculatorState.pension = 43000;
     scope.$digest();
-    expect(scope.pensionHMRC).toBe(7022);
+    expect(scope.calculatorState.pensionHMRC).toBe(7022);
 
   });
 
@@ -129,14 +126,14 @@ describe('Controller: Calculator', function () {
   it('should give no pensions tax relief over 50000', function () {
 
     scope.visSalary = 100000;
-    scope.pension = 50000;
+    scope.calculatorState.pension = 50000;
     scope.$digest();
-    expect(scope.pensionHMRC).toBe(20000);
+    expect(scope.calculatorState.pensionHMRC).toBe(20000);
 
     scope.visSalary = 100000;
-    scope.pension = 60000;
+    scope.calculatorState.pension = 60000;
     scope.$digest();
-    expect(scope.pensionHMRC).toBe(20000);
+    expect(scope.calculatorState.pensionHMRC).toBe(20000);
 
   });
 

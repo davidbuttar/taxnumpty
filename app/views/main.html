@@ -27,32 +27,32 @@
         <div class="form-group">
           <div class="checkbox">
             <label>
-              Include Student Loan <input type="checkbox" ng-model="student">
+              Include Student Loan <input type="checkbox" ng-model="calculatorState.student">
             </label>
           </div>
           <div class="checkbox">
             <label>
-              Married <input type="checkbox" ng-model="married">
+              Married <input type="checkbox" ng-model="calculatorState.married">
             </label>
           </div>
           <div class="checkbox">
             <label>
-              Blind <input type="checkbox" ng-model="blind">
+              Blind <input type="checkbox" ng-model="calculatorState.blind">
             </label>
           </div>
           <div class="checkbox">
             <label>
-              No N.I. <input type="checkbox" ng-model="noNI">
+              No N.I. <input type="checkbox" ng-model="calculatorState.noNI">
             </label>
           </div>
         </div>
         <div class="form-group">
           <label for="pensionInput">Pension Contribution</label>
-          <input type="text" class="form-control" id="pensionInput" placeholder="Enter pension" ng-model="pension">
+          <input type="text" class="form-control" id="pensionInput" placeholder="Enter pension" ng-model="calculatorState.pension">
         </div>
         <div class="form-group">
           <label for="addAllowanceInput">Added Allowance</label>
-          <input type="text" class="form-control" id="addAllowanceInput" placeholder="Enter Allowance or subtraction" ng-model="addAllowance">
+          <input type="text" class="form-control" id="addAllowanceInput" placeholder="Enter Allowance or subtraction" ng-model="calculatorState.addAllowance">
         </div>
       </div>
     </form>
@@ -71,97 +71,117 @@
       </ul>
     </div>
   </div>
-  <div class="result-summary-ctr">
-    <p class="result-summary" ng-show="summaryPeriods.hourly"><span class="result-label">Hourly take home pay</span> <span class="result-highlight">&pound;{{((totalTakeHome/52)/37.5) | number:2}}</span></p>
-    <p class="result-summary" ng-show="summaryPeriods.hourly"><span class="result-label">Hourly Deductions</span> <span class="result-highlight-red">&pound;{{((totalDeductions/52)/37.5) | number:2}}</span></p>
-    <p class="result-summary" ng-show="summaryPeriods.daily"><span class="result-label">Daily take home pay</span> <span class="result-highlight">&pound;{{(totalTakeHome/52)/5 | number:2}}</span></p>
-    <p class="result-summary" ng-show="summaryPeriods.daily"><span class="result-label">Daily Deductions</span> <span class="result-highlight-red">&pound;{{(totalDeductions/52)/5 | number:2}}</span></p>
-    <p class="result-summary" ng-show="summaryPeriods.weekly"><span class="result-label">Weekly take home pay</span> <span class="result-highlight">&pound;{{totalTakeHome/52 | number:2}}</span></p>
-    <p class="result-summary" ng-show="summaryPeriods.weekly"><span class="result-label">Weekly Deductions</span> <span class="result-highlight-red">&pound;{{totalDeductions/52 | number:2}}</span></p>
-    <p class="result-summary" ng-show="summaryPeriods.monthly"><span class="result-label">Monthly take home pay</span> <span class="result-highlight">&pound;{{totalTakeHome/12 | number:2}}</span></p>
-    <p class="result-summary" ng-show="summaryPeriods.monthly"><span class="result-label">Monthly Deductions</span> <span class="result-highlight-red">&pound;{{totalDeductions/12 | number:2}}</span></p>
-    <p class="result-summary" ng-show="summaryPeriods.yearly"><span class="result-label">Yearly take home pay</span> <span class="result-highlight">&pound;{{totalTakeHome | number:2}}</span><span class="result-highlight"></span></p>
-    <p class="result-summary" ng-show="summaryPeriods.yearly"><span class="result-label">Yearly Deductions</span> <span class="result-highlight-red">&pound;{{totalDeductions | number:2}}</span></p>
+  <div class="results-summary-data clearfix">
+    <div class="result-summary-ctr">
+      <p class="result-summary" ng-show="summaryPeriods.hourly"><span class="result-label">Hourly take home pay</span> <span class="result-highlight">&pound;{{((calculatorState.totalTakeHome/52)/37.5) | number:2}}</span></p>
+      <p class="result-summary" ng-show="summaryPeriods.hourly"><span class="result-label-deduction">Hourly Deductions</span> <span class="result-highlight-red">&pound;{{((calculatorState.totalDeductions/52)/37.5) | number:2}}</span></p>
+      <p class="result-summary" ng-show="summaryPeriods.daily"><span class="result-label">Daily take home pay</span> <span class="result-highlight">&pound;{{(calculatorState.totalTakeHome/52)/5 | number:2}}</span></p>
+      <p class="result-summary" ng-show="summaryPeriods.daily"><span class="result-label-deduction">Daily Deductions</span> <span class="result-highlight-red">&pound;{{(calculatorState.totalDeductions/52)/5 | number:2}}</span></p>
+      <p class="result-summary" ng-show="summaryPeriods.weekly"><span class="result-label">Weekly take home pay</span> <span class="result-highlight">&pound;{{calculatorState.totalTakeHome/52 | number:2}}</span></p>
+      <p class="result-summary" ng-show="summaryPeriods.weekly"><span class="result-label-deduction">Weekly Deductions</span> <span class="result-highlight-red">&pound;{{calculatorState.totalDeductions/52 | number:2}}</span></p>
+      <p class="result-summary" ng-show="summaryPeriods.monthly"><span class="result-label">Monthly take home pay</span> <span class="result-highlight">&pound;{{calculatorState.totalTakeHome/12 | number:2}}</span></p>
+      <p class="result-summary" ng-show="summaryPeriods.monthly"><span class="result-label-deduction">Monthly Deductions</span> <span class="result-highlight-red">&pound;{{calculatorState.totalDeductions/12 | number:2}}</span></p>
+      <p class="result-summary" ng-show="summaryPeriods.yearly"><span class="result-label">Yearly take home pay</span> <span class="result-highlight">&pound;{{calculatorState.totalTakeHome | number:2}}</span><span class="result-highlight"></span></p>
+      <p class="result-summary" ng-show="summaryPeriods.yearly"><span class="result-label-deduction">Yearly Deductions</span> <span class="result-highlight-red">&pound;{{calculatorState.totalDeductions | number:2}}</span></p>
+    </div>
+    <div chart-donut salary-values="[calculatorState.totalTakeHome, calculatorState.totalDeductions]" chart-id="pieChart" class="result-summary-chart" >
+      <div id="pieChart" class="cbc-chart"></div>
+      <div class="result-summary-percentage" ng-if="calculatorState.salary">{{(calculatorState.totalTakeHome/calculatorState.salary)*100 | number:2}}%</div>
+    </div>
   </div>
+
 </div>
 <div class="row result-block">
   <h4>Details</h4>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Yearly</th>
-        <th>Monthly</th>
-        <th>Weekly</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="warning">
-        <td>Salary</td>
-        <td>{{salary | number:2}}</td>
-        <td>{{salary/12 | number:2}}</td>
-        <td>{{salary/52 | number:2}}</td>
-      </tr>
-      <tr class="danger">
-        <td >Taxable</td>
-        <td>{{taxableIncome | number:2}}</td>
-        <td>{{taxableIncome/12 | number:2}}</td>
-        <td>{{taxableIncome/52 | number:2}}</td>
-      </tr>
-      <tr>
-        <td>Allowance</td>
-        <td>{{incomeTaxAllowance | number:2}}</td>
-        <td>{{incomeTaxAllowance/12 | number:2}}</td>
-        <td>{{incomeTaxAllowance/52 | number:2}}</td>
-      </tr>
-      <tr>
-        <td>Income Tax</td>
-        <td>{{incomeTax | number:2}}</td>
-        <td>{{incomeTax/12 | number:2}}</td>
-        <td>{{incomeTax/52 | number:2}}</td>
-      </tr>
-      <tr>
-        <td>N.I.</td>
-        <td>{{nationalInsurance | number:2}}</td>
-        <td>{{nationalInsurance/12 | number:2}}</td>
-        <td>{{nationalInsurance/52 | number:2}}</td>
-      </tr>
-      <tr class="active" ng-show='student'>
-        <td>Student Loan</td>
-        <td>{{studentLoan | number:2}}</td>
-        <td>{{studentLoan/12 | number:2}}</td>
-        <td>{{studentLoan/52 | number:2}}</td>
-      </tr>
-      <tr ng-show='pension > 0'>
-        <td>Pension</td>
-        <td>{{pension | number:2}}</td>
-        <td>{{pension/12 | number:2}}</td>
-        <td>{{pension/52 | number:2}}</td>
-      </tr>
-      <tr ng-show='pension > 0'>
-        <td>Pension HMRC</td>
-        <td>{{pensionHMRC | number:2}}</td>
-        <td>{{pensionHMRC/12 | number:2}}</td>
-        <td>{{pensionHMRC/52 | number:2}}</td>
-      </tr>
-      <tr class="danger">
-        <td>Total Deductions</td>
-        <td>{{totalDeductions | number:2}}</td>
-        <td>{{totalDeductions/12 | number:2}}</td>
-        <td>{{totalDeductions/52 | number:2}}</td>
-      </tr>
-      <tr class="success">
-        <td>Take Home Pay</td>
-        <td>{{totalTakeHome | number:2}}</td>
-        <td>{{totalTakeHome/12 | number:2}}</td>
-        <td>{{totalTakeHome/52 | number:2}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="col-md-4">
+    <div my-stack salary-values="[calculatorState.totalTakeHome, calculatorState.nationalInsurance, calculatorState.incomeTax, calculatorState.studentLoan ]" id="bar-chart" chart-id="bar-chart" class="cbc-chart"></div>
+  </div>
+  <div class="col-md-8" id="tax-report">
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Yearly</th>
+          <th>Monthly</th>
+          <th>Weekly</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="success">
+          <td>Salary</td>
+          <td>{{calculatorState.salary | number:2}}</td>
+          <td>{{calculatorState.salary/12 | number:2}}</td>
+          <td>{{calculatorState.salary/52 | number:2}}</td>
+        </tr>
+        <tr>
+          <td >Taxable</td>
+          <td>{{calculatorState.taxableIncome | number:2}}</td>
+          <td>{{calculatorState.taxableIncome/12 | number:2}}</td>
+          <td>{{calculatorState.taxableIncome/52 | number:2}}</td>
+        </tr>
+        <tr>
+          <td>Allowance</td>
+          <td>{{calculatorState.incomeTaxAllowance | number:2}}</td>
+          <td>{{calculatorState.incomeTaxAllowance/12 | number:2}}</td>
+          <td>{{calculatorState.incomeTaxAllowance/52 | number:2}}</td>
+        </tr>
+        <tr>
+          <td>Income Tax</td>
+          <td>{{calculatorState.incomeTax | number:2}}</td>
+          <td>{{calculatorState.incomeTax/12 | number:2}}</td>
+          <td>{{calculatorState.incomeTax/52 | number:2}}</td>
+        </tr>
+        <tr>
+          <td>N.I.</td>
+          <td>{{calculatorState.nationalInsurance | number:2}}</td>
+          <td>{{calculatorState.nationalInsurance/12 | number:2}}</td>
+          <td>{{calculatorState.nationalInsurance/52 | number:2}}</td>
+        </tr>
+        <tr ng-if='calculatorState.student' class="warning">
+          <td>Student Loan</td>
+          <td>{{calculatorState.studentLoan | number:2}}</td>
+          <td>{{calculatorState.studentLoan/12 | number:2}}</td>
+          <td>{{calculatorState.studentLoan/52 | number:2}}</td>
+        </tr>
+        <tr ng-show='calculatorState.pension > 0'  class="info">
+          <td>Pension</td>
+          <td>{{calculatorState.pension | number:2}}</td>
+          <td>{{calculatorState.pension/12 | number:2}}</td>
+          <td>{{calculatorState.pension/52 | number:2}}</td>
+        </tr>
+        <tr ng-show='calculatorState.pension > 0' class="info">
+          <td>Pension HMRC</td>
+          <td>{{calculatorState.pensionHMRC | number:2}}</td>
+          <td>{{calculatorState.pensionHMRC/12 | number:2}}</td>
+          <td>{{calculatorState.pensionHMRC/52 | number:2}}</td>
+        </tr>
+        <tr class="deduction">
+          <td>Total Deductions</td>
+          <td>{{calculatorState.totalDeductions | number:2}}</td>
+          <td>{{calculatorState.totalDeductions/12 | number:2}}</td>
+          <td>{{calculatorState.totalDeductions/52 | number:2}}</td>
+        </tr>
+        <tr class="success">
+          <td>Take Home Pay</td>
+          <td>{{calculatorState.totalTakeHome | number:2}}</td>
+          <td>{{calculatorState.totalTakeHome/12 | number:2}}</td>
+          <td>{{calculatorState.totalTakeHome/52 | number:2}}</td>
+        </tr>
+        <tr ng-show='calculatorState.prevRuleSet'>
+          <td>Take Home Last Year</td>
+          <td>{{calculatorState.lastTakeHome | number:2}}</td>
+          <td>{{calculatorState.lastTakeHome/12 | number:2}}</td>
+          <td>{{calculatorState.lastTakeHome/52 | number:2}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 <div class="row result-block">
   <h4>Analysis</h4>
-  <p class="result-summary-2">Over a working lifetime at the current salary you will take home <span class="result-highlight">&pound;{{totalTakeHome*45 | number:2}}</span> and pay <span class="result-highlight-red">&pound;{{(incomeTax+nationalInsurance)*45 | number:2}}</span> in tax.</p>
+  <p class="result-summary-2">Over a working lifetime at the current salary you will take home
+    <span class="result-highlight">&pound;{{calculatorState.totalTakeHome*45 | number:2}}</span> and pay
+    <span class="result-highlight-red">&pound;{{(calculatorState.incomeTax+calculatorState.nationalInsurance)*45 | number:2}}</span> in tax.</p>
   <!--div class="wealth-dis-chart-container">
     <div id="wealth-dis-chart" class="cbc-chart">
     </div>

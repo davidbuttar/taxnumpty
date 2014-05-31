@@ -6,8 +6,7 @@ angular.module('taxnumptyApp', [
   'ngSanitize',
   'ngRoute',
   'ngAnimate',
-  'taxCalculator',
-  'taxCalculatorRules'
+  'taxCalculator'
 ])
   .config(function ($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);

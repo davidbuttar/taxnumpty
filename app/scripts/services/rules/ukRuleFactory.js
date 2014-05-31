@@ -1,9 +1,11 @@
 'use strict';
 // Generic class to process generic tax rules such as applying tax
 // at different band and taking into account an allowance
-angular.module('taxCalculatorRules', []).factory('rulesCollection', function () {
+angular.module('taxCalculator').factory('ukRuleFactory', function () {
+  var that = {};
+
+  // General function to produce uk tax rules for given parameters
   function generateTaxYear(yearName, opts){
-    var name = 'unknown' || yearName;
     opts = opts || {};
     var taxAllowance = opts.incomeTaxAllowance || 9440;
     var incomeTaxBands = opts.incomeTaxBands || [{
@@ -38,7 +40,7 @@ angular.module('taxCalculatorRules', []).factory('rulesCollection', function () 
     var studentLoanPerc = opts.studentLoanPerc || 9;
 
     return {
-      'Name': name,
+      'name': yearName,
       rules: [
         {
           name: 'Income Tax',
@@ -124,8 +126,7 @@ angular.module('taxCalculatorRules', []).factory('rulesCollection', function () 
     };
   }
 
-  var taxTypes = {'uk201314': generateTaxYear('UK 2013/14'),
-    'uk201415': generateTaxYear('UK 2014/15',{
+  var rules = [generateTaxYear('UK 2014/15',{
       incomeTaxAllowance:10000,
       maxPensionRelief:40000,
       studentAllowance:16910,
@@ -158,8 +159,14 @@ angular.module('taxCalculatorRules', []).factory('rulesCollection', function () 
           rate: 2
         }
       ]
-    })};
+    }),
+  generateTaxYear('UK 2013/14')
+  ];
 
-  return taxTypes;
+  that.getAvailableRules = function(){
+    return rules;
+  };
+
+  return that;
 
 });

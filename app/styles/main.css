@@ -6,11 +6,9 @@ html{
 }
 
 body {
-  background:#E8E8E8 url(../images/taxplanet-bg-2.png) no-repeat center center;
   color:#444;
   overflow: auto;
   min-height: 100%;
-  background-attachment: fixed;
 }
 
 img {
@@ -18,13 +16,21 @@ img {
   max-width: 100%;
 }
 
+.no-js-content{
+  display:none;
+}
+
+.no-js .no-js-content{
+  display:block;
+}
+
 /* Custom page header */
 .header {
   background: #4DA5B3;
   text-transform: uppercase;
   z-index: 2;
-  overflow: hidden;
   letter-spacing: 3px;
+  height:70px;
 }
 
 .header .info1{
@@ -47,8 +53,6 @@ img {
 .header .selected-calculator{
   float:right;
   height:70px;
-  min-width: 100px;
-  padding:0 10px;
   position: relative;
   cursor:pointer;
 }
@@ -73,6 +77,10 @@ img {
 
 .header .selected-calculator:hover{
   background-color: #64ADB7;
+}
+
+.selected-calculator-inner{
+  height:70px;
 }
 
 /* Make the masthead heading the same height as the navigation */
@@ -100,8 +108,9 @@ img {
 }
 
 .salary-settings{
-  background: #171717;
-  color:#aaa;
+  background: #252525;
+  color: #eee;
+  letter-spacing: 1px;
 }
 
 .salary-settings-inner{
@@ -124,7 +133,6 @@ img {
 .more-settings.selected{
   display:block;
   padding: 10px 12px;
-  background: #fff;
 }
 
 .more-settings.selected .form-control{
@@ -145,6 +153,7 @@ label{
   text-transform: uppercase;
   font-size:12px;
   margin-bottom:8px;
+  font-weight: normal;
 }
 
 .hide-toggle{
@@ -199,7 +208,7 @@ label{
   background: rgba(239,240,240,.8);
 }
 
-.result-block:nth-child(even){
+.result-block:nth-child(odd){
   background: rgba(249,249,249,0.8);
 }
 
@@ -217,7 +226,6 @@ label{
   font-family: 'Carrois Gothic SC', sans-serif;
   font-size: 12px;
 }
-
 
 .summary-hd{
   overflow: hidden;
@@ -248,8 +256,35 @@ label{
   color:#222;
 }
 
+.results-summary-data{
+  position: relative;
+}
+
 .result-summary-ctr{
   width:300px;
+  margin:20px auto 30px;
+  float:left;
+}
+
+#pieChart{
+  width:300px;
+  height:100%;
+}
+
+.result-summary-chart{
+  width:300px;
+  height:180px;
+  float:left;
+  position: relative;
+}
+
+.result-summary-percentage{
+  width:100%;
+  position: absolute;
+  text-align: center;
+  top:50%;
+  font-size: 18px;
+  margin-top: -10px;
 }
 
 .result-summary, .result-summary-2{
@@ -262,22 +297,25 @@ label{
   margin:0;
 }
 
-.result-label{
+.result-label, .result-label-deduction{
   min-width: 180px;
   float:left;
   color:#268A9A;
+}
+
+.result-label-deduction{
+  color:#69B4BE;
 }
 
 .result-highlight, .result-highlight-red{
   color:#000;
   font-size: 16px;
   letter-spacing: 1px;
-  font-weight: bold;
   float:right;
 }
 
 .result-highlight-red{
-  color:#930000;
+  color:#6F6F6F;
 }
 
 .result-summary-2 span{
@@ -293,15 +331,7 @@ label{
   margin: 30px 0;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
-}
+
 
 /* Supporting marketing content */
 .marketing {
@@ -309,6 +339,24 @@ label{
 }
 .marketing p + h4 {
   margin-top: 28px;
+}
+
+
+.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
+  background-color: #F3F3F3;
+}
+
+#tax-report .table .success  td{
+  background:#E1F0F2;
+}
+
+#tax-report .table .deduction td{
+  background:#eee;
+}
+
+#tax-report .table .info td{
+  background:#444;
+  color:#fff;
 }
 
 /* Responsive: Portrait tablets and up */
@@ -319,6 +367,7 @@ label{
 
   .header .selected-calculator{
     margin-right: 10px;
+    padding:0 10px;
   }
 
   .header .page-title{
@@ -326,9 +375,21 @@ label{
   }
 }
 
+#bar-chart{
+  visibility: hidden;
+  height: 1px;
+  margin: 0;
+}
+
 /* Customize container */
 
 @media (min-width: 960px) {
+
+  #bar-chart{
+    height:280px;
+    margin:38px 0 10px;
+    visibility: visible;
+  }
 
   .salary-settings{
     position: absolute;
@@ -362,6 +423,20 @@ label{
     margin-bottom:0;
   }
 
+  .results-summary-data{
+    width: 700px;
+    margin:28px auto;
+  }
+
+  .result-summary-chart{
+    float:right
+  }
+
+  .result-summary-ctr{
+    width:300px;
+    margin:20px 20px 10px 20px;
+  }
+  
   .results{
     margin: 0 0 0 286px;
   }
@@ -414,7 +489,7 @@ label{
 
 /* --- chart --- */
 
-#wealth-dis-chart, #pieChart{
+#wealth-dis-chart{
   width:100%;
   height:200px;
 }
@@ -429,10 +504,26 @@ label{
 
 .donutInactive {
   width: 1px;
-  background: #333;
+  background: #ccc;
   border-color: #fff;
 }
 
 .donutInactive:hover {
   background: #000;
+}
+
+.stack1{
+  background: #43919D;
+}
+
+.stack2{
+  background: #397C86;
+}
+
+.stack3{
+  background: #306870;
+}
+
+.stack4{
+  background: #265359;
 }
