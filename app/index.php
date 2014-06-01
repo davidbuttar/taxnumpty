@@ -107,9 +107,9 @@
             </div>
           </div>
             <div class="row result-block ng-scope">
-              <div class="summary-hd">
+              <div class="result-hd">
                 <h4>Summary</h4>
-                <div class="summary-options">
+                <div class="time-period-options">
                   <ul>
                     <li ng-class="{selected: summaryPeriods.yearly}" ng-click="toggleSummaryPeriod('yearly')" class="selected">YR</li>
                     <li ng-class="{selected: summaryPeriods.monthly}" ng-click="toggleSummaryPeriod('monthly')" class="selected">MN</li>
@@ -263,7 +263,7 @@
     <script src="scripts/directives/donutDirective.js"></script>
     <!-- endbuild -->
 
-    <!-- build:js({app,.tmp}) scripts/pl.js -->
+    <!-- build:js({app,.tmp}) scripts/plot.js -->
     <script type="text/javascript" src="scripts/pl/cbv.js"></script>
     <script type="text/javascript" src="scripts/pl/cbv.setup.js"></script>
     <script type="text/javascript" src="scripts/pl/cbv.animateSeries.js"></script>

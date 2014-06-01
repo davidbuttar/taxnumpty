@@ -54,8 +54,9 @@ angular.module('taxCalculator', []).factory('processRules',['ukRuleFactory', fun
 
   function calculateStudentLoan(yearRules){
     if(yearRules[2].eligible(that)){
-      return Math.round(that.applyBands(that.salary, yearRules[2].bands,
-        yearRules[2].allowance(that)));
+      var value = Math.floor(that.applyBands(that.salary, yearRules[2].bands,
+        yearRules[2].allowance(that)) / 12 ) * 12 ;
+      return value;
     }
     return 0;
   }

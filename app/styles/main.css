@@ -227,23 +227,27 @@ label{
   font-size: 12px;
 }
 
-.summary-hd{
+.result-hd {
   overflow: hidden;
 }
 
-.summary-hd h4{
+.result-hd h4{
   float:left;
 }
 
-.summary-options{
+.details-hd{
+  margin-bottom:20px;
+}
+
+.time-period-options {
   float:right;
 }
 
-.summary-options ul{
+.time-period-options ul{
   list-style: none;
 }
 
-.summary-options ul li{
+.time-period-options ul li{
   float:left;
   display: block;
   padding:0 8px;
@@ -251,7 +255,7 @@ label{
   cursor: pointer;
 }
 
-.summary-options ul .selected{
+.time-period-options ul .selected{
   text-decoration: underline;
   color:#222;
 }

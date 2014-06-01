@@ -24,6 +24,14 @@ angular.module('taxnumptyApp')
       hourly:false
     };
 
+    $scope.detailsPeriods = {
+      yearly:true,
+      monthly:true,
+      weekly:true,
+      daily:false,
+      hourly:false
+    };
+
     // Different pay periods will be more interested in particular summmaries
     function summaryPeroidPayPeriodSync(){
       var curPayPeriod = $scope.payPeriod;
@@ -46,6 +54,10 @@ angular.module('taxnumptyApp')
 
     $scope.toggleSummaryPeriod = function(peroid){
       $scope.summaryPeriods[peroid] = !$scope.summaryPeriods[peroid];
+    };
+
+    $scope.toggleDetailsPeriod = function(peroid){
+      $scope.detailsPeriods[peroid] = !$scope.detailsPeriods[peroid];
     };
 
     $scope.selectYear = function(data){

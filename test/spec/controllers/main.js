@@ -48,7 +48,7 @@ describe('Controller: Calculator', function () {
     expect(scope.calculatorState.studentLoan).toBe(0);
     scope.calculatorState.student = true;
     scope.$digest();
-    expect(scope.calculatorState.studentLoan).toBe(2127);
+    expect(scope.calculatorState.studentLoan).toBe(2124);
   });
 
   it('should have student apply 9% student loan', function () {
@@ -58,10 +58,10 @@ describe('Controller: Calculator', function () {
     expect(scope.calculatorState.studentLoan).toBe(0);
     scope.calculatorState.student = true;
     scope.$digest();
-    expect(scope.calculatorState.studentLoan).toBe(57);
+    expect(scope.calculatorState.studentLoan).toBe(48);
     scope.visSalary = 30000;
     scope.$digest();
-    expect(scope.calculatorState.studentLoan).toBe(1227);
+    expect(scope.calculatorState.studentLoan).toBe(1224);
     scope.visSalary = 16365;
     scope.$digest();
     expect(scope.calculatorState.studentLoan).toBe(0);
