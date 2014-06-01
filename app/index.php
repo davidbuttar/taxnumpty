@@ -17,8 +17,8 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/default.css">
+    <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
     <script>
       document.documentElement.className = document.documentElement.className.replace("no-js","");
@@ -35,7 +35,7 @@
       <div class="page-title">Calculations</div>
       <div ng-controller="Calculator" class="selected-calculator dropdown">
         <div class="selected-calculator-inner" data-toggle="dropdown">
-          <div class="selected">UK 2014/15</div>
+          <div class="selected">{{calculatorState.ruleSetName}}</div>
           <div class="world"></div>
         </div>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -255,6 +255,7 @@
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/angular-local-storage.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/services/processRules.js"></script>
     <script src="scripts/services/rules/ukRuleFactory.js"></script>

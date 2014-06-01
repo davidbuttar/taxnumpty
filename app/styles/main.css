@@ -58,6 +58,7 @@ img {
 }
 
 .header .selected{
+  color:#fff;
   float:left;
   margin-right: 59px;
   padding-top: 18px;
@@ -363,6 +364,19 @@ label{
   color:#fff;
 }
 
+.result-summary-2-date{
+  color:#333;
+  font-weight: bold;
+}
+
+.result-summary-2-takehome-down{
+  color:#9A3426;
+}
+
+.result-summary-2-takehome-up{
+  color:#268A9A;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .header .info1{
@@ -530,4 +544,10 @@ label{
 
 .stack4{
   background: #265359;
+}
+
+/* Restyle chart tooltips */
+
+.cbc-tooltips{
+  border-radius: 0;
 }

@@ -2,7 +2,9 @@
 'use strict';
 
 angular.module('taxnumptyApp')
-  .controller('Calculator',['$scope', '$cookies', 'processRules', function ($scope, $cookies, processRules) {
+  .controller('Calculator',['$scope', 'localStorageService', 'processRules', function ($scope, localStorageService, processRules) {
+
+    var historyAddTimer;
 
     $scope.ages = [
       {name:'Under 65', id:'1'},
@@ -13,7 +15,7 @@ angular.module('taxnumptyApp')
     $scope.availableRules = processRules.ruleSets;
     $scope.calculatorState = processRules;
     $scope.selectedAge = $scope.ages[0];
-    $scope.visSalary = $cookies.visSal || 20000;
+    $scope.visSalary = localStorageService.get('visSalary') || 20000;
     $scope.showMoreSettings = false;
     $scope.payPeriod = 'Yearly';
     $scope.summaryPeriods ={
@@ -64,9 +66,44 @@ angular.module('taxnumptyApp')
       processRules.selectRule(data.name);
     };
 
+    $scope.previousEntries = localStorageService.get('prevEntries') || [];
+
+    function addToLocalHistory(salary){
+      clearTimeout(historyAddTimer);
+      historyAddTimer = setTimeout(function(){
+        // Don't re add the same entry
+        if(historyContains($scope.calculatorState.totalTakeHome, $scope.calculatorState.ruleSetName)){
+          return;
+        }
+        // Ten items at most
+        if($scope.previousEntries.length > 10){
+          $scope.previousEntries.shift();
+        }
+        $scope.previousEntries.push({
+          entered:new Date(),
+          salary:salary,
+          takeHome:$scope.calculatorState.totalTakeHome,
+          year:$scope.calculatorState.ruleSetName
+        });
+        localStorageService.set('prevEntries', $scope.previousEntries);
+        $scope.$digest();
+      },10000);
+    }
+
+    function historyContains(takeHome, year){
+      var ii = $scope.previousEntries.length;
+      for(var i= 0; i<ii; i++){
+        if($scope.previousEntries[i].takeHome === takeHome && $scope.previousEntries[i].year === year){
+          return true;
+        }
+      }
+      return false;
+    }
+
+
     $scope.$watchCollection('[visSalary, selectedAge, calculatorState.student, calculatorState.blind, calculatorState.noNI, calculatorState.married, calculatorState.addAllowance, calculatorState.pension, payPeriod]', function() {
       $scope.age = $scope.selectedAge.id;
-      $cookies.visSal = $scope.visSalary;
+      localStorageService.set('visSalary', $scope.visSalary);
       var salary = $scope.visSalary;
       if($scope.payPeriod === 'Monthly'){
         salary = salary * 12;
@@ -77,11 +114,23 @@ angular.module('taxnumptyApp')
       }else if ($scope.payPeriod === 'Hourly'){
         salary = salary * 37.5 * 52;
       }
+
       summaryPeroidPayPeriodSync();
       processRules.setSalary(salary);
       processRules.setAge($scope.age);
       processRules.update();
+      addToLocalHistory(salary);
+
     });
+
+    function sizeElements(){
+      var $settings = $('.salary-settings');
+      $settings.height('auto');
+      if($(document).width() > 960){
+        var docH = $(document).height();
+        $settings.height(docH);
+      }
+    }
 
     /**
      *  Some jQuery to handle making divs full browser height
@@ -89,14 +138,6 @@ angular.module('taxnumptyApp')
      */
     if(typeof $ !== 'undefined'){
       $(function() {
-        function sizeElements(){
-          var $settings = $('.salary-settings');
-          $settings.height('auto');
-          if($(document).width() > 960){
-            var docH = $(document).height();
-            $settings.height(docH);
-          }
-        }
         setTimeout(sizeElements, 10);
         $(window).resize(function(){
           sizeElements();
