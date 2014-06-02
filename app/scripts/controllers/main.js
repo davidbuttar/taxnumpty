@@ -4,6 +4,7 @@
 angular.module('taxnumptyApp')
   .controller('Calculator',['$scope', 'localStorageService', 'processRules', function ($scope, localStorageService, processRules) {
 
+    // Only add elements to the history log if nothing has changed for 10 seconds
     var historyAddTimer;
 
     $scope.ages = [
@@ -15,7 +16,7 @@ angular.module('taxnumptyApp')
     $scope.availableRules = processRules.ruleSets;
     $scope.calculatorState = processRules;
     $scope.selectedAge = $scope.ages[0];
-    $scope.visSalary = localStorageService.get('visSalary') || 20000;
+    $scope.visSalary = 20000;
     $scope.showMoreSettings = false;
     $scope.payPeriod = 'Yearly';
     $scope.summaryPeriods ={
@@ -33,6 +34,42 @@ angular.module('taxnumptyApp')
       daily:false,
       hourly:false
     };
+
+    $scope.previousEntries = localStorageService.get('prevEntries') || [];
+
+    // Attempts to size the settings menu to full page height, shouldn't really be in a controller
+    // not sure how else to do it.
+    function sizeElements(){
+      var $settings = $('.salary-settings');
+      $settings.height('auto');
+      if($(document).width() > 960){
+        var docH = $(document).height();
+        $settings.height(docH);
+      }
+    }
+
+    // Look at history log and update the setting to match the last entry if possible
+    function applySettingsFromHistory(){
+      if($scope.previousEntries.length){
+        var latestEntry = $scope.previousEntries[$scope.previousEntries.length - 1];
+        // salary indicates a legacy entry so clear it and move on
+        if(latestEntry.salary){
+          localStorageService.clearAll();
+          return;
+        }
+        $scope.visSalary = latestEntry.visSalary || 20000;
+        $scope.payPeriod = latestEntry.payPeriod || 'Yearly';
+        $scope.calculatorState.student = latestEntry.student || false;
+        $scope.calculatorState.married = latestEntry.married || false;
+        $scope.calculatorState.blind = latestEntry.blind || false;
+        $scope.calculatorState.noNI = latestEntry.noNI || false;
+        if(latestEntry.selectedAge){
+          $scope.selectedAge = $scope.ages[latestEntry.selectedAge.id - 1] || $scope.ages[0];
+        }
+      }
+    }
+
+    applySettingsFromHistory();
 
     // Different pay periods will be more interested in particular summmaries
     function summaryPeroidPayPeriodSync(){
@@ -66,42 +103,48 @@ angular.module('taxnumptyApp')
       processRules.selectRule(data.name);
     };
 
-    $scope.previousEntries = localStorageService.get('prevEntries') || [];
-
     function addToLocalHistory(salary){
       clearTimeout(historyAddTimer);
       historyAddTimer = setTimeout(function(){
         // Don't re add the same entry
-        if(historyContains($scope.calculatorState.totalTakeHome, $scope.calculatorState.ruleSetName)){
-          return;
-        }
+        removeLogDuplicates($scope.calculatorState.totalTakeHome, $scope.calculatorState.ruleSetName);
+
         // Ten items at most
         if($scope.previousEntries.length > 10){
           $scope.previousEntries.shift();
         }
+
         $scope.previousEntries.push({
           entered:new Date(),
-          salary:salary,
+          visSalary:salary,
           takeHome:$scope.calculatorState.totalTakeHome,
-          year:$scope.calculatorState.ruleSetName
+          year:$scope.calculatorState.ruleSetName,
+          payPeriod:$scope.payPeriod,
+          student:$scope.calculatorState.student,
+          married:$scope.calculatorState.married,
+          blind:$scope.calculatorState.blind,
+          noNI:$scope.calculatorState.noNI,
+          selectedAge:$scope.selectedAge
         });
+
         localStorageService.set('prevEntries', $scope.previousEntries);
         $scope.$digest();
-      },10000);
+        sizeElements();
+      },5000);
     }
 
-    function historyContains(takeHome, year){
+    // Find any previous log entries and remove them
+    function removeLogDuplicates(takeHome, year){
       var ii = $scope.previousEntries.length;
       for(var i= 0; i<ii; i++){
         if($scope.previousEntries[i].takeHome === takeHome && $scope.previousEntries[i].year === year){
-          return true;
+          $scope.previousEntries.splice(i, 1);
+          return;
         }
       }
-      return false;
     }
 
-
-    $scope.$watchCollection('[visSalary, selectedAge, calculatorState.student, calculatorState.blind, calculatorState.noNI, calculatorState.married, calculatorState.addAllowance, calculatorState.pension, payPeriod]', function() {
+    $scope.$watchCollection('[visSalary, selectedAge, calculatorState.student, calculatorState.blind, calculatorState.noNI, calculatorState.married, calculatorState.addAllowance, calculatorState.pension, payPeriod, calculatorState.ruleSetName]', function() {
       $scope.age = $scope.selectedAge.id;
       localStorageService.set('visSalary', $scope.visSalary);
       var salary = $scope.visSalary;
@@ -119,18 +162,9 @@ angular.module('taxnumptyApp')
       processRules.setSalary(salary);
       processRules.setAge($scope.age);
       processRules.update();
-      addToLocalHistory(salary);
+      addToLocalHistory($scope.visSalary);
 
     });
-
-    function sizeElements(){
-      var $settings = $('.salary-settings');
-      $settings.height('auto');
-      if($(document).width() > 960){
-        var docH = $(document).height();
-        $settings.height(docH);
-      }
-    }
 
     /**
      *  Some jQuery to handle making divs full browser height

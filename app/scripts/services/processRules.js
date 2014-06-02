@@ -151,7 +151,6 @@ angular.module('taxCalculator', []).factory('processRules',['ukRuleFactory', fun
     for(var i = 0,ii=that.ruleSets.length; i<ii; i++){
       if(that.ruleSets[i].name === name){
         setRuleSet(i);
-        that.update();
         break;
       }
     }

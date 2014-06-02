@@ -213,12 +213,13 @@
   </div>
 </div>
 <div class="row result-block">
-  <h4>Local History</h4>
-  <p ng-repeat="entry in previousEntries" class="result-summary-2" ng-if="entry.takeHome != calculatorState.totalTakeHome"><span class="result-summary-2-date">{{ entry.entered | date : 'M/d/yy h:mm a'}}</span>
-    <span class="result-summary-2-year">| Year: {{entry.year}} |</span>
-    <span class="result-summary-2-salary">Salary: &pound;{{entry.salary | number:2}} |</span>
+  <h4>Calculation Log</h4>
+  <p ng-repeat="entry in previousEntries" class="result-summary-2"><span class="result-summary-2-date">{{ entry.entered | date : 'M/d/yy h:mm a'}}</span>
+    <span class="result-summary-2-year">| Tax Year: {{entry.year}} |</span>
+    <span class="result-summary-2-salary">Salary: &pound;{{entry.visSalary | number:2}} {{entry.payPeriod}} |</span>
+    <span class="result-summary-2-salary" ng-if="entry.student">Student |</span>
     <span class="result-summary-2-takehome">Take Home: &pound;{{entry.takeHome | number:2}}</span>
-    <span class="result-summary-2-takehome-up" ng-if="(entry.takeHome - calculatorState.totalTakeHome) > 0">| &pound;{{entry.takeHome - calculatorState.totalTakeHome | number:2}} more than current</span>
-    <span class="result-summary-2-takehome-down" ng-if="(entry.takeHome - calculatorState.totalTakeHome) < 0">| &pound;{{calculatorState.totalTakeHome - entry.takeHome | number:2}} less than current</span></p>
+    <span class="result-summary-2-takehome-up" ng-if="(entry.takeHome - calculatorState.totalTakeHome) > 0">| &pound;{{entry.takeHome - calculatorState.totalTakeHome | number:2}} more income than current</span>
+    <span class="result-summary-2-takehome-down" ng-if="(entry.takeHome - calculatorState.totalTakeHome) < 0">| &pound;{{calculatorState.totalTakeHome - entry.takeHome | number:2}} less income than current</span></p>
   <p ng-if="!previousEntries.length">Different salary configurations will be saved locally so you can compare them.</p>
 </div>

@@ -9,6 +9,7 @@ body {
   color:#444;
   overflow: auto;
   min-height: 100%;
+  overflow-y: scroll;
 }
 
 img {
@@ -30,23 +31,26 @@ img {
   text-transform: uppercase;
   z-index: 2;
   letter-spacing: 3px;
-  height:70px;
 }
 
-.header .info1{
+.header .site {
   background: #43919D;
   height:70px;
   width: 160px;
   text-align: center;
   overflow: auto;
   float:left;
+  font-size:15px;
+  margin:0;
 }
 
 .header .page-title{
   color:#fff;
   float:left;
-  padding-top: 25px;
+  font-size:14px;
+  padding-top: 26px;
   padding-left: 32px;
+  margin:0;
   display:none;
 }
 
@@ -85,7 +89,7 @@ img {
 }
 
 /* Make the masthead heading the same height as the navigation */
-.header h3 {
+.header .site {
   color: #fff;
   font-size: 15px;
   margin-top: 0;
@@ -95,7 +99,7 @@ img {
   font-family: 'Carrois Gothic SC', sans-serif;
 }
 
-.header h3 span{
+.header .site span{
   color: #0B0B0B;
 }
 
@@ -265,6 +269,11 @@ label{
   position: relative;
 }
 
+.results-summary-data {
+  width: 312px;
+  margin: 8px auto;
+}
+
 .result-summary-ctr{
   width:300px;
   margin:20px auto 30px;
@@ -306,6 +315,7 @@ label{
   min-width: 180px;
   float:left;
   color:#268A9A;
+  line-height: 22px;
 }
 
 .result-label-deduction{
@@ -317,10 +327,12 @@ label{
   font-size: 16px;
   letter-spacing: 1px;
   float:right;
+  font-weight: bold;
 }
 
 .result-highlight-red{
   color:#6F6F6F;
+  font-weight: normal;
 }
 
 .result-summary-2 span{
@@ -379,7 +391,7 @@ label{
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  .header .info1{
+  .header .site {
     width:286px;
   }
 
@@ -451,7 +463,7 @@ label{
   }
 
   .result-summary-ctr{
-    width:300px;
+    width:312px;
     margin:20px 20px 10px 20px;
   }
   
@@ -462,7 +474,6 @@ label{
   .header {
     position: relative;
     z-index: 2;
-    height: 70px;
   }
 
   #taxed-bg {
