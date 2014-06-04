@@ -198,6 +198,20 @@ label{
 }
 
 
+/* Share Icons */
+
+.share{
+  text-align:left;
+  font-size: 15px;
+  margin-top:32px;
+}
+
+.share a{
+  color:#fff;
+  text-decoration: none;
+  padding: 0 4px;
+}
+
 /* Results */
 
 .results-container{
@@ -280,9 +294,17 @@ label{
   float:left;
 }
 
+#tax-report{
+  padding:0 5px;
+}
+
 #pieChart{
   width:300px;
   height:100%;
+}
+
+#log-hd{
+  margin-bottom: 22px;
 }
 
 .result-summary-chart{

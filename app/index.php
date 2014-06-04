@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>TAXEDPLANET | UK tax calculator</title>
+    <title>Calculate your take home salary after tax</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
@@ -14,6 +14,7 @@
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
@@ -35,7 +36,7 @@
       <h2 class="page-title">Tax Calculator</h2>
       <div ng-controller="Calculator" class="selected-calculator dropdown">
         <div class="selected-calculator-inner" data-toggle="dropdown">
-          <div class="selected">{{calculatorState.ruleSetName}}</div>
+          <div class="selected" ng-bind="calculatorState.ruleSetName"></div>
           <div class="world"></div>
         </div>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -336,6 +337,7 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-easy-social-share/easy-social-share.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

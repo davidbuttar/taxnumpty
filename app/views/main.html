@@ -47,16 +47,19 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="pensionInput">Pension Contribution</label>
-          <input type="text" class="form-control" id="pensionInput" placeholder="Enter pension" ng-model="calculatorState.pension">
+          <label for="pensionInput">Pension Contribution (%)</label>
+          <input type="text" class="form-control" id="pensionInput" placeholder="Enter pension %" ng-model="pensionPercentage" maxlength="3">
         </div>
         <div class="form-group">
           <label for="addAllowanceInput">Added Allowance</label>
           <input type="text" class="form-control" id="addAllowanceInput" placeholder="Enter Allowance or subtraction" ng-model="calculatorState.addAllowance">
         </div>
+        <div share-square="false" share-links="Facebook, Twitter, LinkedIn" share-title="Article Title" class="share"></div>
       </div>
     </form>
+
   </div>
+
 </div>
 <div class="row result-block">
   <div class="result-hd">
@@ -99,6 +102,7 @@
         <li ng-class="{selected: detailsPeriods.yearly}" ng-click="toggleDetailsPeriod('yearly')" title="Yearly">YR</li>
         <li ng-class="{selected: detailsPeriods.monthly}" ng-click="toggleDetailsPeriod('monthly')" title="Monthly">MN</li>
         <li ng-class="{selected: detailsPeriods.weekly}" ng-click="toggleDetailsPeriod('weekly')" title="Weekly">WK</li>
+        <li ng-class="{selected: detailsPeriods.twoWeekly}" ng-click="toggleDetailsPeriod('twoWeekly')" title="Two Weekly">TW</li>
         <li ng-class="{selected: detailsPeriods.daily}" ng-click="toggleDetailsPeriod('daily')" title="Daily">DY</li>
         <li ng-class="{selected: detailsPeriods.hourly}" ng-click="toggleDetailsPeriod('hourly')" title="Hourly">HR</li>
       </ul>
@@ -115,6 +119,7 @@
           <th ng-if="detailsPeriods.yearly">Yearly</th>
           <th ng-if="detailsPeriods.monthly">Monthly</th>
           <th ng-if="detailsPeriods.weekly">Weekly</th>
+          <th ng-if="detailsPeriods.twoWeekly">2-Weekly</th>
           <th ng-if="detailsPeriods.daily">Daily</th>
           <th ng-if="detailsPeriods.hourly">Hourly</th>
         </tr>
@@ -125,6 +130,7 @@
           <td ng-if="detailsPeriods.yearly">{{calculatorState.salary | number:2}}</td>
           <td ng-if="detailsPeriods.monthly">{{calculatorState.salary/12 | number:2}}</td>
           <td ng-if="detailsPeriods.weekly">{{calculatorState.salary/52 | number:2}}</td>
+          <td ng-if="detailsPeriods.twoWeekly">{{calculatorState.salary/26 | number:2}}</td>
           <td ng-if="detailsPeriods.daily">{{(calculatorState.salary/52)/5 | number:2}}</td>
           <td ng-if="detailsPeriods.hourly">{{(calculatorState.salary/52)/37.5 | number:2}}</td>
         </tr>
@@ -133,6 +139,7 @@
           <td ng-if="detailsPeriods.yearly">{{calculatorState.taxableIncome | number:2}}</td>
           <td ng-if="detailsPeriods.monthly">{{calculatorState.taxableIncome/12 | number:2}}</td>
           <td ng-if="detailsPeriods.weekly">{{calculatorState.taxableIncome/52 | number:2}}</td>
+          <td ng-if="detailsPeriods.twoWeekly">{{calculatorState.taxableIncome/26 | number:2}}</td>
           <td ng-if="detailsPeriods.daily">{{(calculatorState.taxableIncome/52)/5 | number:2}}</td>
           <td ng-if="detailsPeriods.hourly">{{(calculatorState.taxableIncome/52)/37.5 | number:2}}</td>
         </tr>
@@ -141,6 +148,7 @@
           <td ng-if="detailsPeriods.yearly">{{calculatorState.incomeTaxAllowance | number:2}}</td>
           <td ng-if="detailsPeriods.monthly">{{calculatorState.incomeTaxAllowance/12 | number:2}}</td>
           <td ng-if="detailsPeriods.weekly">{{calculatorState.incomeTaxAllowance/52 | number:2}}</td>
+          <td ng-if="detailsPeriods.twoWeekly">{{calculatorState.incomeTaxAllowance/26 | number:2}}</td>
           <td ng-if="detailsPeriods.daily">{{(calculatorState.incomeTaxAllowance/52)/5 | number:2}}</td>
           <td ng-if="detailsPeriods.hourly">{{(calculatorState.incomeTaxAllowance/52)/37.5 | number:2}}</td>
         </tr>
@@ -149,6 +157,7 @@
           <td ng-if="detailsPeriods.yearly">{{calculatorState.incomeTax | number:2}}</td>
           <td ng-if="detailsPeriods.monthly">{{calculatorState.incomeTax/12 | number:2}}</td>
           <td ng-if="detailsPeriods.weekly">{{calculatorState.incomeTax/52 | number:2}}</td>
+          <td ng-if="detailsPeriods.twoWeekly">{{calculatorState.incomeTax/26 | number:2}}</td>
           <td ng-if="detailsPeriods.daily">{{(calculatorState.incomeTax/52)/5 | number:2}}</td>
           <td ng-if="detailsPeriods.hourly">{{(calculatorState.incomeTax/52)/37.5 | number:2}}</td>
         </tr>
@@ -157,6 +166,7 @@
           <td ng-if="detailsPeriods.yearly">{{calculatorState.nationalInsurance | number:2}}</td>
           <td ng-if="detailsPeriods.monthly">{{calculatorState.nationalInsurance/12 | number:2}}</td>
           <td ng-if="detailsPeriods.weekly">{{calculatorState.nationalInsurance/52 | number:2}}</td>
+          <td ng-if="detailsPeriods.twoWeekly">{{calculatorState.nationalInsurance/26 | number:2}}</td>
           <td ng-if="detailsPeriods.daily">{{(calculatorState.nationalInsurance/52)/5 | number:2}}</td>
           <td ng-if="detailsPeriods.hourly">{{(calculatorState.nationalInsurance/52)/37.5 | number:2}}</td>
         </tr>
@@ -165,6 +175,7 @@
           <td ng-if="detailsPeriods.yearly">{{calculatorState.studentLoan | number:2}}</td>
           <td ng-if="detailsPeriods.monthly">{{calculatorState.studentLoan/12 | number:2}}</td>
           <td ng-if="detailsPeriods.weekly">{{calculatorState.studentLoan/52 | number:2}}</td>
+          <td ng-if="detailsPeriods.twoWeekly">{{calculatorState.studentLoan/26 | number:2}}</td>
           <td ng-if="detailsPeriods.daily">{{(calculatorState.studentLoan/52)/5 | number:2}}</td>
           <td ng-if="detailsPeriods.hourly">{{(calculatorState.studentLoan/52)/37.5 | number:2}}</td>
         </tr>
@@ -173,6 +184,7 @@
           <td ng-if="detailsPeriods.yearly">{{calculatorState.pension | number:2}}</td>
           <td ng-if="detailsPeriods.monthly">{{calculatorState.pension/12 | number:2}}</td>
           <td ng-if="detailsPeriods.weekly">{{calculatorState.pension/52 | number:2}}</td>
+          <td ng-if="detailsPeriods.twoWeekly">{{calculatorState.pension/26 | number:2}}</td>
           <td ng-if="detailsPeriods.daily">{{(calculatorState.pension/52)/5 | number:2}}</td>
           <td ng-if="detailsPeriods.hourly">{{(calculatorState.pension/52)/37.5 | number:2}}</td>
         </tr>
@@ -181,6 +193,7 @@
           <td ng-if="detailsPeriods.yearly">{{calculatorState.pensionHMRC | number:2}}</td>
           <td ng-if="detailsPeriods.monthly">{{calculatorState.pensionHMRC/12 | number:2}}</td>
           <td ng-if="detailsPeriods.weekly">{{calculatorState.pensionHMRC/52 | number:2}}</td>
+          <td ng-if="detailsPeriods.twoWeekly">{{calculatorState.pensionHMRC/26 | number:2}}</td>
           <td ng-if="detailsPeriods.daily">{{(calculatorState.pensionHMRC/52)/5 | number:2}}</td>
           <td ng-if="detailsPeriods.hourly">{{(calculatorState.pensionHMRC/52)/37.5 | number:2}}</td>
         </tr>
@@ -189,6 +202,7 @@
           <td ng-if="detailsPeriods.yearly">{{calculatorState.totalDeductions | number:2}}</td>
           <td ng-if="detailsPeriods.monthly">{{calculatorState.totalDeductions/12 | number:2}}</td>
           <td ng-if="detailsPeriods.weekly">{{calculatorState.totalDeductions/52 | number:2}}</td>
+          <td ng-if="detailsPeriods.twoWeekly">{{calculatorState.totalDeductions/26 | number:2}}</td>
           <td ng-if="detailsPeriods.daily">{{(calculatorState.totalDeductions/52)/5 | number:2}}</td>
           <td ng-if="detailsPeriods.hourly">{{(calculatorState.totalDeductions/52)/37.5 | number:2}}</td>
         </tr>
@@ -197,6 +211,7 @@
           <td ng-if="detailsPeriods.yearly">{{calculatorState.totalTakeHome | number:2}}</td>
           <td ng-if="detailsPeriods.monthly">{{calculatorState.totalTakeHome/12 | number:2}}</td>
           <td ng-if="detailsPeriods.weekly">{{calculatorState.totalTakeHome/52 | number:2}}</td>
+          <td ng-if="detailsPeriods.twoWeekly">{{calculatorState.totalTakeHome/26 | number:2}}</td>
           <td ng-if="detailsPeriods.daily">{{(calculatorState.totalTakeHome/52)/5 | number:2}}</td>
           <td ng-if="detailsPeriods.hourly">{{(calculatorState.totalTakeHome/52)/37.5 | number:2}}</td>
         </tr>
@@ -205,6 +220,7 @@
           <td ng-if="detailsPeriods.yearly">{{calculatorState.lastTakeHome | number:2}}</td>
           <td ng-if="detailsPeriods.monthly">{{calculatorState.lastTakeHome/12 | number:2}}</td>
           <td ng-if="detailsPeriods.weekly">{{calculatorState.lastTakeHome/52 | number:2}}</td>
+          <td ng-if="detailsPeriods.twoWeekly">{{calculatorState.lastTakeHome/26 | number:2}}</td>
           <td ng-if="detailsPeriods.daily">{{(calculatorState.lastTakeHome/52)/5 | number:2}}</td>
           <td ng-if="detailsPeriods.hourly">{{(calculatorState.lastTakeHome/52)/37.5 | number:2}}</td>
         </tr>
@@ -213,7 +229,7 @@
   </div>
 </div>
 <div class="row result-block">
-  <h4>Calculation Log</h4>
+  <h4 id="log-hd">Calculation Log</h4>
   <p ng-repeat="entry in previousEntries" class="result-summary-2"><span class="result-summary-2-date">{{ entry.entered | date : 'M/d/yy h:mm a'}}</span>
     <span class="result-summary-2-year">| Tax Year: {{entry.year}} |</span>
     <span class="result-summary-2-salary">Salary: &pound;{{entry.visSalary | number:2}} {{entry.payPeriod}} |</span>
@@ -222,4 +238,5 @@
     <span class="result-summary-2-takehome-up" ng-if="(entry.takeHome - calculatorState.totalTakeHome) > 0">| &pound;{{entry.takeHome - calculatorState.totalTakeHome | number:2}} more income than current</span>
     <span class="result-summary-2-takehome-down" ng-if="(entry.takeHome - calculatorState.totalTakeHome) < 0">| &pound;{{calculatorState.totalTakeHome - entry.takeHome | number:2}} less income than current</span></p>
   <p ng-if="!previousEntries.length">Different salary configurations will be saved locally so you can compare them.</p>
+
 </div>

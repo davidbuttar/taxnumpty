@@ -18,6 +18,7 @@ angular.module('taxnumptyApp')
     $scope.selectedAge = $scope.ages[0];
     $scope.visSalary = 20000;
     $scope.showMoreSettings = false;
+    $scope.pensionPercentage = null;
     $scope.payPeriod = 'Yearly';
     $scope.summaryPeriods ={
       yearly:true,
@@ -31,6 +32,7 @@ angular.module('taxnumptyApp')
       yearly:true,
       monthly:true,
       weekly:true,
+      twoWeekly:false,
       daily:false,
       hourly:false
     };
@@ -144,7 +146,7 @@ angular.module('taxnumptyApp')
       }
     }
 
-    $scope.$watchCollection('[visSalary, selectedAge, calculatorState.student, calculatorState.blind, calculatorState.noNI, calculatorState.married, calculatorState.addAllowance, calculatorState.pension, payPeriod, calculatorState.ruleSetName]', function() {
+    $scope.$watchCollection('[visSalary, selectedAge, pensionPercentage, calculatorState.student, calculatorState.blind, calculatorState.noNI, calculatorState.married, calculatorState.addAllowance, payPeriod, calculatorState.ruleSetName]', function() {
       $scope.age = $scope.selectedAge.id;
       localStorageService.set('visSalary', $scope.visSalary);
       var salary = $scope.visSalary;
@@ -156,6 +158,13 @@ angular.module('taxnumptyApp')
         salary = salary * 5 * 52;
       }else if ($scope.payPeriod === 'Hourly'){
         salary = salary * 37.5 * 52;
+      }
+
+      // Convert for input percentage to a pension value
+      if($scope.pensionPercentage){
+        $scope.calculatorState.pension = $scope.pensionPercentage/100 * salary;
+      }else{
+        $scope.calculatorState.pension = null;
       }
 
       summaryPeroidPayPeriodSync();

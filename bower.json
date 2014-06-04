@@ -11,7 +11,8 @@
     "angular-cookies": "1.2.6",
     "angular-sanitize": "1.2.6",
     "angular-route": "1.2.6",
-    "angular-animate": "1.2.6"
+    "angular-animate": "1.2.6",
+    "angular-easy-social-share": "*"
   },
   "devDependencies": {
     "angular-mocks": "1.2.6",
