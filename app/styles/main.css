@@ -10,6 +10,7 @@ body {
   overflow: auto;
   min-height: 100%;
   overflow-y: scroll;
+  font-family: 'Carrois Gothic SC', sans-serif;
 }
 
 img {
@@ -201,15 +202,15 @@ label{
 /* Share Icons */
 
 .share{
-  text-align:left;
-  font-size: 15px;
-  margin-top:32px;
+  text-align:center;
+  font-size: 17px;
+  margin:20px 0;
 }
 
 .share a{
-  color:#fff;
+  color:#333;
   text-decoration: none;
-  padding: 0 4px;
+  padding: 0 5px;
 }
 
 /* Results */
@@ -510,6 +511,23 @@ label{
     display:none;
   }
 
+  .result-summary-2{
+    padding:5px 30px;
+  }
+
+}
+
+@media (min-width: 1200px){
+  .share{
+    position: fixed;
+    margin: 0;
+    left:82px;
+    bottom:10px;
+  }
+
+  .share a{
+    color:#ccc;
+  }
 }
 
 
@@ -518,6 +536,7 @@ label{
   .result-block table{
     font-size:14px;
   }
+
 
 }
 

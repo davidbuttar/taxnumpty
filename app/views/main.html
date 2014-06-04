@@ -54,7 +54,6 @@
           <label for="addAllowanceInput">Added Allowance</label>
           <input type="text" class="form-control" id="addAllowanceInput" placeholder="Enter Allowance or subtraction" ng-model="calculatorState.addAllowance">
         </div>
-        <div share-square="false" share-links="Facebook, Twitter, LinkedIn" share-title="Article Title" class="share"></div>
       </div>
     </form>
 
@@ -238,5 +237,6 @@
     <span class="result-summary-2-takehome-up" ng-if="(entry.takeHome - calculatorState.totalTakeHome) > 0">| &pound;{{entry.takeHome - calculatorState.totalTakeHome | number:2}} more income than current</span>
     <span class="result-summary-2-takehome-down" ng-if="(entry.takeHome - calculatorState.totalTakeHome) < 0">| &pound;{{calculatorState.totalTakeHome - entry.takeHome | number:2}} less income than current</span></p>
   <p ng-if="!previousEntries.length">Different salary configurations will be saved locally so you can compare them.</p>
-
 </div>
+
+<div share-square="false" share-links="Facebook, Twitter, LinkedIn, Google-Plus" share-title="Article Title" class="share"></div>

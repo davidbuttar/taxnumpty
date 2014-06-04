@@ -104,7 +104,7 @@ describe('Controller: Calculator', function () {
     expect(scope.calculatorState.incomeTax).toBe(40558);
   });
 
-  it('should calculate the pension contribution of the HMRC', function () {
+  /*it('should calculate the pension contribution of the HMRC', function () {
 
     scope.visSalary = 41500;
     scope.calculatorState.pension = 1000;
@@ -135,7 +135,7 @@ describe('Controller: Calculator', function () {
     scope.$digest();
     expect(scope.calculatorState.pensionHMRC).toBe(20000);
 
-  });
+  });*/
 
 
 });

@@ -47,7 +47,8 @@
     <div class="results-container">
       <div class="results" ng-view="">
         <div class="no-js-content">
-
+        <img id="campaign-icon" src="images/taxedplanetlogo.png" src="taxplanet.com" />
+        <p>Salary Calculator: calculate your take home pay after tax. See a detailed break down and comparisons with different salary options.</p>
           <div class="salary-settings ng-scope" style="height: 1200px;">
             <div class="salary-settings-inner">
               <form role="form" class="ng-pristine ng-valid">
@@ -58,11 +59,11 @@
                     <div class="input-group-btn">
                       <button type="button" class="btn btn-default dropdown-toggle ng-binding" data-toggle="dropdown">Yearly <span class="caret"></span></button>
                       <ul class="dropdown-menu pull-right">
-                        <li><a ng-click="setPayPeriod('Yearly')">Yearly</a></li>
-                        <li><a ng-click="setPayPeriod('Monthly')">Monthly</a></li>
-                        <li><a ng-click="setPayPeriod('Weekly')">Weekly</a></li>
-                        <li><a ng-click="setPayPeriod('Daily')">Daily (5 days a week)</a></li>
-                        <li><a ng-click="setPayPeriod('Hourly')">Hourly (37.5 hrs a week)</a></li>
+                        <li><a >Yearly</a></li>
+                        <li><a >Monthly</a></li>
+                        <li><a >Weekly</a></li>
+                        <li><a >Daily (5 days a week)</a></li>
+                        <li><a >Hourly (37.5 hrs a week)</a></li>
                       </ul>
                     </div><!-- /btn-group -->
                   </div><!-- /input-group -->
@@ -127,16 +128,10 @@
                 <p class="result-summary ng-hide" ng-show="summaryPeriods.hourly"><span class="result-label-deduction">Hourly Deductions</span> <span class="result-highlight-red ng-binding">£7.32</span></p>
                 <p class="result-summary ng-hide" ng-show="summaryPeriods.daily"><span class="result-label">Daily take home pay</span> <span class="result-highlight ng-binding">£118.16</span></p>
                 <p class="result-summary ng-hide" ng-show="summaryPeriods.daily"><span class="result-label-deduction">Daily Deductions</span> <span class="result-highlight-red ng-binding">£54.92</span></p>
-                <p class="result-summary ng-hide" ng-show="summaryPeriods.weekly"><span class="result-label">Weekly take home pay</span> <span class="result-highlight ng-binding">£590.79</span></p>
-                <p class="result-summary ng-hide" ng-show="summaryPeriods.weekly"><span class="result-label-deduction">Weekly Deductions</span> <span class="result-highlight-red ng-binding">£274.59</span></p>
-                <p class="result-summary" ng-show="summaryPeriods.monthly"><span class="result-label">Monthly take home pay</span> <span class="result-highlight ng-binding">£2,560.10</span></p>
-                <p class="result-summary" ng-show="summaryPeriods.monthly"><span class="result-label-deduction">Monthly Deductions</span> <span class="result-highlight-red ng-binding">£1,189.90</span></p>
-                <p class="result-summary" ng-show="summaryPeriods.yearly"><span class="result-label">Yearly take home pay</span> <span class="result-highlight ng-binding">£30,721.22</span><span class="result-highlight"></span></p>
-                <p class="result-summary" ng-show="summaryPeriods.yearly"><span class="result-label-deduction">Yearly Deductions</span> <span class="result-highlight-red ng-binding">£14,278.78</span></p>
               </div>
               <div chart-donut="" salary-values="[calculatorState.totalTakeHome, calculatorState.totalDeductions]" chart-id="pieChart" class="result-summary-chart ng-isolate-scope">
                 <div id="pieChart" class="cbc-chart"><div class="cbc-da" id="cbc-da-1" style="width:100%; height:100%; position:absolute; top:0; left:0;"><canvas width="300" height="180" class="cbc-canvas" style="text-align: left; display: inline-block; overflow: hidden;">&nbsp;</canvas><canvas width="300" height="180" class="cbc-canvas" style="text-align: left; display: inline-block; overflow: hidden;">&nbsp;</canvas></div><div class="cbc-ha" id="cbc-ha-1" style="width:100%; height:100%; position:absolute; top:0; left:0;z-index:1"></div><div class="cbc-has" id="cbc-has-1" style="width:100%; height:100%; position:absolute; top:0; left:0; z-index:1"></div><div class="cbc-yaxis-container" id="cbc-yaxis-1"></div><div class="cbc-error" id="cbc-error-1" style="display: none;"></div><div class="cbc-tooltips"></div></div>
-                <!-- ngIf: calculatorState.salary --><div class="result-summary-percentage ng-scope ng-binding" ng-if="calculatorState.salary">68.27%</div><!-- end ngIf: calculatorState.salary -->
+                <div class="result-summary-percentage ng-scope ng-binding" ng-if="calculatorState.salary">68.27%</div>
               </div>
             </div>
 
@@ -146,11 +141,11 @@
               <h4>Details</h4>
               <div class="time-period-options">
                 <ul>
-                  <li ng-class="{selected: detailsPeriods.yearly}" ng-click="toggleDetailsPeriod('yearly')" title="Yearly" class="selected">YR</li>
-                  <li ng-class="{selected: detailsPeriods.monthly}" ng-click="toggleDetailsPeriod('monthly')" title="Monthly" class="selected">MN</li>
-                  <li ng-class="{selected: detailsPeriods.weekly}" ng-click="toggleDetailsPeriod('weekly')" title="Weekly" class="selected">WK</li>
-                  <li ng-class="{selected: detailsPeriods.daily}" ng-click="toggleDetailsPeriod('daily')" title="Daily">DY</li>
-                  <li ng-class="{selected: detailsPeriods.hourly}" ng-click="toggleDetailsPeriod('hourly')" title="Hourly">HR</li>
+                  <li title="Yearly" class="selected">YR</li>
+                  <li title="Monthly" class="selected">MN</li>
+                  <li title="Weekly" class="selected">WK</li>
+                  <li title="Daily">DY</li>
+                  <li title="Hourly">HR</li>
                 </ul>
               </div>
             </div>
@@ -162,101 +157,101 @@
                 <thead>
                 <tr>
                   <th></th>
-                  <!-- ngIf: detailsPeriods.yearly --><th ng-if="detailsPeriods.yearly" class="ng-scope">Yearly</th><!-- end ngIf: detailsPeriods.yearly -->
-                  <!-- ngIf: detailsPeriods.monthly --><th ng-if="detailsPeriods.monthly" class="ng-scope">Monthly</th><!-- end ngIf: detailsPeriods.monthly -->
-                  <!-- ngIf: detailsPeriods.weekly --><th ng-if="detailsPeriods.weekly" class="ng-scope">Weekly</th><!-- end ngIf: detailsPeriods.weekly -->
-                  <!-- ngIf: detailsPeriods.daily -->
-                  <!-- ngIf: detailsPeriods.hourly -->
+                  <th ng-if="detailsPeriods.yearly" class="ng-scope">Yearly</th>
+                  <th ng-if="detailsPeriods.monthly" class="ng-scope">Monthly</th>
+                  <th ng-if="detailsPeriods.weekly" class="ng-scope">Weekly</th>
+
+
                 </tr>
                 </thead>
                 <tbody>
                 <tr class="success">
                   <td>Salary</td>
-                  <!-- ngIf: detailsPeriods.yearly --><td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">45,000.00</td><!-- end ngIf: detailsPeriods.yearly -->
-                  <!-- ngIf: detailsPeriods.monthly --><td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">3,750.00</td><!-- end ngIf: detailsPeriods.monthly -->
-                  <!-- ngIf: detailsPeriods.weekly --><td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">865.38</td><!-- end ngIf: detailsPeriods.weekly -->
-                  <!-- ngIf: detailsPeriods.daily -->
-                  <!-- ngIf: detailsPeriods.hourly -->
+                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">45,000.00</td>
+                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">3,750.00</td>
+                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">865.38</td>
+
+
                 </tr>
                 <tr>
                   <td>Taxable</td>
-                  <!-- ngIf: detailsPeriods.yearly --><td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">35,000.00</td><!-- end ngIf: detailsPeriods.yearly -->
-                  <!-- ngIf: detailsPeriods.monthly --><td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">2,916.67</td><!-- end ngIf: detailsPeriods.monthly -->
-                  <!-- ngIf: detailsPeriods.weekly --><td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">673.08</td><!-- end ngIf: detailsPeriods.weekly -->
-                  <!-- ngIf: detailsPeriods.daily -->
-                  <!-- ngIf: detailsPeriods.hourly -->
+                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">35,000.00</td>
+                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">2,916.67</td>
+                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">673.08</td>
+
+
                 </tr>
                 <tr>
                   <td>Allowance</td>
-                  <!-- ngIf: detailsPeriods.yearly --><td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">10,000.00</td><!-- end ngIf: detailsPeriods.yearly -->
-                  <!-- ngIf: detailsPeriods.monthly --><td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">833.33</td><!-- end ngIf: detailsPeriods.monthly -->
-                  <!-- ngIf: detailsPeriods.weekly --><td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">192.31</td><!-- end ngIf: detailsPeriods.weekly -->
-                  <!-- ngIf: detailsPeriods.daily -->
-                  <!-- ngIf: detailsPeriods.hourly -->
+                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">10,000.00</td>
+                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">833.33</td>
+                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">192.31</td>
+
+
                 </tr>
                 <tr>
                   <td>Income Tax</td>
-                  <!-- ngIf: detailsPeriods.yearly --><td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">7,627.00</td><!-- end ngIf: detailsPeriods.yearly -->
-                  <!-- ngIf: detailsPeriods.monthly --><td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">635.58</td><!-- end ngIf: detailsPeriods.monthly -->
-                  <!-- ngIf: detailsPeriods.weekly --><td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">146.67</td><!-- end ngIf: detailsPeriods.weekly -->
-                  <!-- ngIf: detailsPeriods.daily -->
-                  <!-- ngIf: detailsPeriods.hourly -->
+                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">7,627.00</td>
+                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">635.58</td>
+                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">146.67</td>
+
+
                 </tr>
                 <tr>
                   <td>N.I.</td>
-                  <!-- ngIf: detailsPeriods.yearly --><td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">4,131.78</td><!-- end ngIf: detailsPeriods.yearly -->
-                  <!-- ngIf: detailsPeriods.monthly --><td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">344.32</td><!-- end ngIf: detailsPeriods.monthly -->
-                  <!-- ngIf: detailsPeriods.weekly --><td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">79.46</td><!-- end ngIf: detailsPeriods.weekly -->
-                  <!-- ngIf: detailsPeriods.daily -->
-                  <!-- ngIf: detailsPeriods.hourly -->
+                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">4,131.78</td>
+                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">344.32</td>
+                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">79.46</td>
+
+
                 </tr>
-                <!-- ngIf: calculatorState.student --><tr ng-if="calculatorState.student" class="warning ng-scope">
+                <tr ng-if="calculatorState.student" class="warning ng-scope">
                   <td>Student Loan</td>
-                  <!-- ngIf: detailsPeriods.yearly --><td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">2,520.00</td><!-- end ngIf: detailsPeriods.yearly -->
-                  <!-- ngIf: detailsPeriods.monthly --><td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">210.00</td><!-- end ngIf: detailsPeriods.monthly -->
-                  <!-- ngIf: detailsPeriods.weekly --><td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">48.46</td><!-- end ngIf: detailsPeriods.weekly -->
-                  <!-- ngIf: detailsPeriods.daily -->
-                  <!-- ngIf: detailsPeriods.hourly -->
-                </tr><!-- end ngIf: calculatorState.student -->
+                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">2,520.00</td>
+                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">210.00</td>
+                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">48.46</td>
+
+
+                </tr>
                 <tr ng-show="calculatorState.pension > 0" class="info ng-hide">
                   <td>Pension</td>
-                  <!-- ngIf: detailsPeriods.yearly --><td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">0.00</td><!-- end ngIf: detailsPeriods.yearly -->
-                  <!-- ngIf: detailsPeriods.monthly --><td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">0.00</td><!-- end ngIf: detailsPeriods.monthly -->
-                  <!-- ngIf: detailsPeriods.weekly --><td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">0.00</td><!-- end ngIf: detailsPeriods.weekly -->
-                  <!-- ngIf: detailsPeriods.daily -->
-                  <!-- ngIf: detailsPeriods.hourly -->
+                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">0.00</td>
+                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">0.00</td>
+                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">0.00</td>
+
+
                 </tr>
                 <tr ng-show="calculatorState.pension > 0" class="info ng-hide">
                   <td>Pension HMRC</td>
-                  <!-- ngIf: detailsPeriods.yearly --><td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">0.00</td><!-- end ngIf: detailsPeriods.yearly -->
-                  <!-- ngIf: detailsPeriods.monthly --><td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">0.00</td><!-- end ngIf: detailsPeriods.monthly -->
-                  <!-- ngIf: detailsPeriods.weekly --><td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">0.00</td><!-- end ngIf: detailsPeriods.weekly -->
-                  <!-- ngIf: detailsPeriods.daily -->
-                  <!-- ngIf: detailsPeriods.hourly -->
+                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">0.00</td>
+                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">0.00</td>
+                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">0.00</td>
+
+
                 </tr>
                 <tr class="deduction">
                   <td>Total Deductions</td>
-                  <!-- ngIf: detailsPeriods.yearly --><td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">14,278.78</td><!-- end ngIf: detailsPeriods.yearly -->
-                  <!-- ngIf: detailsPeriods.monthly --><td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">1,189.90</td><!-- end ngIf: detailsPeriods.monthly -->
-                  <!-- ngIf: detailsPeriods.weekly --><td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">274.59</td><!-- end ngIf: detailsPeriods.weekly -->
-                  <!-- ngIf: detailsPeriods.daily -->
-                  <!-- ngIf: detailsPeriods.hourly -->
+                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">14,278.78</td>
+                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">1,189.90</td>
+                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">274.59</td>
+
+
                 </tr>
                 <tr class="success">
                   <td>Take Home Pay</td>
-                  <!-- ngIf: detailsPeriods.yearly --><td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">30,721.22</td><!-- end ngIf: detailsPeriods.yearly -->
-                  <!-- ngIf: detailsPeriods.monthly --><td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">2,560.10</td><!-- end ngIf: detailsPeriods.monthly -->
-                  <!-- ngIf: detailsPeriods.weekly --><td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">590.79</td><!-- end ngIf: detailsPeriods.weekly -->
-                  <!-- ngIf: detailsPeriods.daily -->
-                  <!-- ngIf: detailsPeriods.hourly -->
+                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">30,721.22</td>
+                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">2,560.10</td>
+                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">590.79</td>
+
+
                 </tr>
                 <tr ng-show="calculatorState.prevRuleSet" class="">
                   <td>Take Home Last Year</td>
-                  <!-- ngIf: detailsPeriods.yearly --><td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">30,495.36</td><!-- end ngIf: detailsPeriods.yearly -->
-                  <!-- ngIf: detailsPeriods.monthly --><td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">2,541.28</td><!-- end ngIf: detailsPeriods.monthly -->
-                  <!-- ngIf: detailsPeriods.weekly --><td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">586.45</td><!-- end ngIf: detailsPeriods.weekly -->
-                  <!-- ngIf: detailsPeriods.daily -->
-                  <!-- ngIf: detailsPeriods.hourly -->
+                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">30,495.36</td>
+                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">2,541.28</td>
+                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">586.45</td>
+
+
                 </tr>
                 </tbody>
               </table>
@@ -264,46 +259,30 @@
           </div>
           <div class="row result-block ng-scope">
             <h4>Calculation Log</h4>
-            <!-- ngRepeat: entry in previousEntries --><p ng-repeat="entry in previousEntries" class="result-summary-2 ng-scope"><span class="result-summary-2-date ng-binding">6/2/14 11:33 PM</span>
-            <span class="result-summary-2-year ng-binding">| Tax Year: UK 2014/15 |</span>
-            <span class="result-summary-2-salary ng-binding">Salary: £20,000.00 Yearly |</span>
-            <!-- ngIf: entry.student -->
-            <span class="result-summary-2-takehome ng-binding">Take Home: £16,554.72</span>
-            <!-- ngIf: (entry.takeHome - calculatorState.totalTakeHome) > 0 -->
-            <!-- ngIf: (entry.takeHome - calculatorState.totalTakeHome) < 0 --><span class="result-summary-2-takehome-down ng-scope ng-binding" ng-if="(entry.takeHome - calculatorState.totalTakeHome) < 0">| £14,166.50 less income than current</span><!-- end ngIf: (entry.takeHome - calculatorState.totalTakeHome) < 0 --></p><!-- end ngRepeat: entry in previousEntries --><p ng-repeat="entry in previousEntries" class="result-summary-2 ng-scope"><span class="result-summary-2-date ng-binding">6/2/14 11:34 PM</span>
+            <p ng-repeat="entry in previousEntries" class="result-summary-2 ng-scope"><span class="result-summary-2-date ng-binding">6/2/14 11:34 PM</span>
             <span class="result-summary-2-year ng-binding">| Tax Year: UK 2013/14 |</span>
             <span class="result-summary-2-salary ng-binding">Salary: £41,500.00 Yearly |</span>
-            <!-- ngIf: entry.student --><span class="result-summary-2-salary ng-scope" ng-if="entry.student">Student |</span><!-- end ngIf: entry.student -->
+            <span class="result-summary-2-salary ng-scope" ng-if="entry.student">Student |</span>
             <span class="result-summary-2-takehome ng-binding">Take Home: £28,777.36</span>
-            <!-- ngIf: (entry.takeHome - calculatorState.totalTakeHome) > 0 -->
-            <!-- ngIf: (entry.takeHome - calculatorState.totalTakeHome) < 0 --><span class="result-summary-2-takehome-down ng-scope ng-binding" ng-if="(entry.takeHome - calculatorState.totalTakeHome) < 0">| £1,943.86 less income than current</span><!-- end ngIf: (entry.takeHome - calculatorState.totalTakeHome) < 0 --></p><!-- end ngRepeat: entry in previousEntries --><p ng-repeat="entry in previousEntries" class="result-summary-2 ng-scope"><span class="result-summary-2-date ng-binding">6/2/14 11:34 PM</span>
+            <span class="result-summary-2-takehome-down ng-scope ng-binding" ng-if="(entry.takeHome - calculatorState.totalTakeHome) < 0">| £1,943.86 less income than current</span>
+            </p>
+            <p ng-repeat="entry in previousEntries" class="result-summary-2 ng-scope"><span class="result-summary-2-date ng-binding">6/2/14 11:47 PM</span>
             <span class="result-summary-2-year ng-binding">| Tax Year: UK 2013/14 |</span>
             <span class="result-summary-2-salary ng-binding">Salary: £45,000.00 Yearly |</span>
-            <!-- ngIf: entry.student -->
-            <span class="result-summary-2-takehome ng-binding">Take Home: £33,063.36</span>
-            <!-- ngIf: (entry.takeHome - calculatorState.totalTakeHome) > 0 --><span class="result-summary-2-takehome-up ng-scope ng-binding" ng-if="(entry.takeHome - calculatorState.totalTakeHome) > 0">| £2,342.14 more income than current</span><!-- end ngIf: (entry.takeHome - calculatorState.totalTakeHome) > 0 -->
-            <!-- ngIf: (entry.takeHome - calculatorState.totalTakeHome) < 0 --></p><!-- end ngRepeat: entry in previousEntries --><p ng-repeat="entry in previousEntries" class="result-summary-2 ng-scope"><span class="result-summary-2-date ng-binding">6/2/14 11:47 PM</span>
-            <span class="result-summary-2-year ng-binding">| Tax Year: UK 2013/14 |</span>
-            <span class="result-summary-2-salary ng-binding">Salary: £45,000.00 Yearly |</span>
-            <!-- ngIf: entry.student --><span class="result-summary-2-salary ng-scope" ng-if="entry.student">Student |</span><!-- end ngIf: entry.student -->
+            <span class="result-summary-2-salary ng-scope" ng-if="entry.student">Student |</span>
             <span class="result-summary-2-takehome ng-binding">Take Home: £30,495.36</span>
-            <!-- ngIf: (entry.takeHome - calculatorState.totalTakeHome) > 0 -->
-            <!-- ngIf: (entry.takeHome - calculatorState.totalTakeHome) < 0 --><span class="result-summary-2-takehome-down ng-scope ng-binding" ng-if="(entry.takeHome - calculatorState.totalTakeHome) < 0">| £225.86 less income than current</span><!-- end ngIf: (entry.takeHome - calculatorState.totalTakeHome) < 0 --></p><!-- end ngRepeat: entry in previousEntries --><p ng-repeat="entry in previousEntries" class="result-summary-2 ng-scope"><span class="result-summary-2-date ng-binding">6/2/14 11:53 PM</span>
+            <span class="result-summary-2-takehome-down ng-scope ng-binding" ng-if="(entry.takeHome - calculatorState.totalTakeHome) < 0">| £225.86 less income than current</span></p>
+            <p class="result-summary-2 ng-scope"><span class="result-summary-2-date ng-binding">6/2/14 11:53 PM</span>
             <span class="result-summary-2-year ng-binding">| Tax Year: UK 2014/15 |</span>
             <span class="result-summary-2-salary ng-binding">Salary: £55,000.00 Yearly |</span>
-            <!-- ngIf: entry.student --><span class="result-summary-2-salary ng-scope" ng-if="entry.student">Student |</span><!-- end ngIf: entry.student -->
+            <span class="result-summary-2-salary ng-scope" ng-if="entry.student">Student |</span>
             <span class="result-summary-2-takehome ng-binding">Take Home: £35,621.22</span>
-            <!-- ngIf: (entry.takeHome - calculatorState.totalTakeHome) > 0 --><span class="result-summary-2-takehome-up ng-scope ng-binding" ng-if="(entry.takeHome - calculatorState.totalTakeHome) > 0">| £4,900.00 more income than current</span><!-- end ngIf: (entry.takeHome - calculatorState.totalTakeHome) > 0 -->
-            <!-- ngIf: (entry.takeHome - calculatorState.totalTakeHome) < 0 --></p><!-- end ngRepeat: entry in previousEntries --><p ng-repeat="entry in previousEntries" class="result-summary-2 ng-scope"><span class="result-summary-2-date ng-binding">6/3/14 12:21 AM</span>
+            <span class="result-summary-2-takehome-up ng-scope ng-binding" ng-if="(entry.takeHome - calculatorState.totalTakeHome) > 0">| £4,900.00 more income than current</span>
+            </p><p ng-repeat="entry in previousEntries" class="result-summary-2 ng-scope"><span class="result-summary-2-date ng-binding">6/3/14 12:21 AM</span>
             <span class="result-summary-2-year ng-binding">| Tax Year: UK 2014/15 |</span>
             <span class="result-summary-2-salary ng-binding">Salary: £45,000.00 Yearly |</span>
-            <!-- ngIf: entry.student --><span class="result-summary-2-salary ng-scope" ng-if="entry.student">Student |</span><!-- end ngIf: entry.student -->
-            <span class="result-summary-2-takehome ng-binding">Take Home: £30,721.22</span>
-            <!-- ngIf: (entry.takeHome - calculatorState.totalTakeHome) > 0 -->
-            <!-- ngIf: (entry.takeHome - calculatorState.totalTakeHome) < 0 --></p><!-- end ngRepeat: entry in previousEntries -->
-            <!-- ngIf: !previousEntries.length -->
+            <span class="result-summary-2-takehome ng-binding">Take Home: £30,721.22</span></p>
           </div>
-
 
         </div>
       </div>
@@ -349,6 +328,7 @@
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/directives/stackDirective.js"></script>
     <script src="scripts/directives/donutDirective.js"></script>
+    <script src="scripts/directives/easy-social-share.js"></script>
     <!-- endbuild -->
 
     <!-- build:js({app,.tmp}) scripts/plot.js -->
