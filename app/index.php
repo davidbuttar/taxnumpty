@@ -8,13 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Calculate your take home salary after tax</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
@@ -49,15 +48,15 @@
         <div class="no-js-content">
         <img id="campaign-icon" src="images/taxedplanetlogo.png" src="taxplanet.com" />
         <p>Salary Calculator: calculate your take home pay after tax. See a detailed break down and comparisons with different salary options.</p>
-          <div class="salary-settings ng-scope" style="height: 1200px;">
+          <div class="salary-settings " style="height: 1200px;">
             <div class="salary-settings-inner">
               <form role="form" class="ng-pristine ng-valid">
                 <div class="form-group">
                   <label for="salaryInput">Salary</label>
                   <div class="input-group">
                     <input type="text" class="form-control ng-pristine ng-valid" placeholder="Enter salary" id="salaryInput" ng-model="visSalary">
-                    <div class="input-group-btn">
-                      <button type="button" class="btn btn-default dropdown-toggle ng-binding" data-toggle="dropdown">Yearly <span class="caret"></span></button>
+                    <div class="input-group-btn open">
+                      <button type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown">Yearly <span class="caret"></span></button>
                       <ul class="dropdown-menu pull-right">
                         <li><a >Yearly</a></li>
                         <li><a >Monthly</a></li>
@@ -69,8 +68,8 @@
                   </div><!-- /input-group -->
                 </div>
                 <h4 class="hide-toggle" ng-click="setViewSettings()">
-                  More Options <i class="pull-right glyphicon glyphicon-chevron-left" ng-class="{'glyphicon-chevron-down':showMoreSettings, 'glyphicon-chevron-left':!showMoreSettings}"></i></h4>
-                <div class="more-settings" ng-class="{'selected':showMoreSettings}">
+                  More Options <i class="pull-right glyphicon glyphicon-chevron-left glyphicon-chevron-down" ng-class="{'glyphicon-chevron-down':showMoreSettings, 'glyphicon-chevron-left':!showMoreSettings}"></i></h4>
+                <div class="more-settings selected" ng-class="{'selected':showMoreSettings}">
                   <div class="form-group">
                     <label for="age">Age</label>
                     <select ng-model="selectedAge" id="age" class="form-control ng-pristine ng-valid" ng-options="c.name for c in ages"><option value="0" selected="selected">Under 65</option><option value="1">65 - 74</option><option value="2">Over 75</option></select>
@@ -109,7 +108,7 @@
               </form>
             </div>
           </div>
-          <div class="row result-block ng-scope">
+          <div class="row result-block ">
             <div class="result-hd">
               <h4>Summary</h4>
               <div class="time-period-options">
@@ -124,19 +123,19 @@
             </div>
             <div class="results-summary-data clearfix">
               <div class="result-summary-ctr">
-                <p class="result-summary ng-hide" ng-show="summaryPeriods.hourly"><span class="result-label">Hourly take home pay</span> <span class="result-highlight ng-binding">£15.75</span></p>
-                <p class="result-summary ng-hide" ng-show="summaryPeriods.hourly"><span class="result-label-deduction">Hourly Deductions</span> <span class="result-highlight-red ng-binding">£7.32</span></p>
-                <p class="result-summary ng-hide" ng-show="summaryPeriods.daily"><span class="result-label">Daily take home pay</span> <span class="result-highlight ng-binding">£118.16</span></p>
-                <p class="result-summary ng-hide" ng-show="summaryPeriods.daily"><span class="result-label-deduction">Daily Deductions</span> <span class="result-highlight-red ng-binding">£54.92</span></p>
+                <p class="result-summary ng-hide" ng-show="summaryPeriods.hourly"><span class="result-label">Hourly take home pay</span> <span class="result-highlight ">£15.75</span></p>
+                <p class="result-summary ng-hide" ng-show="summaryPeriods.hourly"><span class="result-label-deduction">Hourly Deductions</span> <span class="result-highlight-red ">£7.32</span></p>
+                <p class="result-summary ng-hide" ng-show="summaryPeriods.daily"><span class="result-label">Daily take home pay</span> <span class="result-highlight ">£118.16</span></p>
+                <p class="result-summary ng-hide" ng-show="summaryPeriods.daily"><span class="result-label-deduction">Daily Deductions</span> <span class="result-highlight-red ">£54.92</span></p>
               </div>
               <div chart-donut="" salary-values="[calculatorState.totalTakeHome, calculatorState.totalDeductions]" chart-id="pieChart" class="result-summary-chart ng-isolate-scope">
                 <div id="pieChart" class="cbc-chart"><div class="cbc-da" id="cbc-da-1" style="width:100%; height:100%; position:absolute; top:0; left:0;"><canvas width="300" height="180" class="cbc-canvas" style="text-align: left; display: inline-block; overflow: hidden;">&nbsp;</canvas><canvas width="300" height="180" class="cbc-canvas" style="text-align: left; display: inline-block; overflow: hidden;">&nbsp;</canvas></div><div class="cbc-ha" id="cbc-ha-1" style="width:100%; height:100%; position:absolute; top:0; left:0;z-index:1"></div><div class="cbc-has" id="cbc-has-1" style="width:100%; height:100%; position:absolute; top:0; left:0; z-index:1"></div><div class="cbc-yaxis-container" id="cbc-yaxis-1"></div><div class="cbc-error" id="cbc-error-1" style="display: none;"></div><div class="cbc-tooltips"></div></div>
-                <div class="result-summary-percentage ng-scope ng-binding" ng-if="calculatorState.salary">68.27%</div>
+                <div class="result-summary-percentage  " ng-if="calculatorState.salary">68.27%</div>
               </div>
             </div>
 
           </div>
-          <div class="row result-block ng-scope">
+          <div class="row result-block ">
             <div class="result-hd details-hd">
               <h4>Details</h4>
               <div class="time-period-options">
@@ -157,9 +156,9 @@
                 <thead>
                 <tr>
                   <th></th>
-                  <th ng-if="detailsPeriods.yearly" class="ng-scope">Yearly</th>
-                  <th ng-if="detailsPeriods.monthly" class="ng-scope">Monthly</th>
-                  <th ng-if="detailsPeriods.weekly" class="ng-scope">Weekly</th>
+                  <th  class="">Yearly</th>
+                  <th  class="">Monthly</th>
+                  <th  class="">Weekly</th>
 
 
                 </tr>
@@ -167,89 +166,81 @@
                 <tbody>
                 <tr class="success">
                   <td>Salary</td>
-                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">45,000.00</td>
-                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">3,750.00</td>
-                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">865.38</td>
+                  <td  class=" ">45,000.00</td>
+                  <td  class=" ">3,750.00</td>
+                  <td  class=" ">865.38</td>
 
 
                 </tr>
                 <tr>
                   <td>Taxable</td>
-                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">35,000.00</td>
-                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">2,916.67</td>
-                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">673.08</td>
+                  <td class=" ">35,000.00</td>
+                  <td class=" ">2,916.67</td>
+                  <td class=" ">673.08</td>
 
 
                 </tr>
                 <tr>
                   <td>Allowance</td>
-                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">10,000.00</td>
-                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">833.33</td>
-                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">192.31</td>
+                  <td class=" ">10,000.00</td>
+                  <td class=" ">833.33</td>
+                  <td class=" ">192.31</td>
 
 
                 </tr>
                 <tr>
                   <td>Income Tax</td>
-                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">7,627.00</td>
-                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">635.58</td>
-                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">146.67</td>
+                  <td class=" ">7,627.00</td>
+                  <td class=" ">635.58</td>
+                  <td class=" ">146.67</td>
 
 
                 </tr>
                 <tr>
                   <td>N.I.</td>
-                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">4,131.78</td>
-                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">344.32</td>
-                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">79.46</td>
+                  <td class=" ">4,131.78</td>
+                  <td class=" ">344.32</td>
+                  <td class=" ">79.46</td>
 
 
                 </tr>
-                <tr ng-if="calculatorState.student" class="warning ng-scope">
+                <tr class="warning ">
                   <td>Student Loan</td>
-                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">2,520.00</td>
-                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">210.00</td>
-                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">48.46</td>
+                  <td class=" ">2,520.00</td>
+                  <td class=" ">210.00</td>
+                  <td class=" ">48.46</td>
 
 
                 </tr>
-                <tr ng-show="calculatorState.pension > 0" class="info ng-hide">
+                <tr class="info ng-hide">
                   <td>Pension</td>
-                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">0.00</td>
-                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">0.00</td>
-                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">0.00</td>
-
-
+                  <td class=" ">0.00</td>
+                  <td class=" ">0.00</td>
+                  <td class=" ">0.00</td>
                 </tr>
-                <tr ng-show="calculatorState.pension > 0" class="info ng-hide">
+                <tr class="info ng-hide">
                   <td>Pension HMRC</td>
-                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">0.00</td>
-                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">0.00</td>
-                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">0.00</td>
-
-
+                  <td class=" ">0.00</td>
+                  <td class=" ">0.00</td>
+                  <td class=" ">0.00</td>
                 </tr>
                 <tr class="deduction">
                   <td>Total Deductions</td>
-                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">14,278.78</td>
-                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">1,189.90</td>
-                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">274.59</td>
-
-
+                  <td class=" ">14,278.78</td>
+                  <td class=" ">1,189.90</td>
+                  <td class=" ">274.59</td>
                 </tr>
                 <tr class="success">
                   <td>Take Home Pay</td>
-                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">30,721.22</td>
-                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">2,560.10</td>
-                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">590.79</td>
-
-
+                  <td class=" ">30,721.22</td>
+                  <td class=" ">2,560.10</td>
+                  <td class=" ">590.79</td>
                 </tr>
-                <tr ng-show="calculatorState.prevRuleSet" class="">
+                <tr class="">
                   <td>Take Home Last Year</td>
-                  <td ng-if="detailsPeriods.yearly" class="ng-scope ng-binding">30,495.36</td>
-                  <td ng-if="detailsPeriods.monthly" class="ng-scope ng-binding">2,541.28</td>
-                  <td ng-if="detailsPeriods.weekly" class="ng-scope ng-binding">586.45</td>
+                  <td class=" ">30,495.36</td>
+                  <td class=" ">2,541.28</td>
+                  <td class=" ">586.45</td>
 
 
                 </tr>
@@ -257,31 +248,31 @@
               </table>
             </div>
           </div>
-          <div class="row result-block ng-scope">
+          <div class="row result-block ">
             <h4>Calculation Log</h4>
-            <p ng-repeat="entry in previousEntries" class="result-summary-2 ng-scope"><span class="result-summary-2-date ng-binding">6/2/14 11:34 PM</span>
-            <span class="result-summary-2-year ng-binding">| Tax Year: UK 2013/14 |</span>
-            <span class="result-summary-2-salary ng-binding">Salary: £41,500.00 Yearly |</span>
-            <span class="result-summary-2-salary ng-scope" ng-if="entry.student">Student |</span>
-            <span class="result-summary-2-takehome ng-binding">Take Home: £28,777.36</span>
-            <span class="result-summary-2-takehome-down ng-scope ng-binding" ng-if="(entry.takeHome - calculatorState.totalTakeHome) < 0">| £1,943.86 less income than current</span>
+            <p ng-repeat="entry in previousEntries" class="result-summary-2"><span class="result-summary-2-date ">6/2/14 11:34 PM</span>
+            <span class="result-summary-2-year ">| Tax Year: UK 2013/14 |</span>
+            <span class="result-summary-2-salary ">Salary: £41,500.00 Yearly |</span>
+            <span class="result-summary-2-salary" >Student |</span>
+            <span class="result-summary-2-takehome ">Take Home: £28,777.36</span>
+            <span class="result-summary-2-takehome-down " >| £1,943.86 less income than current</span>
             </p>
-            <p ng-repeat="entry in previousEntries" class="result-summary-2 ng-scope"><span class="result-summary-2-date ng-binding">6/2/14 11:47 PM</span>
-            <span class="result-summary-2-year ng-binding">| Tax Year: UK 2013/14 |</span>
-            <span class="result-summary-2-salary ng-binding">Salary: £45,000.00 Yearly |</span>
-            <span class="result-summary-2-salary ng-scope" ng-if="entry.student">Student |</span>
-            <span class="result-summary-2-takehome ng-binding">Take Home: £30,495.36</span>
-            <span class="result-summary-2-takehome-down ng-scope ng-binding" ng-if="(entry.takeHome - calculatorState.totalTakeHome) < 0">| £225.86 less income than current</span></p>
-            <p class="result-summary-2 ng-scope"><span class="result-summary-2-date ng-binding">6/2/14 11:53 PM</span>
-            <span class="result-summary-2-year ng-binding">| Tax Year: UK 2014/15 |</span>
-            <span class="result-summary-2-salary ng-binding">Salary: £55,000.00 Yearly |</span>
-            <span class="result-summary-2-salary ng-scope" ng-if="entry.student">Student |</span>
-            <span class="result-summary-2-takehome ng-binding">Take Home: £35,621.22</span>
-            <span class="result-summary-2-takehome-up ng-scope ng-binding" ng-if="(entry.takeHome - calculatorState.totalTakeHome) > 0">| £4,900.00 more income than current</span>
-            </p><p ng-repeat="entry in previousEntries" class="result-summary-2 ng-scope"><span class="result-summary-2-date ng-binding">6/3/14 12:21 AM</span>
-            <span class="result-summary-2-year ng-binding">| Tax Year: UK 2014/15 |</span>
-            <span class="result-summary-2-salary ng-binding">Salary: £45,000.00 Yearly |</span>
-            <span class="result-summary-2-takehome ng-binding">Take Home: £30,721.22</span></p>
+            <p ng-repeat="entry in previousEntries" class="result-summary-2"><span class="result-summary-2-date ">6/2/14 11:47 PM</span>
+            <span class="result-summary-2-year ">| Tax Year: UK 2013/14 |</span>
+            <span class="result-summary-2-salary ">Salary: £45,000.00 Yearly |</span>
+            <span class="result-summary-2-salary ">Student |</span>
+            <span class="result-summary-2-takehome ">Take Home: £30,495.36</span>
+            <span class="result-summary-2-takehome-down">| £225.86 less income than current</span></p>
+            <p class="result-summary-2"><span class="result-summary-2-date">6/2/14 11:53 PM</span>
+            <span class="result-summary-2-year ">| Tax Year: UK 2014/15 |</span>
+            <span class="result-summary-2-salary ">Salary: £55,000.00 Yearly |</span>
+            <span class="result-summary-2-salary">Student |</span>
+            <span class="result-summary-2-takehome ">Take Home: £35,621.22</span>
+            <span class="result-summary-2-takehome-up">| £4,900.00 more income than current</span>
+            </p><p class="result-summary-2"><span class="result-summary-2-date">6/3/14 12:21 AM</span>
+            <span class="result-summary-2-year">| Tax Year: UK 2014/15 |</span>
+            <span class="result-summary-2-salary">Salary: £45,000.00 Yearly |</span>
+            <span class="result-summary-2-takehome">Take Home: £30,721.22</span></p>
           </div>
 
         </div>
@@ -316,7 +307,6 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-easy-social-share/easy-social-share.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

@@ -1,7 +1,7 @@
 {
   "name": "Taxed Planet",
   "description": "UK Salary Calculator: calculate your take home pay after tax.",
-  "version": "0.0.0.1",
+  "version": "1.0.2.2",
   "manifest_version": 2,
   "icons": {
     "128": "icon_128.png"

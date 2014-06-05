@@ -203,14 +203,30 @@ label{
 
 .share{
   text-align:center;
-  font-size: 17px;
   margin:20px 0;
+  height: 34px;
 }
 
 .share a{
+  display:inline-block;
+  width:34px;
+  height:34px;
+  background: transparent url(../images/social-icons.png) no-repeat 0 0;
   color:#333;
   text-decoration: none;
-  padding: 0 5px;
+  margin: 0 6px;
+}
+
+.share .fa-twitter{
+  background-position: 0 -82px;
+}
+
+.share .fa-linkedin{
+  background-position: 0 -41px;
+}
+
+.share .fa-google-plus{
+  background-position: 0 -120px;
 }
 
 /* Results */
@@ -521,7 +537,7 @@ label{
   .share{
     position: fixed;
     margin: 0;
-    left:82px;
+    left:42px;
     bottom:10px;
   }
 

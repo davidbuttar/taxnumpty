@@ -15,6 +15,8 @@ module.exports = function (grunt) {
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
+  grunt.loadNpmTasks('grunt-uncss');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -288,6 +290,13 @@ module.exports = function (grunt) {
         'svgmin'
       ]
     },
+    uncss: {
+      dist: {
+        files: {
+          'dist/styles/vendor.css': ['app/index.php', 'app/views/main.html']
+        }
+      }
+    },
 
     // By default, your `index.php`'s <!-- Usemin block --> will take care of
     // minification. These next options are pre-configured if you do not wish
@@ -364,6 +373,7 @@ module.exports = function (grunt) {
     'copy:dist',
     'cdnify',
     'cssmin',
+    'uncss',
     'uglify',
     'rev',
     'usemin',
