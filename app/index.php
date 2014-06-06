@@ -302,11 +302,7 @@
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -319,9 +315,6 @@
     <script src="scripts/directives/stackDirective.js"></script>
     <script src="scripts/directives/donutDirective.js"></script>
     <script src="scripts/directives/easy-social-share.js"></script>
-    <!-- endbuild -->
-
-    <!-- build:js({app,.tmp}) scripts/plot.js -->
     <script type="text/javascript" src="scripts/pl/cbv.js"></script>
     <script type="text/javascript" src="scripts/pl/cbv.setup.js"></script>
     <script type="text/javascript" src="scripts/pl/cbv.animateSeries.js"></script>

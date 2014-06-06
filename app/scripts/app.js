@@ -1,11 +1,7 @@
 'use strict';
 
 angular.module('taxnumptyApp', [
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
   'ngRoute',
-  'ngAnimate',
   'taxCalculator',
   'LocalStorageModule',
   'td.easySocialShare'
