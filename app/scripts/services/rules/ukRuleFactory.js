@@ -8,6 +8,10 @@ angular.module('taxCalculator').factory('ukRuleFactory', function () {
   function generateTaxYear(yearName, opts){
     opts = opts || {};
     var taxAllowance = opts.incomeTaxAllowance || 9440;
+    var marriedAllowance = opts.marriedAllowance || 7915;
+    var marriedAllowanceMin = opts.marriedAllowanceMin || 3040;
+    var incomeLimit1945 = opts.incomeLimit1945 || 26100;
+    var blindAllowance =  opts.blindAllowance || 2160;
     var incomeTaxBands = opts.incomeTaxBands || [{
       from: 0,
       to: 32010,
@@ -59,13 +63,13 @@ angular.module('taxCalculator').factory('ukRuleFactory', function () {
 
             if (ageOpts === 2 || ageOpts === 3) {
               var localAllowance = (ageOpts === 2) ? 10500 : 10660;
-              var localDeduction = Math.max(0, ((salary - 26100) * 0.5));
+              var localDeduction = Math.max(0, ((salary - incomeLimit1945) * 0.5));
               if (localDeduction <= (localAllowance - allowance)) {
                 allowance = localAllowance - localDeduction;
               }
             }
             if (opts.blind) {
-              allowance = allowance + 2160;
+              allowance = allowance + blindAllowance;
             }
             var deduction = ((salary - 100000) * 0.5);
             if (deduction > allowance) {
@@ -86,9 +90,9 @@ angular.module('taxCalculator').factory('ukRuleFactory', function () {
             if (!married || (ageOpts !== 3)) {
               return 0;
             } else {
-              var relief = 7915;
-              if (salary >= 28540) {
-                relief = Math.max(3040, relief - ((salary - 28540) / 2));
+              var relief = marriedAllowance;
+              if (salary >= incomeLimit1945) {
+                relief = Math.max(marriedAllowanceMin, relief - ((salary - incomeLimit1945) / 2));
               }
               return relief / 10;
             }
@@ -130,6 +134,10 @@ angular.module('taxCalculator').factory('ukRuleFactory', function () {
       incomeTaxAllowance:10000,
       maxPensionRelief:40000,
       studentAllowance:16910,
+      marriedAllowance:8165,
+      incomeLimit1945:27000,
+      marriedAllowanceMin:3140,
+      blindAllowance:2230,
       incomeTaxBands:[
         {
           from: 0,
