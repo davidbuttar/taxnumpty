@@ -313,6 +313,7 @@ label{
 
 #tax-report{
   padding:0 5px;
+  overflow-x:auto;
 }
 
 #pieChart{
@@ -427,6 +428,43 @@ label{
 .result-summary-2-takehome-up{
   color:#268A9A;
 }
+
+
+/* Responsive: iPhone small styles */
+@media screen and (max-width : 360px) {
+  .header .site{
+    display:none;
+  }
+
+  .header .selected-calculator {
+    float:none;
+    padding:0 14px;
+  }
+
+  .header .selected-calculator .world{
+    right:12px;
+  }
+
+  .result-block {
+    padding: 23px 10px 34px;
+  }
+
+  .results-summary-data {
+    width: 285px;
+  }
+
+  .result-summary-ctr {
+    width: 285px;
+  }
+  .time-period-options ul li {
+    padding: 0 6px;
+  }
+
+  #tax-report {
+    padding: 0;
+  }
+}
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
