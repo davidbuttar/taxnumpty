@@ -315,6 +315,7 @@
     <script src="scripts/directives/stackDirective.js"></script>
     <script src="scripts/directives/donutDirective.js"></script>
     <script src="scripts/directives/easy-social-share.js"></script>
+    <script src="scripts/directives/autoFocus.js"></script>
     <script type="text/javascript" src="scripts/pl/cbv.js"></script>
     <script type="text/javascript" src="scripts/pl/cbv.setup.js"></script>
     <script type="text/javascript" src="scripts/pl/cbv.animateSeries.js"></script>
