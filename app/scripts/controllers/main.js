@@ -25,7 +25,8 @@ angular.module('taxnumptyApp')
       monthly:true,
       weekly:false,
       daily:false,
-      hourly:false
+      hourly:false,
+      yearlyTotal:true
     };
 
     $scope.detailsPeriods = {
@@ -81,7 +82,8 @@ angular.module('taxnumptyApp')
         monthly:curPayPeriod === 'Yearly' || curPayPeriod === 'Monthly' ,
         weekly:curPayPeriod === 'Weekly',
         daily:curPayPeriod === 'Daily' || curPayPeriod === 'Hourly',
-        hourly:curPayPeriod === 'Hourly'
+        hourly:curPayPeriod === 'Hourly',
+        yearlyTotal:curPayPeriod !== 'Yearly'
       };
     }
 

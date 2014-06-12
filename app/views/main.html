@@ -75,6 +75,7 @@
   </div>
   <div class="results-summary-data clearfix">
     <div class="result-summary-ctr">
+      <p class="result-summary" ng-show="summaryPeriods.yearlyTotal"><span class="result-label" style="font-weight: bold">Yearly Total</span> <span class="result-highlight">&pound;{{calculatorState.salary | number:2}}</span></p>
       <p class="result-summary" ng-show="summaryPeriods.hourly"><span class="result-label">Hourly take home pay</span> <span class="result-highlight">&pound;{{((calculatorState.totalTakeHome/52)/37.5) | number:2}}</span></p>
       <p class="result-summary" ng-show="summaryPeriods.hourly"><span class="result-label-deduction">Hourly Deductions</span> <span class="result-highlight-red">&pound;{{((calculatorState.totalDeductions/52)/37.5) | number:2}}</span></p>
       <p class="result-summary" ng-show="summaryPeriods.daily"><span class="result-label">Daily take home pay</span> <span class="result-highlight">&pound;{{(calculatorState.totalTakeHome/52)/5 | number:2}}</span></p>
@@ -85,6 +86,7 @@
       <p class="result-summary" ng-show="summaryPeriods.monthly"><span class="result-label-deduction">Monthly Deductions</span> <span class="result-highlight-red">&pound;{{calculatorState.totalDeductions/12 | number:2}}</span></p>
       <p class="result-summary" ng-show="summaryPeriods.yearly"><span class="result-label">Yearly take home pay</span> <span class="result-highlight">&pound;{{calculatorState.totalTakeHome | number:2}}</span><span class="result-highlight"></span></p>
       <p class="result-summary" ng-show="summaryPeriods.yearly"><span class="result-label-deduction">Yearly Deductions</span> <span class="result-highlight-red">&pound;{{calculatorState.totalDeductions | number:2}}</span></p>
+
     </div>
     <div chart-donut salary-values="[calculatorState.totalTakeHome, calculatorState.totalDeductions]" chart-id="pieChart" class="result-summary-chart" >
       <div id="pieChart" class="cbc-chart"></div>
