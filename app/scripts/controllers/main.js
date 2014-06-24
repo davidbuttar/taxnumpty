@@ -177,6 +177,12 @@ angular.module('taxnumptyApp')
 
     });
 
+
+    $scope.submitForm = function(){
+      $scope.showMoreSettings = false;
+      return false;
+    };
+
     /**
      *  Some jQuery to handle making divs full browser height
      *  @todo : something about this hackyness!

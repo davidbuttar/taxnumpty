@@ -1,6 +1,6 @@
 <div class="salary-settings">
   <div class="salary-settings-inner">
-    <form role="form">
+    <form role="form" ng-submit="submitForm()">
       <div class="form-group">
         <label for="salaryInput">Salary</label>
         <div class="input-group">
@@ -55,8 +55,10 @@
           <input type="text" class="form-control" id="addAllowanceInput" placeholder="Enter Allowance or subtraction" ng-model="calculatorState.addAllowance">
         </div>
       </div>
+      <div class="settings-go-ctnr">
+        <button type="submit" class="btn btn-default" ng-class="{'settingsVisible':showMoreSettings}" id="settings-go">Go</button>
+      </div>
     </form>
-
   </div>
 
 </div>

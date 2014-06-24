@@ -132,6 +132,19 @@ img {
   padding: 7px 12px;
 }
 
+.settings-go-ctnr{
+  text-align: right;
+}
+
+#settings-go{
+  margin-top: 20px;
+  padding: 4px 12px;
+}
+
+#settings-go.settingsVisible{
+  margin-top: 0;
+}
+
 .more-settings{
   display:none;
 }
@@ -513,6 +526,8 @@ label{
     padding: 0;
   }
 
+
+
   .more-settings{
     display:block;
   }
@@ -524,6 +539,10 @@ label{
 
   .more-settings.selected .form-control{
     border: none;
+  }
+
+  #settings-go{
+    margin-top: 0;
   }
 
   .result-block{
