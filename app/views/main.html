@@ -4,7 +4,7 @@
       <div class="form-group">
         <label for="salaryInput">Salary</label>
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Enter salary" id="salaryInput" ng-model="visSalary" auto-focus>
+          <input type="number" class="form-control" placeholder="Enter salary" id="salaryInput" ng-model="visSalary" auto-focus>
           <div class="input-group-btn">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">{{payPeriod}} <span class="caret"></span></button>
             <ul class="dropdown-menu pull-right">
@@ -52,7 +52,7 @@
         </div>
         <div class="form-group">
           <label for="addAllowanceInput">Added Allowance</label>
-          <input type="text" class="form-control" id="addAllowanceInput" placeholder="Enter Allowance or subtraction" ng-model="calculatorState.addAllowance">
+          <input type="number" class="form-control" id="addAllowanceInput" placeholder="Enter Allowance or subtraction" ng-model="calculatorState.addAllowance">
         </div>
       </div>
       <div class="settings-go-ctnr">

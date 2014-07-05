@@ -32,7 +32,7 @@
     <!-- Add your site or application content here -->
     <div class="header clearfix">
       <h1 class="site">Taxed <span>planet</span></h1>
-      <h2 class="page-title">Tax Calculator</h2>
+      <h2 class="page-title">Salary Calculator</h2>
       <div ng-controller="Calculator" class="selected-calculator dropdown">
         <div class="selected-calculator-inner" data-toggle="dropdown">
           <div class="selected" ng-bind="calculatorState.ruleSetName"></div>

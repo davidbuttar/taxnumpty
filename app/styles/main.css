@@ -588,6 +588,10 @@ label{
     padding:5px 30px;
   }
 
+  .settings-go-ctnr{
+    opacity:0;
+  }
+
 }
 
 @media (min-width: 1200px){
