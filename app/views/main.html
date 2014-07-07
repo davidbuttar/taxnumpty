@@ -62,7 +62,7 @@
   </div>
 
 </div>
-<div class="row result-block">
+<div class="row result-block" ng-class="{loading: updating}">
   <div class="result-hd">
     <h4>Summary</h4>
     <div class="time-period-options">
@@ -97,7 +97,7 @@
   </div>
 
 </div>
-<div class="row result-block">
+<div class="row result-block" ng-class="{loading: updating}">
   <div class="result-hd details-hd">
     <h4>Details</h4>
     <div class="time-period-options">
@@ -231,7 +231,7 @@
     </table>
   </div>
 </div>
-<div class="row result-block">
+<div class="row result-block" ng-class="{loading: updating}">
   <h4 id="log-hd">Calculation Log</h4>
   <p ng-repeat="entry in previousEntries" class="result-summary-2"><span class="result-summary-2-date">{{ entry.entered | date : 'M/d/yy h:mm a'}}</span>
     <span class="result-summary-2-year">| Tax Year: {{entry.year}} |</span>

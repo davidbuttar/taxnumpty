@@ -38,6 +38,12 @@ angular.module('taxnumptyApp')
       hourly:false
     };
 
+    // Use to flick the screen to help make users aware it's dynamically updating
+    $scope.updating = false;
+    var updateTimer;
+    // Show only a certain amount of flicks and then assume people have noticed it updates itself
+    var flickCount = 0;
+
     $scope.previousEntries = localStorageService.get('prevEntries') || [];
 
     // Attempts to size the settings menu to full page height, shouldn't really be in a controller
@@ -134,7 +140,28 @@ angular.module('taxnumptyApp')
         localStorageService.set('prevEntries', $scope.previousEntries);
         $scope.$digest();
         sizeElements();
+
       },5000);
+    }
+
+    // Flick the screen to show an update.
+    function showUpdate(){
+      clearTimeout(updateTimer);
+      updateTimer = setTimeout(function(){
+        if(flickCount === 0){
+          flickCount = 1;
+          return;
+        }else if (flickCount > 4){ // Hopefully users will have notice it update automatically
+          return;
+        }
+        $scope.updating = true;
+        setTimeout(function(){
+          flickCount++;
+          $scope.updating = false;
+          $scope.$digest();
+        }, 300);
+        $scope.$digest();
+      },1200);
     }
 
     // Find any previous log entries and remove them
@@ -174,7 +201,7 @@ angular.module('taxnumptyApp')
       processRules.setAge($scope.age);
       processRules.update();
       addToLocalHistory($scope.visSalary);
-
+      showUpdate();
     });
 
 

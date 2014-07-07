@@ -257,6 +257,10 @@ label{
   background: rgba(239,240,240,.8);
 }
 
+.result-block.loading{
+  opacity: 0.4;
+}
+
 .result-block:nth-child(odd){
   background: rgba(249,249,249,0.8);
 }
