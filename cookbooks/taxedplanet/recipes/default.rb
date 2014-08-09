@@ -9,9 +9,11 @@ package "php5"
 package "vim"
 package "npm"
 
-# Install the bower command globally
-execute "npm install bower -g" do
-    user 'root'
+# Install npm packages
+%w{bower grunt grunt-cli}.each do |package|
+    execute "npm install #{package} -g" do
+        user 'root'
+    end
 end
 
 # Create the node link for bower to use
