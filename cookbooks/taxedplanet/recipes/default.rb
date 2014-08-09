@@ -6,9 +6,18 @@
 package "git"
 package "apache2"
 package "php5"
-package "php5"
-package "npm"
 package "vim"
+package "npm"
+
+# Install the bower command globally
+execute "npm install bower -g" do
+    user 'root'
+end
+
+# Create the node link for bower to use
+link "/usr/bin/node" do
+    to "/usr/bin/nodejs"
+end
 
 # Configure the Apache server, 
 #  - Add our configuration
@@ -34,6 +43,22 @@ end
         user 'root'
         action :run
     end
+end
+
+# Install the npm locally
+execute "npm-install" do
+    command 'npm install'
+    cwd '/vagrant_data'
+    user 'vagrant'
+    notifies :run, 'execute[bower-install]', :immediately
+end
+
+# Install the bower locally
+execute "bower-install" do
+    command 'bower install -s --allow-root'
+    cwd '/vagrant_data'
+    user 'root'
+    action :nothing
 end
 
 # Restart the services
