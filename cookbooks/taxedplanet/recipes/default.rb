@@ -8,6 +8,7 @@ package "apache2"
 package "php5"
 package "vim"
 package "npm"
+package "phantomjs"
 
 # Install npm packages
 %w{bower grunt grunt-cli}.each do |package|
