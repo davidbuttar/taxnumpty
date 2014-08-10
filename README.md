@@ -1,4 +1,4 @@
-taxnumpty
+taxnumpty [![Build Status](https://api.travis-ci.org/davidbuttar/taxnumpty.svg?branch=master)](https://travis-ci.org/davidbuttar/taxnumpty)
 =========
 
 Web app I've developed to learn yeoman, currently has a working UK tax 
