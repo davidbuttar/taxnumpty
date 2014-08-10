@@ -25,7 +25,7 @@ Install some linux (Debian) packages
 
 Goto the directory where you have checked out the app and run the following commands.
 
-    sudo npm install bower -g
+    sudo npm install bower grunt grunt-cli -g
     npm install
     bower install
 
