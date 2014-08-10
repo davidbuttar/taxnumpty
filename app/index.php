@@ -7,7 +7,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Calculate your take home salary after tax</title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="Salary Calculator: calculate your take home pay after tax. See a detailed break down and comparisons with different salary options.">
     <meta name="keywords" content="Tax, Salary, Salary Calculators, Tax Calculators">
