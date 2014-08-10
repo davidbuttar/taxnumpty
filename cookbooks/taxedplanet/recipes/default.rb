@@ -51,7 +51,7 @@ end
 execute "npm-install" do
     command 'npm install'
     cwd '/vagrant_data'
-    user 'vagrant'
+    user 'root'
     notifies :run, 'execute[bower-install]', :immediately
 end
 

@@ -6,3 +6,4 @@ app/scripts/pl
 .sass-cache
 app/bower_components
 .vagrant
+npm-debug.log
