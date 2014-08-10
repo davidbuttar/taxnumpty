@@ -1,22 +1,52 @@
 taxnumpty
 =========
 
-Web app I've developed to learn yeoman, currently has a working UK tax calculator but in future, hope to add more countries as well as relvant analysis and maybe even cross country comparisons.
+Web app I've developed to learn yeoman, currently has a working UK tax 
+calculator but in future, hope to add more countries as well as relevant 
+analysis and maybe even cross country comparisons.
 
 http://taxedplanet.com
 
-Installation
-=============
+## Installing on a Virtual Machine
+Run a virtual machine
 
-Taxedplanet requires bower and apache, to install and run.
+    vagrant up
+
+Add a host entry in `/etc/hosts`
+
+    192.168.55.10 test-taxedplanet.taxedplanet.com
+
+Point your browser to `http://test-taxedplanet.taxedplanet.com`
+
+## Installing on your Host Machine
+Install some linux (Debian) packages
+
+    apt-get install apache2 php5 npm
 
 Goto the directory where you have checked out the app and run the following commands.
 
+    sudo npm install bower -g
     npm install
-    bowser install
+    bower install
 
-Then you should create an apache virtual host and has the app directory as it's document root. Apache will also need to support .htaccess files.
+Enable required apache modules
 
+    sudo a2enmod rewrite
+    sudo a2enmod header
+    sudo a2enmod expires
+
+Copy the `taxedplant.conf` to apache directory
+
+    sudo cp <projectdir>cookbooks/taxedplanet/files/default/taxedplanet.conf
+    /etc/apache2/sites-available/.
+    sudo ln -snf /etc/apache2/sites-available/taxedplanet.conf
+    /etc/apache2/sites-enabled/taxedplanet.conf
+
+Start the apache webservice
+
+    sudo service apache2 restart
+
+# Testing
 To get a production build of the app run
 
     grunt

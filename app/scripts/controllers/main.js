@@ -81,16 +81,8 @@ angular.module('taxnumptyApp')
     applySettingsFromHistory();
 
     // Different pay periods will be more interested in particular summmaries
-    function summaryPeroidPayPeriodSync(){
-      var curPayPeriod = $scope.payPeriod;
-      $scope.summaryPeriods = {
-        yearly:true ,
-        monthly:curPayPeriod === 'Yearly' || curPayPeriod === 'Monthly' ,
-        weekly:curPayPeriod === 'Weekly',
-        daily:curPayPeriod === 'Daily' || curPayPeriod === 'Hourly',
-        hourly:curPayPeriod === 'Hourly',
-        yearlyTotal:curPayPeriod !== 'Yearly'
-      };
+    function summaryPeriodPayPeriodSync(){
+      $scope.summaryPeriods.yearlyTotal = $scope.payPeriod !== 'Yearly';
     }
 
     $scope.setViewSettings = function(){
@@ -196,7 +188,7 @@ angular.module('taxnumptyApp')
         $scope.calculatorState.pension = null;
       }
 
-      summaryPeroidPayPeriodSync();
+      summaryPeriodPayPeriodSync();
       processRules.setSalary(salary);
       processRules.setAge($scope.age);
       processRules.update();
