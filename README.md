@@ -46,7 +46,12 @@ Start the apache webservice
 
     sudo service apache2 restart
 
-# Testing
-To get a production build of the app run
+# Production Build and Testing
+
+Run the tests
+
+    grunt test
+
+To generate a production build of the app run
 
     grunt
