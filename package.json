@@ -1,7 +1,6 @@
 {
   "name": "taxnumpty",
   "version": "0.0.0",
-  "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-autoprefixer": "~0.4.0",
@@ -20,6 +19,7 @@
     "grunt-contrib-uglify": "~0.2.0",
     "grunt-contrib-watch": "~0.5.2",
     "grunt-google-cdn": "~0.2.0",
+    "grunt-sftp-deploy": "~0.2.1",
     "grunt-newer": "~0.5.4",
     "grunt-ngmin": "~0.0.2",
     "grunt-rev": "~0.1.0",

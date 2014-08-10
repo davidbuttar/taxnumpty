@@ -17,6 +17,8 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-uncss');
 
+  grunt.loadNpmTasks('grunt-sftp-deploy');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -298,6 +300,24 @@ module.exports = function (grunt) {
       }
     },
 
+    'sftp-deploy': {
+      build: {
+        auth: {
+          host: 'glen-spey.dreamhost.com',
+          port: 22,
+          authKey: 'key1'
+
+        },
+        cache: 'sftpCache.json',
+        src: 'dist',
+        dest: '/home/bigmijie/taxedplanet.com',
+        exclusions: ['dist/tmp', 'dist/bower_components'],
+        serverSep: '/',
+        concurrency: 4,
+        progress: true
+      }
+    },
+
     // By default, your `index.php`'s <!-- Usemin block --> will take care of
     // minification. These next options are pre-configured if you do not wish
     // to use the Usemin blocks.
@@ -378,6 +398,13 @@ module.exports = function (grunt) {
     'rev',
     'usemin',
     'htmlmin'
+  ]);
+
+  grunt.registerTask('deploy', [
+    'newer:jshint',
+    'test',
+    'build',
+    'sftp-deploy'
   ]);
 
   grunt.registerTask('default', [

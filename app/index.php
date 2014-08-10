@@ -9,7 +9,7 @@
     <title>Calculate your take home salary after tax</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="Salary Calculator: calculate your take home pay after tax. See a detailed break down and comparisons with different salary options.">
-    <meta name="keywords" content="Tax, Salary, Salary Calculators, Tax Calculators">
+    <meta name="keywords" content="Tax, Salary, Salary Calculators, Tax Calculators, Taxnumpty">
     <link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css styles/vendor.css -->
