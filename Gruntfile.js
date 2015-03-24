@@ -146,7 +146,7 @@ module.exports = function (grunt) {
     // Automatically inject Bower components into the app
     'bower-install': {
       app: {
-        html: '<%= yeoman.app %>/index.php',
+        html: '<%= yeoman.app %>/index.html',
         ignorePath: '<%= yeoman.app %>/'
       }
     },
@@ -173,7 +173,7 @@ module.exports = function (grunt) {
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
     useminPrepare: {
-      html: '<%= yeoman.app %>/index.php',
+      html: '<%= yeoman.app %>/index.html',
       options: {
         dest: '<%= yeoman.dist %>'
       }
@@ -181,7 +181,7 @@ module.exports = function (grunt) {
 
     // Performs rewrites based on rev and the useminPrepare configuration
     usemin: {
-      html: ['<%= yeoman.dist %>/{,*/}*.php'],
+      html: ['<%= yeoman.dist %>/{,*/}*.html'],
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
       options: {
         assetsDirs: ['<%= yeoman.dist %>','<%= yeoman.dist %>/images']
@@ -220,7 +220,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.dist %>',
-          src: ['*.php', 'views/{,*/}*.html'],
+          src: ['*.html', 'views/{,*/}*.html'],
           dest: '<%= yeoman.dist %>'
         }]
       }
@@ -242,7 +242,7 @@ module.exports = function (grunt) {
     // Replace Google CDN references
     cdnify: {
       dist: {
-        html: ['<%= yeoman.dist %>/*.php']
+        html: ['<%= yeoman.dist %>/*.html']
       }
     },
 
@@ -257,7 +257,7 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
-            '*.php',
+            '*.html',
             'views/{,*/}*.html',
             'bower_components/**/*',
             'images/{,*/}*.{webp}',
@@ -295,7 +295,7 @@ module.exports = function (grunt) {
     uncss: {
       dist: {
         files: {
-          'dist/styles/vendor.css': ['app/index.php', 'app/views/main.html']
+          'dist/styles/vendor.css': ['app/index.html', 'app/views/main.html']
         }
       }
     },
@@ -318,7 +318,7 @@ module.exports = function (grunt) {
       }
     },
 
-    // By default, your `index.php`'s <!-- Usemin block --> will take care of
+    // By default, your `index.html`'s <!-- Usemin block --> will take care of
     // minification. These next options are pre-configured if you do not wish
     // to use the Usemin blocks.
     // cssmin: {

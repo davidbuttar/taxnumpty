@@ -42,6 +42,8 @@ angular.module('taxCalculator').factory('ukRuleFactory', function () {
     var studentAllowance = opts.studentAllowance || 16365;
     var maxPensionRelief = opts.maxPensionRelief || 50000;
     var studentLoanPerc = opts.studentLoanPerc || 9;
+    var allowance3848 = opts.allowance3848 || 10500;
+    var allowance37 = opts.allowance37 || 10660;
 
     return {
       'name': yearName,
@@ -62,7 +64,7 @@ angular.module('taxCalculator').factory('ukRuleFactory', function () {
             }
 
             if (ageOpts === 2 || ageOpts === 3) {
-              var localAllowance = (ageOpts === 2) ? 10500 : 10660;
+              var localAllowance = (ageOpts === 2) ? opts.allowance3848 : allowance37;
               var localDeduction = Math.max(0, ((salary - incomeLimit1945) * 0.5));
               if (localDeduction <= (localAllowance - allowance)) {
                 allowance = localAllowance - localDeduction;
@@ -130,7 +132,47 @@ angular.module('taxCalculator').factory('ukRuleFactory', function () {
     };
   }
 
-  var rules = [generateTaxYear('UK 2014/15',{
+  var rules = [
+    generateTaxYear('UK 2015/16',{
+      incomeTaxAllowance:10600,
+      allowance3848:10600,
+      maxPensionRelief:40000,
+      studentAllowance:17335,
+      marriedAllowance:8355,
+      incomeLimit1945:27700,
+      marriedAllowanceMin:3220,
+      blindAllowance:2290,
+      incomeTaxBands:[
+        {
+          from: 0,
+          to: 31785,
+          rate: 20
+        },
+        {
+          from: 31785,
+          to: 150000,
+          rate: 40
+        },
+        {
+          from: 150001,
+          to: Infinity,
+          rate: 45
+        }
+      ],
+      niTaxBands:[
+        {
+          from: 8060,
+          to: 42380,
+          rate: 12
+        },//34320
+        {
+          from: 42380,
+          to: Infinity,
+          rate: 2
+        }
+      ]
+    }),
+    generateTaxYear('UK 2014/15',{
       incomeTaxAllowance:10000,
       maxPensionRelief:40000,
       studentAllowance:16910,
@@ -143,7 +185,7 @@ angular.module('taxCalculator').factory('ukRuleFactory', function () {
           from: 0,
           to: 31865,
           rate: 20
-        },
+        },// 33909
         {
           from: 31865,
           to: 150000,
