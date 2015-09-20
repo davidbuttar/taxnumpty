@@ -2,7 +2,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-    config.vm.box = "ffuenf/ubuntu-14.04-server-amd64"
+    config.vm.box = "ubuntu/trusty64"
     config.vm.hostname = "test-taxedpanet.taxplanet.com"
     config.vm.post_up_message = "try http://test-taxedplanet.taxedplanet.com in your browser"
 
@@ -18,7 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         # Use VBoxManage to customize the VM. For example to change memory:
         vb.customize ["modifyvm", :id, "--memory", "1024"]
     end
-  
+
     # Enable provisioning with chef solo, specifying a cookbooks path, roles
     # path, and data_bags path (all relative to this Vagrantfile), and adding
     # some recipes and/or roles.
