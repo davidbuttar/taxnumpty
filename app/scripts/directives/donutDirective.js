@@ -18,7 +18,7 @@ angular.module('taxnumptyApp')
       var chartInstance = false;
       function updateDom(){
         if(!chartInstance){
-          chartInstance = chart('#'+attrs.chartId,{
+          chartInstance = chart(document.getElementById(attrs.chartId),{
             unit:'&pound',
             prefixUnit:true,
             series:[

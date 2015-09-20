@@ -91,7 +91,7 @@
 
     </div>
     <div chart-donut salary-values="[calculatorState.totalTakeHome, calculatorState.totalDeductions]" chart-id="pieChart" class="result-summary-chart" >
-      <div id="pieChart" class="cbc-chart"></div>
+      <div id="pieChart"></div>
       <div class="result-summary-percentage" ng-if="calculatorState.salary">{{(calculatorState.totalTakeHome/calculatorState.salary)*100 | number:2}}%</div>
     </div>
   </div>
