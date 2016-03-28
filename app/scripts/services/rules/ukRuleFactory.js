@@ -39,10 +39,10 @@ angular.module('taxCalculator').factory('ukRuleFactory', function () {
         rate: 2
       }
     ];
-    var studentAllowance = opts.studentAllowance || 16365;
+    var studentAllowance1 = opts.studentAllowance1 || 16365;
+    var studentAllowance2 = opts.studentAllowance2 || 21000;
     var maxPensionRelief = opts.maxPensionRelief || 50000;
     var studentLoanPerc = opts.studentLoanPerc || 9;
-    var allowance3848 = opts.allowance3848 || 10500;
     var allowance37 = opts.allowance37 || 10660;
 
     return {
@@ -112,11 +112,15 @@ angular.module('taxCalculator').factory('ukRuleFactory', function () {
           bands: niTaxBands
         },
         {
-          allowance: function () {
+          allowance: function (opts) {
+            var studentAllowance = studentAllowance1;
+            if(opts.student2){
+              studentAllowance = studentAllowance2;
+            }
             return studentAllowance;
           },
           eligible: function (opts) {
-            return opts.student && parseInt(opts.age) === 1;
+            return (opts.student1 || opts.student2) && parseInt(opts.age) === 1;
           },
           name: 'Student Loan',
           id: 'studentLoan',
@@ -133,6 +137,46 @@ angular.module('taxCalculator').factory('ukRuleFactory', function () {
   }
 
   var rules = [
+    generateTaxYear('UK 2016/17',{
+      incomeTaxAllowance:11000,
+      allowance3848:11000,
+      maxPensionRelief:40000,
+      studentAllowance1:17495,
+      studentAllowance2:21000,
+      marriedAllowance:8355,
+      incomeLimit1945:27700,
+      marriedAllowanceMin:3220,
+      blindAllowance:2290,
+      incomeTaxBands:[
+        {
+          from: 0,
+          to: 32000,
+          rate: 20
+        },
+        {
+          from: 32000,
+          to: 150000,
+          rate: 40
+        },
+        {
+          from: 150001,
+          to: Infinity,
+          rate: 45
+        }
+      ],
+      niTaxBands:[
+        {
+          from: 8060,
+          to: 43000,
+          rate: 12
+        },//34320
+        {
+          from: 43000,
+          to: Infinity,
+          rate: 2
+        }
+      ]
+    }),
     generateTaxYear('UK 2015/16',{
       incomeTaxAllowance:10600,
       allowance3848:10600,
@@ -210,7 +254,7 @@ angular.module('taxCalculator').factory('ukRuleFactory', function () {
         }
       ]
     }),
-  generateTaxYear('UK 2013/14')
+    generateTaxYear('UK 2013/14')
   ];
 
   that.getAvailableRules = function(){

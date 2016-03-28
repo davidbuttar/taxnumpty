@@ -23,7 +23,8 @@ angular.module('taxCalculator', []).factory('processRules',['ukRuleFactory', fun
   that.incomeTaxAllowance = 0;
   that.studentLoan = 0;
   that.age = that.selectedAge.id;
-  that.student = false;
+  that.student1 = false;
+  that.student2 = false;
   that.blind = false;
   that.noNI = false;
   that.married = false;
@@ -54,6 +55,7 @@ angular.module('taxCalculator', []).factory('processRules',['ukRuleFactory', fun
 
   function calculateStudentLoan(yearRules){
     if(yearRules[2].eligible(that)){
+      // Calculated on monthly bases rounded down to nearest pound hence use of floor.
       var value = Math.floor(that.applyBands(that.salary, yearRules[2].bands,
         yearRules[2].allowance(that)) / 12 ) * 12 ;
       return value;
@@ -155,7 +157,7 @@ angular.module('taxCalculator', []).factory('processRules',['ukRuleFactory', fun
       }
     }
   };
-  
+
   // Apply taxation band to salary, band will have
   // from, to and rate to apply.
   that.applyBand = function(salary, band){

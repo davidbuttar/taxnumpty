@@ -27,7 +27,12 @@
         <div class="form-group">
           <div class="checkbox">
             <label>
-              Include Student Loan <input type="checkbox" ng-model="calculatorState.student">
+              Student Loan | Plan 1 <input type="checkbox" ng-model="calculatorState.student1">
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              Student Loan | Plan 2 <input type="checkbox" ng-model="calculatorState.student2">
             </label>
           </div>
           <div class="checkbox">
@@ -173,7 +178,7 @@
           <td ng-if="detailsPeriods.daily">{{(calculatorState.nationalInsurance/52)/5 | number:2}}</td>
           <td ng-if="detailsPeriods.hourly">{{(calculatorState.nationalInsurance/52)/37.5 | number:2}}</td>
         </tr>
-        <tr ng-if='calculatorState.student' class="warning">
+        <tr ng-if='calculatorState.student1 || calculatorState.student2' class="warning">
           <td>Student Loan</td>
           <td ng-if="detailsPeriods.yearly">{{calculatorState.studentLoan | number:2}}</td>
           <td ng-if="detailsPeriods.monthly">{{calculatorState.studentLoan/12 | number:2}}</td>
@@ -236,7 +241,7 @@
   <p ng-repeat="entry in previousEntries" class="result-summary-2"><span class="result-summary-2-date">{{ entry.entered | date : 'M/d/yy h:mm a'}}</span>
     <span class="result-summary-2-year">| Tax Year: {{entry.year}} |</span>
     <span class="result-summary-2-salary">Salary: &pound;{{entry.visSalary | number:2}} {{entry.payPeriod}} |</span>
-    <span class="result-summary-2-salary" ng-if="entry.student">Student |</span>
+    <span class="result-summary-2-salary" ng-if="entry.student1 || entry.student2">Student |</span>
     <span class="result-summary-2-takehome">Take Home: &pound;{{entry.takeHome | number:2}}</span>
     <span class="result-summary-2-takehome-up" ng-if="(entry.takeHome - calculatorState.totalTakeHome) > 0">| &pound;{{entry.takeHome - calculatorState.totalTakeHome | number:2}} more income than current</span>
     <span class="result-summary-2-takehome-down" ng-if="(entry.takeHome - calculatorState.totalTakeHome) < 0">| &pound;{{calculatorState.totalTakeHome - entry.takeHome | number:2}} less income than current</span></p>

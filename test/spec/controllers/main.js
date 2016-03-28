@@ -43,20 +43,20 @@ describe('Controller: Calculator', function () {
 
   it('should have student loan payment if selected and over the threshold', function () {
     scope.visSalary = 40000;
-    scope.calculatorState.student = false;
+    scope.calculatorState.student1 = false;
     scope.$digest();
     expect(scope.calculatorState.studentLoan).toBe(0);
-    scope.calculatorState.student = true;
+    scope.calculatorState.student1 = true;
     scope.$digest();
     expect(scope.calculatorState.studentLoan).toBe(2124);
   });
 
   it('should have student apply 9% student loan', function () {
     scope.visSalary = 17000;
-    scope.calculatorState.student = false;
+    scope.calculatorState.student1 = false;
     scope.$digest();
     expect(scope.calculatorState.studentLoan).toBe(0);
-    scope.calculatorState.student = true;
+    scope.calculatorState.student1 = true;
     scope.$digest();
     expect(scope.calculatorState.studentLoan).toBe(48);
     scope.visSalary = 30000;
@@ -69,10 +69,17 @@ describe('Controller: Calculator', function () {
 
   it('over 65s dont pay student loan', function () {
     scope.visSalary = 40000;
-    scope.calculatorState.student = true;
+    scope.calculatorState.student1 = true;
     scope.selectedAge = scope.ages[2];
     scope.$digest();
     expect(scope.calculatorState.studentLoan).toBe(0);
+  });
+
+  it('can choose plan 2 and get a higher threshold', function () {
+    scope.visSalary = 30000;
+    scope.calculatorState.student2 = true;
+    scope.$digest();
+    expect(scope.calculatorState.studentLoan).toBe(804);
   });
 
   it('should increase your allowance correctly if you are blind', function () {

@@ -68,7 +68,12 @@ angular.module('taxnumptyApp')
         }
         $scope.visSalary = latestEntry.visSalary || 20000;
         $scope.payPeriod = latestEntry.payPeriod || 'Yearly';
-        $scope.calculatorState.student = latestEntry.student || false;
+        // Cope with legacy single student entry
+        if(latestEntry.student){
+          $scope.calculatorState.student1 = true;
+        }
+        $scope.calculatorState.student1 = latestEntry.student1 || false;
+        $scope.calculatorState.student2 = latestEntry.student2 || false;
         $scope.calculatorState.married = latestEntry.married || false;
         $scope.calculatorState.blind = latestEntry.blind || false;
         $scope.calculatorState.noNI = latestEntry.noNI || false;
@@ -122,7 +127,8 @@ angular.module('taxnumptyApp')
           takeHome:$scope.calculatorState.totalTakeHome,
           year:$scope.calculatorState.ruleSetName,
           payPeriod:$scope.payPeriod,
-          student:$scope.calculatorState.student,
+          student1:$scope.calculatorState.student1,
+          student2:$scope.calculatorState.student2,
           married:$scope.calculatorState.married,
           blind:$scope.calculatorState.blind,
           noNI:$scope.calculatorState.noNI,
@@ -167,7 +173,10 @@ angular.module('taxnumptyApp')
       }
     }
 
-    $scope.$watchCollection('[visSalary, selectedAge, pensionPercentage, calculatorState.student, calculatorState.blind, calculatorState.noNI, calculatorState.married, calculatorState.addAllowance, payPeriod, calculatorState.ruleSetName]', function() {
+    /**
+     * Run when a user updates their form
+     */
+    function handleFormChange(){
       $scope.age = $scope.selectedAge.id;
       localStorageService.set('visSalary', $scope.visSalary);
       var salary = $scope.visSalary;
@@ -194,6 +203,24 @@ angular.module('taxnumptyApp')
       processRules.update();
       addToLocalHistory($scope.visSalary);
       showUpdate();
+    }
+
+    $scope.$watch('calculatorState.student1', function(newValue){
+      if(newValue){
+        $scope.calculatorState.student2 = false;
+      }
+      handleFormChange();
+    });
+
+    $scope.$watch('calculatorState.student2', function(newValue){
+      if(newValue){
+        $scope.calculatorState.student1 = false;
+      }
+      handleFormChange();
+    });
+
+    $scope.$watchCollection('[visSalary, selectedAge, pensionPercentage, calculatorState.blind, calculatorState.noNI, calculatorState.married, calculatorState.addAllowance, payPeriod, calculatorState.ruleSetName]', function() {
+      handleFormChange();
     });
 
 
