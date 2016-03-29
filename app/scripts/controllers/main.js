@@ -57,6 +57,17 @@ angular.module('taxnumptyApp')
       }
     }
 
+    // Find any previous log entries and remove them
+    function removeLogDuplicates(takeHome, year){
+      var ii = $scope.previousEntries.length;
+      for(var i= 0; i<ii; i++){
+        if($scope.previousEntries[i].takeHome === takeHome && $scope.previousEntries[i].year === year){
+          $scope.previousEntries.splice(i, 1);
+          return;
+        }
+      }
+    }
+
     // Look at history log and update the setting to match the last entry if possible
     function applySettingsFromHistory(){
       if($scope.previousEntries.length){
@@ -160,17 +171,6 @@ angular.module('taxnumptyApp')
         }, 300);
         $scope.$digest();
       },1200);
-    }
-
-    // Find any previous log entries and remove them
-    function removeLogDuplicates(takeHome, year){
-      var ii = $scope.previousEntries.length;
-      for(var i= 0; i<ii; i++){
-        if($scope.previousEntries[i].takeHome === takeHome && $scope.previousEntries[i].year === year){
-          $scope.previousEntries.splice(i, 1);
-          return;
-        }
-      }
     }
 
     /**

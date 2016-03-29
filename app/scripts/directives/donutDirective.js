@@ -13,7 +13,7 @@ angular.module('taxnumptyApp')
     scope: {
       salaryValues: '='
     },
-    link:function(scope, element, attrs){
+    link:function(scope, element){
       var taxValues;
       var chartInstance = false;
       function updateDom(){

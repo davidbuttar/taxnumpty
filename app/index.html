@@ -20,6 +20,7 @@
     <!-- endbuild -->
 
     <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/plotinator.css">
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
     <script>
@@ -130,9 +131,6 @@
                 <p class="result-summary ng-hide" ng-show="summaryPeriods.daily"><span class="result-label">Daily take home pay</span> <span class="result-highlight ">£118.16</span></p>
                 <p class="result-summary ng-hide" ng-show="summaryPeriods.daily"><span class="result-label-deduction">Daily Deductions</span> <span class="result-highlight-red ">£54.92</span></p>
               </div>
-              <div chart-donut="" salary-values="[calculatorState.totalTakeHome, calculatorState.totalDeductions]" chart-id="pieChart" class="result-summary-chart ng-isolate-scope">
-                <div id="pieChart" class="cbc-chart"><div class="cbc-da" id="cbc-da-1" style="width:100%; height:100%; position:absolute; top:0; left:0;"><canvas width="300" height="180" class="cbc-canvas" style="text-align: left; display: inline-block; overflow: hidden;">&nbsp;</canvas><canvas width="300" height="180" class="cbc-canvas" style="text-align: left; display: inline-block; overflow: hidden;">&nbsp;</canvas></div><div class="cbc-ha" id="cbc-ha-1" style="width:100%; height:100%; position:absolute; top:0; left:0;z-index:1"></div><div class="cbc-has" id="cbc-has-1" style="width:100%; height:100%; position:absolute; top:0; left:0; z-index:1"></div><div class="cbc-yaxis-container" id="cbc-yaxis-1"></div><div class="cbc-error" id="cbc-error-1" style="display: none;"></div><div class="cbc-tooltips"></div></div>
-                <div class="result-summary-percentage  " ng-if="calculatorState.salary">68.27%</div>
               </div>
             </div>
 
@@ -151,8 +149,7 @@
               </div>
             </div>
             <div class="col-md-4">
-              <div my-stack="" salary-values="[calculatorState.totalTakeHome, calculatorState.nationalInsurance, calculatorState.incomeTax, calculatorState.studentLoan ]" id="bar-chart" chart-id="bar-chart" class="cbc-chart ng-isolate-scope"><div class="cbc-da" id="cbc-da-2" style="width:100%; height:100%; position:absolute; top:0; left:0;"><canvas width="408" height="280" class="cbc-canvas" style="text-align: left; display: inline-block; overflow: hidden;">&nbsp;</canvas><canvas width="408" height="280" class="cbc-canvas" style="text-align: left; display: inline-block; overflow: hidden;">&nbsp;</canvas></div><div class="cbc-ha" id="cbc-ha-2" style="width:100%; height:100%; position:absolute; top:0; left:0;z-index:1"></div><div class="cbc-has" id="cbc-has-2" style="width:100%; height:100%; position:absolute; top:0; left:0; z-index:1"></div><div class="cbc-yaxis-container" id="cbc-yaxis-2"></div><div class="cbc-error" id="cbc-error-2" style="display: none;"></div><div class="cbc-tooltips" style="display: none;"></div></div>
-            </div>
+              </div>
             <div class="col-md-8" id="tax-report">
               <table class="table">
                 <thead>
@@ -318,7 +315,7 @@
     <script src="scripts/directives/donutDirective.js"></script>
     <script src="scripts/directives/easy-social-share.js"></script>
     <script src="scripts/directives/autoFocus.js"></script>
-    <script type="text/javascript" src="scripts/pl.min.js"></script>
+    <script type="text/javascript" src="scripts/plotinator.min.js"></script>
     <!-- endbuild -->
 </body>
 </html>

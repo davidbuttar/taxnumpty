@@ -13,13 +13,12 @@ angular.module('taxnumptyApp')
     scope: {
       salaryValues: '='
     },
-    link:function(scope, element, attrs){
+    link:function(scope, element){
       var taxValues;
       var chartInstance = false;
       function updateDom(){
         if(!chartInstance){
-          console.log(attrs.chartId);
-          chartInstance = chart(document.getElementById(attrs.chartId),{
+          chartInstance = chart(element[0],{
             unit:'&pound',
             prefixUnit:true,
             series:[
