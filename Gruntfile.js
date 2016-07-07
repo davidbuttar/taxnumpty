@@ -15,8 +15,6 @@ module.exports = function (grunt) {
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
-  grunt.loadNpmTasks('grunt-uncss');
-
   grunt.loadNpmTasks('grunt-sftp-deploy');
 
   // Define the configuration for all the tasks
@@ -301,13 +299,6 @@ module.exports = function (grunt) {
         'svgmin'
       ]
     },
-    uncss: {
-      dist: {
-        files: {
-          'dist/styles/vendor.css': ['app/index.html', 'app/views/main.html']
-        }
-      }
-    },
 
     'sftp-deploy': {
       build: {
@@ -402,7 +393,6 @@ module.exports = function (grunt) {
     'copy:dist',
     'cdnify',
     'cssmin',
-    'uncss',
     'uglify',
     'rev',
     'usemin',

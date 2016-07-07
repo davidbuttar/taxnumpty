@@ -51,7 +51,7 @@ angular.module('taxnumptyApp')
     function sizeElements(){
       var $settings = $('.salary-settings');
       $settings.height('auto');
-      if($(document).width() > 940){
+      if($(document).width() > 960){
         var docH = $(document).height();
         $settings.height(docH);
       }

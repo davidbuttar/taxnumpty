@@ -39,9 +39,8 @@
       <div ng-controller="Calculator" class="selected-calculator dropdown">
         <div class="selected-calculator-inner" data-toggle="dropdown">
           <div class="selected" ng-bind="calculatorState.ruleSetName"></div>
-          <div class="world"></div>
         </div>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
           <li role="presentation" ng-repeat="ruleSet in availableRules" ng-click="selectYear(ruleSet)"><a role="menuitem" >{{ruleSet.name}}</a></li>
         </ul>
       </div>

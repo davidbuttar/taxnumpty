@@ -59,6 +59,7 @@ img {
 .header .selected-calculator{
   float:right;
   height:70px;
+  padding:0 4px;
   position: relative;
   cursor:pointer;
 }
@@ -66,7 +67,6 @@ img {
 .header .selected{
   color:#fff;
   float:left;
-  margin-right: 59px;
   padding-top: 18px;
   padding-bottom: 12px;
   background: url(../images/downArrow.png) no-repeat bottom center;
@@ -203,13 +203,16 @@ label{
   margin-bottom: 24px;
 }
 
+.checkbox label{
+  line-height: 22px;
+}
+
 .checkbox{
-  padding-left: 0;
-  margin-bottom:20px;
+  margin-bottom: 20px;
 }
 
 .checkbox input[type="checkbox"]{
-  float:right;
+  margin-right:10px;
 }
 
 
@@ -378,7 +381,7 @@ label{
 }
 
 .result-label-deduction{
-  color:#69B4BE;
+  color:#B36354;
 }
 
 .result-highlight, .result-highlight-red{
@@ -511,12 +514,6 @@ label{
 
 @media (min-width: 960px) {
 
-  #bar-chart{
-    height:280px;
-    margin:38px 0 10px;
-    visibility: visible;
-  }
-
   .salary-settings{
     position: absolute;
     left: 0;
@@ -601,6 +598,13 @@ label{
 }
 
 @media (min-width: 1200px){
+
+  #bar-chart{
+    height:280px;
+    margin:38px 0 10px;
+    visibility: visible;
+  }
+
   .share{
     position: fixed;
     margin: 0;
