@@ -69,7 +69,8 @@ img {
   float:left;
   padding-top: 18px;
   padding-bottom: 12px;
-  background: url(../images/downArrow.png) no-repeat bottom center;
+  background: url(../images/downArrow.svg) no-repeat bottom center;
+  background-size: 11px 6px;
   font-weight: bold;
 }
 

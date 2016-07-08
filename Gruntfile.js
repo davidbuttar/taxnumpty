@@ -303,7 +303,7 @@ module.exports = function (grunt) {
     'sftp-deploy': {
       build: {
         auth: {
-          host: 'glen-spey.dreamhost.com',
+          host: 'flora.dreamhost.com',
           port: 22,
           authKey: 'key1'
 
